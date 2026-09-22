@@ -30,6 +30,7 @@ enum Integration: String, CaseIterable {
     case codex
     case claude
     case opencode
+    case pi
 
     /// Marker used to recognise our own entries in foreign config files.
     static let marker = "Ephedrine"
@@ -39,6 +40,7 @@ enum Integration: String, CaseIterable {
         case .codex: return "Codex"
         case .claude: return "Claude Code"
         case .opencode: return "opencode"
+        case .pi: return "pi"
         }
     }
 
@@ -55,13 +57,15 @@ enum Integration: String, CaseIterable {
             let base = ProcessInfo.processInfo.environment["XDG_CONFIG_HOME"].map { URL(fileURLWithPath: $0) }
                 ?? home.appendingPathComponent(".config")
             return base.appendingPathComponent("opencode/plugin/ephedrine.ts")
+        case .pi:
+            return home.appendingPathComponent(".pi/agent/extensions/ephedrine.ts")
         }
     }
 
     /// Whether our marker is already present in the target file.
     var isInstalled: Bool {
         switch self {
-        case .codex, .opencode:
+        case .codex, .opencode, .pi:
             guard let content = try? String(contentsOf: configPath, encoding: .utf8) else { return false }
             return content.contains(Self.marker)
         case .claude:
@@ -77,6 +81,7 @@ enum Integration: String, CaseIterable {
         case .codex: return installCodex(executablePath: executablePath)
         case .claude: return installClaude(executablePath: executablePath)
         case .opencode: return installOpencode(executablePath: executablePath)
+        case .pi: return installPi(executablePath: executablePath)
         }
     }
 
@@ -87,6 +92,7 @@ enum Integration: String, CaseIterable {
         case .codex: return uninstallCodex()
         case .claude: return uninstallClaude()
         case .opencode: return uninstallOpencode()
+        case .pi: return uninstallPi()
         }
     }
 
@@ -383,6 +389,71 @@ enum Integration: String, CaseIterable {
         """
     }
 
+    // MARK: - pi (extension)
+
+    private func installPi(executablePath: String) -> String? {
+        do {
+            try FileManager.default.createDirectory(at: configPath.deletingLastPathComponent(), withIntermediateDirectories: true)
+        } catch {
+            return error.localizedDescription
+        }
+        backupIfNeeded(configPath)
+        do {
+            try Self.piExtension(executablePath: executablePath).write(to: configPath, atomically: true, encoding: .utf8)
+            return nil
+        } catch {
+            return error.localizedDescription
+        }
+    }
+
+    private func uninstallPi() -> String? {
+        guard FileManager.default.fileExists(atPath: configPath.path) else { return nil }
+        do {
+            try FileManager.default.removeItem(at: configPath)
+            return nil
+        } catch {
+            return error.localizedDescription
+        }
+    }
+
+    /// Generates the pi extension that reports the turn lifecycle to Ephedrine.
+    ///
+    /// pi's `agent_start` fires when a run begins and `agent_settled` fires when pi will not
+    /// continue automatically (after retries, compaction and queued follow-ups) — exactly the
+    /// busy/idle signal Ephedrine needs. Both transitions are reported, so `reports_busy` is true
+    /// and CPU activity is not needed to detect the start of a turn.
+    private static func piExtension(executablePath: String) -> String {
+        let escaped = executablePath
+            .replacingOccurrences(of: "\\", with: "\\\\")
+            .replacingOccurrences(of: "\"", with: "\\\"")
+        return """
+        // Ephedrine: segnala turni busy/idle cosi il Mac resta sveglio solo mentre l'agente lavora.
+        import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+        import { spawn } from "node:child_process";
+
+        const BINARY = "\(escaped)";
+
+        export default function (pi: ExtensionAPI) {
+          const report = (state: "busy" | "idle") => {
+            try {
+              const child = spawn(BINARY, ["--report", state, "--agent", "pi", "--pid", String(process.pid)], {
+                detached: true,
+                stdio: "ignore",
+              });
+              child.unref();
+            } catch {
+              // non deve mai bloccare l'agente
+            }
+          };
+
+          pi.on("agent_start", async () => report("busy"));
+          pi.on("agent_settled", async () => report("idle"));
+          pi.on("session_start", async () => report("idle"));
+          pi.on("session_shutdown", async () => report("idle"));
+        }
+        """
+    }
+
     // MARK: - Helpers
 
     /// Creates `<file>.ephedrine-backup` before the first modification.
@@ -463,7 +534,7 @@ enum IntegrationCommand {
 
     static func install(id: String) -> Int32 {
         guard let integration = Integration(rawValue: id) else {
-            print("Integrazione sconosciuta: \(id) (valide: codex, claude, opencode)")
+            print("Integrazione sconosciuta: \(id) (valide: codex, claude, opencode, pi)")
             return 64
         }
         let executable = Bundle.main.executablePath ?? CommandLine.arguments.first ?? "Ephedrine"
@@ -477,7 +548,7 @@ enum IntegrationCommand {
 
     static func uninstall(id: String) -> Int32 {
         guard let integration = Integration(rawValue: id) else {
-            print("Integrazione sconosciuta: \(id) (valide: codex, claude, opencode)")
+            print("Integrazione sconosciuta: \(id) (valide: codex, claude, opencode, pi)")
             return 64
         }
         if let error = integration.uninstall() {

@@ -50,7 +50,7 @@ artifact even without a tag.
 
 ## Features
 
-- **Turn-state aware** — opencode, Claude Code and Codex report turn start/end to Ephedrine
+- **Turn-state aware** — opencode, Claude Code, Codex and pi report turn start/end to Ephedrine
   through their own official extension points (plugin / hooks / notify). No polling of log files.
 - **CPU + process fallback** — agents without an integration are classified by process presence
   and CPU usage, so nothing is missed.
@@ -72,7 +72,7 @@ artifact even without a tag.
 
 - macOS 14 or later (Apple Silicon or Intel)
 - Xcode Command Line Tools (Swift 5.9+; developed with Swift 6.x)
-- Optional: an agent with a supported integration (opencode / Claude Code / Codex)
+- Optional: an agent with a supported integration (opencode / Claude Code / Codex / pi)
 
 ---
 
@@ -157,7 +157,8 @@ Integrations write tiny JSON files to:
 Files older than 30 minutes are deleted automatically. Files whose pid is gone are no longer
 matched at pid level but are kept (up to 30 minutes) as an agent-level fallback, so a `busy`
 state survives an agent/helper restart mid-turn. The `reports_busy` flag tells Ephedrine
-whether the integration reports **both** transitions (opencode plugin, Claude Code hooks) or
+whether the integration reports **both** transitions (opencode plugin, Claude Code hooks, pi
+ extension) or
 **only the end of a turn** (Codex `notify`).
 
 ### 4. Decision rules
@@ -225,6 +226,16 @@ in a comment and restored on removal).
   not replaced**: Ephedrine writes the state and then re-executes the original program with
   its arguments via `--passthrough`, so nothing breaks.
 
+### pi
+
+- File: `~/.pi/agent/extensions/ephedrine.ts`
+- Mechanism: a pi extension subscribed to the agent lifecycle.
+- Events used: `agent_start` → `--report busy`, `agent_settled` → `--report idle`.
+  `agent_settled` fires only when pi will not continue automatically, so auto-retry, compaction
+  and queued follow-ups keep the Mac awake; `session_start` / `session_shutdown` report idle.
+- Both transitions are reported, so the CPU heuristic is not needed.
+- Run `/reload` or restart pi after installing so the extension is loaded.
+
 ### Any other agent
 
 Add one or more patterns in **Agenti monitorati → Altri agent…** (comma separated). Without an
@@ -270,8 +281,8 @@ coperchio chiuso…**.
 |---|---|
 | `Ephedrine` | Starts the menu bar app |
 | `Ephedrine --report busy\|idle --agent <name> [--pid N] [--idle-only] [--passthrough <prog> <args…>]` | Writes a state file for the invoking agent (used by integrations) |
-| `Ephedrine --install-integration <codex\|claude\|opencode>` | Installs the integration |
-| `Ephedrine --uninstall-integration <codex\|claude\|opencode>` | Removes the integration |
+| `Ephedrine --install-integration <codex\|claude\|opencode\|pi>` | Installs the integration |
+| `Ephedrine --uninstall-integration <codex\|claude\|opencode\|pi>` | Removes the integration |
 | `Ephedrine --dump-agents` | Prints detected processes, CPU and session states (debugging) |
 
 `--report` attributes the state automatically by walking the parent process chain looking for a
@@ -354,7 +365,7 @@ Sources/Ephedrine/
   MenuView.swift          SwiftUI popover UI
   AgentDetector.swift     Process scanning, pattern matching, CPU sampling
   SessionState.swift      Turn-state files (store, reader, reporter CLI, diagnostics)
-  Integrations.swift      opencode plugin / Claude hooks / Codex notify install & uninstall
+  Integrations.swift      opencode / Claude / Codex / pi integration install & uninstall
   PowerManager.swift      IOKit power assertions + AC detection
   ClosedDisplayHelper.swift  Privileged helper for lid-close sleep (pmset disablesleep)
   Settings.swift          Typed UserDefaults access
@@ -364,7 +375,7 @@ scripts/build-app.sh      Builds the .app bundle (Info.plist, ad-hoc signature)
 Data flow:
 
 ```
-agent (opencode/codex/claude) ──hook/plugin──▶ Ephedrine --report ──▶ state/*.json
+agent (opencode/codex/claude/pi) ──hook/plugin──▶ Ephedrine --report ──▶ state/*.json
                                                                               │
         tick (2 s) ──▶ detect processes + read states ◀──────────────────────┘
                     ──▶ classify (busy/idle/CPU) ──▶ power assertions (IOKit)

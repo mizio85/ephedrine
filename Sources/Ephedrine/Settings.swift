@@ -68,7 +68,8 @@ final class Settings {
     static let builtInPatterns: [String] = [
         "opencode", "codex", "claude", "aider", "gemini", "cursor-agent",
         "goose", "amp", "gptme", "qwen", "crush", "droid", "openhands",
-        "plandex", "continue", "copilot", "windsurf", "cody"
+        "plandex", "continue", "copilot", "windsurf", "cody",
+        "pi"
     ]
 
     private let defaults = UserDefaults.standard
