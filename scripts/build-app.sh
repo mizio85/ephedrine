@@ -8,16 +8,41 @@ VERSION="${VERSION:-1.0.0}"
 CONFIG="${CONFIG:-release}"
 # Optional space-separated architectures for a universal build, e.g. ARCHS="arm64 x86_64".
 ARCHS="${ARCHS:-}"
-ARCH_FLAGS=""
-if [ -n "$ARCHS" ]; then
-    for arch in $ARCHS; do ARCH_FLAGS="$ARCH_FLAGS --arch $arch"; done
-fi
 
-# shellcheck disable=SC2086
-swift build -c "$CONFIG" $ARCH_FLAGS --product "$APP_NAME"
-# shellcheck disable=SC2086
-BIN_DIR="$(swift build -c "$CONFIG" $ARCH_FLAGS --show-bin-path)"
-BIN="$BIN_DIR/$APP_NAME"
+# Builds the executable and prints its path on stdout (build logs go to stderr).
+#
+# With several architectures each one is built separately and merged with `lipo`: SwiftPM's own
+# universal build routes through xcodebuild, which fails on older toolchains (e.g. Xcode 16.4 /
+# Swift 6.1) with `SWIFT_VERSION '' is unsupported` when the target uses `.swiftLanguageMode(.v5)`.
+build_binary() {
+    if [ -z "$ARCHS" ]; then
+        swift build -c "$CONFIG" --product "$APP_NAME" >&2
+        echo "$(swift build -c "$CONFIG" --show-bin-path)/$APP_NAME"
+        return
+    fi
+
+    if [ "$(echo $ARCHS | wc -w | tr -d ' ')" -eq 1 ]; then
+        swift build -c "$CONFIG" --arch "$ARCHS" --product "$APP_NAME" >&2
+        echo "$(swift build -c "$CONFIG" --arch "$ARCHS" --show-bin-path)/$APP_NAME"
+        return
+    fi
+
+    local staging="build/.lipo"
+    rm -rf "$staging"
+    mkdir -p "$staging"
+    local slices=()
+    for arch in $ARCHS; do
+        swift build -c "$CONFIG" --arch "$arch" --product "$APP_NAME" >&2
+        local dir
+        dir="$(swift build -c "$CONFIG" --arch "$arch" --show-bin-path)"
+        cp "$dir/$APP_NAME" "$staging/$APP_NAME-$arch"
+        slices+=("$staging/$APP_NAME-$arch")
+    done
+    lipo -create "${slices[@]}" -output "$staging/$APP_NAME-universal"
+    echo "$staging/$APP_NAME-universal"
+}
+
+BIN="$(build_binary)"
 
 APP_DIR="build/$APP_NAME.app"
 rm -rf "$APP_DIR"
