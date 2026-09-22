@@ -1,0 +1,64 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+# Needed by the release step to create the GitHub Release and upload the asset.
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # macOS 15 ships Xcode 16 / Swift 6, required by swift-tools-version: 6.0.
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Toolchain
+        run: |
+          swift --version
+          xcodebuild -version
+
+      - name: Resolve version
+        id: version
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            echo "value=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=0.0.0" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build universal .app and zip
+        run: make dist VERSION="${{ steps.version.outputs.value }}"
+
+      - name: Show bundle
+        run: |
+          ls -lh build/
+          file build/Ephedrine.app/Contents/MacOS/Ephedrine
+
+      # Always available from the Actions run, even for manual/branch builds.
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ephedrine-${{ steps.version.outputs.value }}
+          path: build/Ephedrine-*.zip
+          if-no-files-found: error
+
+      # Only on a v* tag: create the Release and attach the zip.
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/Ephedrine-*.zip
+          generate_release_notes: true
+          draft: false
+          prerelease: false

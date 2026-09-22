@@ -17,6 +17,25 @@ only while work is in progress.
 
 ---
 
+## Download
+
+Prebuilt **universal** binaries (Apple Silicon + Intel) are published on the
+[Releases page](https://github.com/mizio85/ephedrine/releases):
+
+1. Download `Ephedrine-<version>.zip`, unzip it and drag `Ephedrine.app` into `/Applications`.
+2. First launch: the app is **ad-hoc signed and not notarized**, so Gatekeeper will block it.
+   Either right-click the app → **Open**, or clear the quarantine flag:
+
+   ```bash
+   xattr -dr com.apple.quarantine /Applications/Ephedrine.app
+   ```
+
+Builds are produced automatically by GitHub Actions on every `v*` tag
+(see `.github/workflows/release.yml`); each run also exposes the `.app` zip as a downloadable
+artifact even without a tag.
+
+---
+
 ## Features
 
 - **Turn-state aware** — opencode, Claude Code and Codex report turn start/end to Ephedrine

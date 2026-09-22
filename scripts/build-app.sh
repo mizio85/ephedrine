@@ -4,11 +4,19 @@ cd "$(dirname "$0")/.."
 
 APP_NAME="Ephedrine"
 BUNDLE_ID="local.maurizio.Ephedrine"
-VERSION="1.0.0"
+VERSION="${VERSION:-1.0.0}"
 CONFIG="${CONFIG:-release}"
+# Optional space-separated architectures for a universal build, e.g. ARCHS="arm64 x86_64".
+ARCHS="${ARCHS:-}"
+ARCH_FLAGS=""
+if [ -n "$ARCHS" ]; then
+    for arch in $ARCHS; do ARCH_FLAGS="$ARCH_FLAGS --arch $arch"; done
+fi
 
-swift build -c "$CONFIG" --product "$APP_NAME"
-BIN_DIR="$(swift build -c "$CONFIG" --show-bin-path)"
+# shellcheck disable=SC2086
+swift build -c "$CONFIG" $ARCH_FLAGS --product "$APP_NAME"
+# shellcheck disable=SC2086
+BIN_DIR="$(swift build -c "$CONFIG" $ARCH_FLAGS --show-bin-path)"
 BIN="$BIN_DIR/$APP_NAME"
 
 APP_DIR="build/$APP_NAME.app"
