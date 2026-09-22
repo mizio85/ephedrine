@@ -23,12 +23,24 @@ Prebuilt **universal** binaries (Apple Silicon + Intel) are published on the
 [Releases page](https://github.com/mizio85/ephedrine/releases):
 
 1. Download `Ephedrine-<version>.zip`, unzip it and drag `Ephedrine.app` into `/Applications`.
-2. First launch: the app is **ad-hoc signed and not notarized**, so Gatekeeper will block it.
-   Either right-click the app → **Open**, or clear the quarantine flag:
+2. First launch: the app is **ad-hoc signed and not notarized**, so Gatekeeper blocks it with
+   *"Ephedrine is damaged and can't be opened"* (or *"cannot verify the developer"*). Open it once
+   with either:
 
-   ```bash
-   xattr -dr com.apple.quarantine /Applications/Ephedrine.app
-   ```
+   - **Terminal** (recommended):
+
+     ```bash
+     xattr -dr com.apple.quarantine /Applications/Ephedrine.app
+     ```
+
+   - **Finder**: right-click `Ephedrine.app` → **Open** → **Open**, or go to
+     System Settings → **Privacy & Security** → **Open Anyway**.
+
+   It is a menu bar app: after launch, look for the cup icon in the status bar (no Dock icon).
+
+> **Maintainers:** smooth distribution requires a paid Apple Developer account with a
+> *Developer ID Application* certificate + notarization. With only an *Apple Development*
+> certificate the build stays ad-hoc, and the Gatekeeper workaround above is required.
 
 Builds are produced automatically by GitHub Actions on every `v*` tag
 (see `.github/workflows/release.yml`); each run also exposes the `.app` zip as a downloadable
