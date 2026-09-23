@@ -1,0 +1,155 @@
+/*
+   Ephedrine — Español.
+   No modifiques los marcadores (%d, %@).
+*/
+
+"status.off" = "Ephedrine — Apagado";
+"status.pausedBattery" = "Ephedrine — en pausa (batería)";
+"status.working" = "Ephedrine — Mac despierto (%d trabajando)";
+"status.workingWaiting" = "Ephedrine — Mac despierto (%d trabajando, %d en espera)";
+"status.graceWaiting" = "Ephedrine — Mac despierto (gracia, %d en espera)";
+"status.alwaysOn" = "Ephedrine — Mac despierto (siempre activo)";
+"status.grace" = "Ephedrine — Mac despierto (gracia)";
+"status.waitingAgents" = "Ephedrine — esperando agentes";
+"status.closedDisplaySuffix" = " · tapa cerrada";
+
+"tooltip.battery" = "Solo con corriente: conecta el cargador para reanudar.";
+"tooltip.closedDisplay" = "Suspensión con la tapa cerrada desactivada (pmset disablesleep).";
+"tooltip.click" = "Haz clic para las opciones";
+
+"header.timerElapsed" = "Temporizador agotado";
+"header.timerElapsedSubtitle" = "Café terminado: el Mac vuelve a reposo";
+"header.disabled" = "Desactivado";
+"header.disabledSubtitle" = "Sin supervisión";
+"header.paused" = "En pausa";
+"header.pausedSubtitle" = "Solo con corriente: conecta el cargador";
+"header.awake" = "Mac despierto";
+"header.working" = "%@ trabajando";
+"header.workingMany" = "%d agentes trabajando";
+"header.grace" = "Gracia: %d s";
+"header.alwaysOnRemaining" = "Siempre activo · quedan %@";
+"header.alwaysOn" = "Siempre activo";
+"header.standby" = "En espera";
+"header.waitingAgents" = "Esperando agentes";
+"header.agentsWaitingInput" = "Agentes esperando entrada";
+"header.closedDisplaySuffix" = " · tapa cerrada";
+
+"closedDisplay.disabled" = "Suspensión con tapa cerrada desactivada";
+"closedDisplay.normal" = "Suspensión con tapa cerrada normal";
+"closedDisplay.notInstalled" = "Soporte no instalado (contraseña de administrador en el primer uso)";
+"closedDisplay.errorNotInstalled" = "Soporte no instalado";
+"closedDisplay.errorEnable" = "Activación fallida (se requiere soporte de administrador)";
+"closedDisplay.errorRemoved" = "Soporte eliminado: la suspensión con tapa cerrada puede permanecer desactivada";
+
+"alert.ok" = "OK";
+"alert.cancel" = "Cancelar";
+"alert.save" = "Guardar";
+"alert.install" = "Instalar";
+"alert.remove" = "Eliminar";
+"alert.installFailed" = "Instalación fallida";
+"alert.removeFailed" = "Eliminación fallida";
+
+"alert.launchAtLogin.title" = "Inicio al iniciar sesión no disponible";
+"alert.launchAtLogin.text" = "%@\n\nMueve Ephedrine.app a /Applications e inténtalo de nuevo.";
+
+"alert.removeClosed.title" = "¿Eliminar el soporte de tapa cerrada?";
+"alert.removeClosed.text" = "Se eliminará el helper de administrador y se restaurará la suspensión normal con la tapa cerrada.";
+"alert.installClosed.title" = "Instalar el soporte de tapa cerrada";
+"alert.installClosed.text" = "Se requiere la contraseña de administrador una vez: se crea un helper limitado que desactiva la suspensión con la tapa cerrada (pmset disablesleep). Solo se usa mientras este modo está activo y se restaura automáticamente al desactivarlo o salir de la app.";
+
+"alert.removeIntegration.title" = "¿Eliminar la integración de %@?";
+"alert.removeIntegration.text" = "Se restaurará el archivo:\n%@";
+"alert.installIntegration.title" = "¿Instalar la integración de %@?";
+"alert.installIntegration.text" = "Se modificará el archivo (con una copia .ephedrine-backup):\n%@\n\nEl agente informará del inicio y fin de turno a Ephedrine, así el Mac permanece despierto solo mientras el LLM trabaja realmente. Reinicia el agente para aplicar.";
+
+"alert.customAgents.title" = "Otros agentes a supervisar";
+"alert.customAgents.text" = "Patrones separados por comas. Un proceso coincide si su nombre, ruta o línea de comandos contiene un patrón (sin distinguir mayúsculas). Los patrones de 4 caracteres o menos deben coincidir con una palabra completa.";
+"alert.customAgents.placeholder" = "my-agent, llm-runner";
+
+"alert.assertions.title" = "Power assertions activas";
+"alert.assertions.text" = "Busca «Ephedrine» en la lista: es la assertion que mantiene despierto el Mac.";
+
+"alert.about.text" = "Mantiene el Mac despierto mientras se ejecutan agentes de programación (opencode, codex, claude, pi, …), para que los LLM no se detengan durante la inactividad.\n\nCon las integraciones activadas el agente informa del inicio y fin de turno: el Mac permanece despierto solo mientras el LLM trabaja realmente.\n\nNota: con la tapa cerrada el Mac se suspende igualmente, salvo que se active «Tapa cerrada» o se use el modo clamshell con pantalla externa y corriente.";
+
+"error.pmset" = "Error al ejecutar pmset: %@";
+
+"mode.off" = "Apagado";
+"mode.auto" = "Auto";
+"mode.always" = "Siempre";
+
+"section.agents" = "Agentes";
+"section.options" = "Opciones";
+"section.watch" = "Agentes supervisados";
+"section.integrations" = "Integraciones de estado de turno";
+"section.advanced" = "Avanzado";
+
+"agents.working" = "trabajando";
+"agents.waiting" = "en espera";
+
+"maxDuration.title" = "Límite de funcionamiento";
+"maxDuration.help" = "Apaga el café tras el tiempo elegido, para que el Mac no permanezca despierto indefinidamente.";
+"maxDuration.unlimited" = "Ilimitado";
+"maxDuration.15min" = "15 min";
+"maxDuration.30min" = "30 min";
+"maxDuration.1h" = "1 hora";
+"maxDuration.2h" = "2 horas";
+"maxDuration.4h" = "4 horas";
+"maxDuration.elapsed" = "Temporizador agotado: Mac liberado";
+
+"options.preventDisplay" = "Mantener pantalla activa";
+"options.preventDisplay.help" = "Impide que la pantalla se apague mientras un agente trabaja (equivale a caffeinate -d).";
+"options.respectSession" = "Respetar estado de turno";
+"options.respectSession.help" = "Usa las señales busy/idle de las integraciones: el Mac permanece despierto solo mientras el LLM genera realmente.";
+"options.onlyOnAC" = "Solo con corriente";
+"options.onlyOnAC.help" = "No mantiene despierto el Mac cuando funciona con batería.";
+"options.closedDisplay" = "Tapa cerrada";
+"options.closedDisplay.help" = "Desactiva la suspensión con la tapa cerrada (pmset disablesleep) mientras un agente trabaja. Requiere la contraseña de administrador en el primer uso.";
+
+"watch.others" = "Otros agentes…";
+"watch.others.help" = "Añade patrones de procesos a supervisar, separados por comas.";
+
+"integrations.install" = "Instalar";
+"integrations.remove" = "Eliminar";
+"integrations.install.help" = "Modifica la configuración del agente (con copia de seguridad) para que informe del inicio y fin de turno.";
+"integrations.remove.help" = "Elimina la integración y restaura el archivo de configuración original.";
+"integrations.lastState" = "Último estado: %@";
+"integrations.openFolder" = "Abrir carpeta de estado";
+
+"advanced.simulateActivity" = "Simular actividad del usuario";
+"advanced.simulateActivity.help" = "Declara actividad del usuario a intervalos regulares para evitar el salvapantallas y el bloqueo automático.";
+"advanced.preventSystemSleep" = "Impedir suspensión del sistema (corriente)";
+"advanced.preventSystemSleep.help" = "Añade la assertion PreventSystemSleep (como caffeinate -s). Solo activa con corriente.";
+"advanced.cpuOnly" = "Solo con CPU activa";
+"advanced.cpuOnly.help" = "Ignora los estados de turno y clasifica los agentes solo por uso de CPU (≥3 %).";
+"advanced.launchAtLogin" = "Iniciar al iniciar sesión";
+"advanced.launchAtLogin.help" = "Inicia Ephedrine automáticamente al iniciar sesión. Requiere la app en /Applications.";
+"advanced.grace" = "Gracia";
+"advanced.grace.help" = "Cuánto tiempo permanece despierto el Mac tras la última actividad, para cubrir pausas breves (LLM pensando, reinicio de herramientas).";
+"advanced.poll" = "Detección";
+"advanced.poll.help" = "Con qué frecuencia la app comprueba procesos, CPU y estados de turno.";
+"advanced.activity" = "Actividad del usuario";
+"advanced.activity.help" = "Intervalo entre dos declaraciones de actividad del usuario (usado con «Simular actividad del usuario»).";
+"advanced.showAssertions" = "Mostrar power assertions…";
+"advanced.removeClosedSupport" = "Eliminar soporte de tapa cerrada…";
+"advanced.removeClosedSupport.help" = "Elimina el helper de administrador y reactiva la suspensión con la tapa cerrada.";
+
+"footer.about" = "Acerca de";
+"footer.quit" = "Salir";
+
+"duration.off" = "Off";
+"duration.seconds" = "%d s";
+"duration.minutes" = "%d min";
+
+"cli.unknownIntegration" = "Integración desconocida: %@ (válidas: codex, claude, opencode, pi)";
+"cli.integrationInstalled" = "Integración %@ instalada: %@";
+"cli.integrationRemoved" = "Integración %@ eliminada: %@";
+"cli.error" = "Error: %@";
+"cli.stateReceived" = "estados recibidos: %@";
+"session.none" = "ningún estado recibido";
+
+"integration.unrecognizedNotify" = "Línea notify existente no reconocida: configura el passthrough manualmente.";
+"integration.invalidClaudeSettings" = "settings.json existente no es JSON válido";
+
+"helper.badUsername" = "Nombre de usuario no compatible con la configuración de sudoers";
+"helper.installFailed" = "Instalación cancelada o fallida";
+"helper.uninstallFailed" = "Eliminación cancelada o fallida";

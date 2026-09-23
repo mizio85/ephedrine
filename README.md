@@ -394,17 +394,26 @@ swift build -c release      # release build
 
 ## Localization
 
-The UI is available in **English** (base) and **Italian**. Translations live in standard
-`.lproj/Localizable.strings` files:
+The UI follows the system language when a translation is available and otherwise falls back to
+**English** (the base localization). Currently available:
+
+| | | | |
+|---|---|---|---|
+| English (base) | Italian | Spanish | French |
+| German | Portuguese | Dutch | Polish |
+| Russian | Turkish | Chinese (Simplified) | Chinese (Traditional) |
+| Japanese | Korean | | |
+
+Translations live in standard `.lproj/Localizable.strings` files:
 
 ```
 Sources/Ephedrine/Resources/en.lproj/Localizable.strings   # base (English)
 Sources/Ephedrine/Resources/it.lproj/Localizable.strings   # Italian
+Sources/Ephedrine/Resources/de.lproj/Localizable.strings   # …
 ```
 
-`scripts/build-app.sh` copies the SwiftPM resource bundle into `Ephedrine.app/Contents/Resources`,
-so the app follows the system language and falls back to English. The code and comments are in
-English.
+`scripts/build-app.sh` copies the SwiftPM resource bundle into `Ephedrine.app/Contents/Resources`
+and declares the languages in `CFBundleLocalizations`. The code and comments are in English.
 
 To add a language, copy `en.lproj/Localizable.strings` to a new `<lang>.lproj/` folder, translate
 the values (keep the `%d` / `%@` placeholders) and add the code to `CFBundleLocalizations` in

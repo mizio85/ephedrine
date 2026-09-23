@@ -1,0 +1,155 @@
+/*
+   Ephedrine — 日本語.
+   プレースホルダー（%d、%@）は変更しないでください。
+*/
+
+"status.off" = "Ephedrine — オフ";
+"status.pausedBattery" = "Ephedrine — 一時停止（バッテリー）";
+"status.working" = "Ephedrine — Mac スリープ防止（%d 件実行中）";
+"status.workingWaiting" = "Ephedrine — Mac スリープ防止（%d 件実行中、%d 件待機中）";
+"status.graceWaiting" = "Ephedrine — Mac スリープ防止（猶予、%d 件待機中）";
+"status.alwaysOn" = "Ephedrine — Mac スリープ防止（常時オン）";
+"status.grace" = "Ephedrine — Mac スリープ防止（猶予）";
+"status.waitingAgents" = "Ephedrine — エージェントを待機中";
+"status.closedDisplaySuffix" = " · フタ閉じ";
+
+"tooltip.battery" = "電源接続時のみ：再開するには充電器を接続してください。";
+"tooltip.closedDisplay" = "フタ閉じスリープを無効化中（pmset disablesleep）。";
+"tooltip.click" = "クリックでオプション";
+
+"header.timerElapsed" = "タイマー終了";
+"header.timerElapsedSubtitle" = "コーヒー終了：Mac は再びスタンバイ";
+"header.disabled" = "無効";
+"header.disabledSubtitle" = "監視なし";
+"header.paused" = "一時停止";
+"header.pausedSubtitle" = "電源接続時のみ：充電器を接続してください";
+"header.awake" = "Mac スリープ防止";
+"header.working" = "%@ 実行中";
+"header.workingMany" = "%d 件のエージェントが実行中";
+"header.grace" = "猶予：%d 秒";
+"header.alwaysOnRemaining" = "常時オン · 残り %@";
+"header.alwaysOn" = "常時オン";
+"header.standby" = "スタンバイ";
+"header.waitingAgents" = "エージェントを待機中";
+"header.agentsWaitingInput" = "エージェントが入力を待機中";
+"header.closedDisplaySuffix" = " · フタ閉じ";
+
+"closedDisplay.disabled" = "フタ閉じスリープを無効化中";
+"closedDisplay.normal" = "フタ閉じスリープは通常どおり";
+"closedDisplay.notInstalled" = "サポート未インストール（初回利用時に管理者パスワード）";
+"closedDisplay.errorNotInstalled" = "サポート未インストール";
+"closedDisplay.errorEnable" = "有効化に失敗（管理者サポートが必要）";
+"closedDisplay.errorRemoved" = "サポートを削除しました：フタ閉じスリープが無効のままになる場合があります";
+
+"alert.ok" = "OK";
+"alert.cancel" = "キャンセル";
+"alert.save" = "保存";
+"alert.install" = "インストール";
+"alert.remove" = "削除";
+"alert.installFailed" = "インストールに失敗しました";
+"alert.removeFailed" = "削除に失敗しました";
+
+"alert.launchAtLogin.title" = "ログイン時に起動できません";
+"alert.launchAtLogin.text" = "%@\n\nEphedrine.app を /Applications に移動して再試行してください。";
+
+"alert.removeClosed.title" = "フタ閉じサポートを削除しますか？";
+"alert.removeClosed.text" = "管理者ヘルパーを削除し、通常のフタ閉じスリープを復元します。";
+"alert.installClosed.title" = "フタ閉じサポートをインストール";
+"alert.installClosed.text" = "管理者パスワードが一度必要です：フタ閉じスリープを無効化する限定ヘルパーを作成します（pmset disablesleep）。このモードが有効な間だけ使用され、無効化またはアプリ終了時に自動的に元に戻ります。";
+
+"alert.removeIntegration.title" = "%@ 連携を削除しますか？";
+"alert.removeIntegration.text" = "ファイルを復元します：\n%@";
+"alert.installIntegration.title" = "%@ 連携をインストールしますか？";
+"alert.installIntegration.text" = "ファイルを変更します（.ephedrine-backup バックアップ付き）：\n%@\n\nエージェントがターンの開始と終了を Ephedrine に通知するため、LLM が実際に作業している間だけ Mac を起こし続けます。適用するにはエージェントを再起動してください。";
+
+"alert.customAgents.title" = "監視するその他のエージェント";
+"alert.customAgents.text" = "カンマ区切りのパターン。プロセスの名前、パス、またはコマンドラインにパターンが含まれていれば一致します（大文字小文字を区別しません）。4 文字以下のパターンは単語全体に一致する必要があります。";
+"alert.customAgents.placeholder" = "my-agent, llm-runner";
+
+"alert.assertions.title" = "有効な power assertions";
+"alert.assertions.text" = "一覧で「Ephedrine」を探してください：Mac を起こし続けている assertion です。";
+
+"alert.about.text" = "コーディングエージェント（opencode、codex、claude、pi など）の実行中に Mac を起こし続け、アイドル時に LLM が停止しないようにします。\n\n連携を有効にすると、エージェントがターンの開始と終了を通知します：LLM が実際に作業している間だけ Mac を起こし続けます。\n\n注意：フタを閉じると Mac はスリープします。「フタ閉じ」を有効にするか、外部ディスプレイと電源を接続したクラムシェルモードを使用しない限り回避できません。";
+
+"error.pmset" = "pmset の実行エラー：%@";
+
+"mode.off" = "オフ";
+"mode.auto" = "自動";
+"mode.always" = "常時";
+
+"section.agents" = "エージェント";
+"section.options" = "オプション";
+"section.watch" = "監視対象エージェント";
+"section.integrations" = "ターン状態の連携";
+"section.advanced" = "詳細";
+
+"agents.working" = "実行中";
+"agents.waiting" = "待機中";
+
+"maxDuration.title" = "動作時間の上限";
+"maxDuration.help" = "選択した時間の後にコーヒーを切るので、Mac がずっと起きたままになりません。";
+"maxDuration.unlimited" = "無制限";
+"maxDuration.15min" = "15 分";
+"maxDuration.30min" = "30 分";
+"maxDuration.1h" = "1 時間";
+"maxDuration.2h" = "2 時間";
+"maxDuration.4h" = "4 時間";
+"maxDuration.elapsed" = "タイマー終了：Mac を解放しました";
+
+"options.preventDisplay" = "ディスプレイを起こし続ける";
+"options.preventDisplay.help" = "エージェントの作業中にディスプレイがスリープするのを防ぎます（caffeinate -d 相当）。";
+"options.respectSession" = "ターン状態を尊重";
+"options.respectSession.help" = "連携の busy/idle シグナルを使用します：LLM が実際に生成している間だけ Mac を起こし続けます。";
+"options.onlyOnAC" = "電源接続時のみ";
+"options.onlyOnAC.help" = "バッテリー駆動時は Mac を起こし続けません。";
+"options.closedDisplay" = "フタ閉じ";
+"options.closedDisplay.help" = "エージェントの作業中にフタ閉じスリープを無効化します（pmset disablesleep）。初回利用時に管理者パスワードが必要です。";
+
+"watch.others" = "その他のエージェント…";
+"watch.others.help" = "監視するプロセスパターンをカンマ区切りで追加します。";
+
+"integrations.install" = "インストール";
+"integrations.remove" = "削除";
+"integrations.install.help" = "エージェントの設定を変更し（バックアップ付き）、ターンの開始と終了を通知させます。";
+"integrations.remove.help" = "連携を削除し、元の設定ファイルを復元します。";
+"integrations.lastState" = "最新の状態：%@";
+"integrations.openFolder" = "状態フォルダを開く";
+
+"advanced.simulateActivity" = "ユーザー操作をシミュレート";
+"advanced.simulateActivity.help" = "定期的にユーザー操作を宣言し、スクリーンセーバーと自動ロックを防ぎます。";
+"advanced.preventSystemSleep" = "システムスリープを防ぐ（電源）";
+"advanced.preventSystemSleep.help" = "PreventSystemSleep assertion を追加します（caffeinate -s 相当）。電源接続時のみ有効です。";
+"advanced.cpuOnly" = "CPU 使用時のみ";
+"advanced.cpuOnly.help" = "ターン状態を無視し、CPU 使用率（≥3%）だけでエージェントを分類します。";
+"advanced.launchAtLogin" = "ログイン時に起動";
+"advanced.launchAtLogin.help" = "ログイン時に Ephedrine を自動起動します。アプリを /Applications に置く必要があります。";
+"advanced.grace" = "猶予";
+"advanced.grace.help" = "最後のアクティビティ後に Mac を起こし続ける時間。短い間隔（LLM の思考、ツールの再起動）をカバーします。";
+"advanced.poll" = "検出";
+"advanced.poll.help" = "アプリがプロセス、CPU、ターン状態を確認する頻度。";
+"advanced.activity" = "ユーザー操作";
+"advanced.activity.help" = "2 回のユーザー操作宣言の間隔（「ユーザー操作をシミュレート」で使用）。";
+"advanced.showAssertions" = "power assertions を表示…";
+"advanced.removeClosedSupport" = "フタ閉じサポートを削除…";
+"advanced.removeClosedSupport.help" = "管理者ヘルパーを削除し、フタ閉じスリープを再び有効にします。";
+
+"footer.about" = "情報";
+"footer.quit" = "終了";
+
+"duration.off" = "オフ";
+"duration.seconds" = "%d 秒";
+"duration.minutes" = "%d 分";
+
+"cli.unknownIntegration" = "不明な連携：%@（有効：codex、claude、opencode、pi）";
+"cli.integrationInstalled" = "%@ 連携をインストールしました：%@";
+"cli.integrationRemoved" = "%@ 連携を削除しました：%@";
+"cli.error" = "エラー：%@";
+"cli.stateReceived" = "受信した状態：%@";
+"session.none" = "状態を受信していません";
+
+"integration.unrecognizedNotify" = "既存の notify 行を認識できません：passthrough を手動で設定してください。";
+"integration.invalidClaudeSettings" = "既存の settings.json は有効な JSON ではありません";
+
+"helper.badUsername" = "ユーザー名が sudoers 設定と互換性がありません";
+"helper.installFailed" = "インストールがキャンセルまたは失敗しました";
+"helper.uninstallFailed" = "削除がキャンセルまたは失敗しました";

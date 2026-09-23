@@ -1,0 +1,155 @@
+/*
+   Ephedrine — 한국어.
+   자리 표시자(%d, %@)를 변경하지 마세요.
+*/
+
+"status.off" = "Ephedrine — 꺼짐";
+"status.pausedBattery" = "Ephedrine — 일시 정지(배터리)";
+"status.working" = "Ephedrine — Mac 깨어 있음(%d개 실행 중)";
+"status.workingWaiting" = "Ephedrine — Mac 깨어 있음(%d개 실행 중, %d개 대기 중)";
+"status.graceWaiting" = "Ephedrine — Mac 깨어 있음(유예, %d개 대기 중)";
+"status.alwaysOn" = "Ephedrine — Mac 깨어 있음(항상 켜짐)";
+"status.grace" = "Ephedrine — Mac 깨어 있음(유예)";
+"status.waitingAgents" = "Ephedrine — 에이전트 대기 중";
+"status.closedDisplaySuffix" = " · 덮개 닫힘";
+
+"tooltip.battery" = "전원 연결 시에만: 계속하려면 충전기를 연결하세요.";
+"tooltip.closedDisplay" = "덮개 닫힘 잠자기 비활성화됨(pmset disablesleep).";
+"tooltip.click" = "옵션을 보려면 클릭";
+
+"header.timerElapsed" = "타이머 만료";
+"header.timerElapsedSubtitle" = "커피 종료: Mac이 다시 대기 상태로";
+"header.disabled" = "비활성화됨";
+"header.disabledSubtitle" = "모니터링 없음";
+"header.paused" = "일시 정지";
+"header.pausedSubtitle" = "전원 연결 시에만: 충전기를 연결하세요";
+"header.awake" = "Mac 깨어 있음";
+"header.working" = "%@ 실행 중";
+"header.workingMany" = "%d개 에이전트 실행 중";
+"header.grace" = "유예: %d초";
+"header.alwaysOnRemaining" = "항상 켜짐 · %@ 남음";
+"header.alwaysOn" = "항상 켜짐";
+"header.standby" = "대기";
+"header.waitingAgents" = "에이전트 대기 중";
+"header.agentsWaitingInput" = "에이전트가 입력을 기다리는 중";
+"header.closedDisplaySuffix" = " · 덮개 닫힘";
+
+"closedDisplay.disabled" = "덮개 닫힘 잠자기 비활성화됨";
+"closedDisplay.normal" = "덮개 닫힘 잠자기 정상";
+"closedDisplay.notInstalled" = "지원이 설치되지 않음(첫 사용 시 관리자 암호 필요)";
+"closedDisplay.errorNotInstalled" = "지원이 설치되지 않음";
+"closedDisplay.errorEnable" = "활성화 실패(관리자 지원 필요)";
+"closedDisplay.errorRemoved" = "지원이 제거됨: 덮개 닫힘 잠자기가 비활성 상태로 남을 수 있음";
+
+"alert.ok" = "확인";
+"alert.cancel" = "취소";
+"alert.save" = "저장";
+"alert.install" = "설치";
+"alert.remove" = "제거";
+"alert.installFailed" = "설치 실패";
+"alert.removeFailed" = "제거 실패";
+
+"alert.launchAtLogin.title" = "로그인 시 실행을 사용할 수 없음";
+"alert.launchAtLogin.text" = "%@\n\nEphedrine.app을 /Applications로 이동한 후 다시 시도하세요.";
+
+"alert.removeClosed.title" = "덮개 닫힘 지원을 제거할까요?";
+"alert.removeClosed.text" = "관리자 도우미가 삭제되고 정상적인 덮개 닫힘 잠자기가 복원됩니다.";
+"alert.installClosed.title" = "덮개 닫힘 지원 설치";
+"alert.installClosed.text" = "관리자 암호가 한 번 필요합니다: 덮개 닫힘 잠자기를 비활성화하는 제한된 도우미가 생성됩니다(pmset disablesleep). 이 모드가 활성화된 동안에만 사용되며, 끄거나 앱을 종료하면 자동으로 복원됩니다.";
+
+"alert.removeIntegration.title" = "%@ 통합을 제거할까요?";
+"alert.removeIntegration.text" = "파일이 복원됩니다:\n%@";
+"alert.installIntegration.title" = "%@ 통합을 설치할까요?";
+"alert.installIntegration.text" = "파일이 수정됩니다(.ephedrine-backup 백업 포함):\n%@\n\n에이전트가 턴 시작과 종료를 Ephedrine에 보고하므로 LLM이 실제로 작업하는 동안에만 Mac이 깨어 있습니다. 적용하려면 에이전트를 다시 시작하세요.";
+
+"alert.customAgents.title" = "모니터링할 다른 에이전트";
+"alert.customAgents.text" = "쉼표로 구분된 패턴입니다. 프로세스의 이름, 경로 또는 명령줄에 패턴이 포함되면 일치합니다(대소문자 구분 없음). 4자 이하의 패턴은 전체 단어와 일치해야 합니다.";
+"alert.customAgents.placeholder" = "my-agent, llm-runner";
+
+"alert.assertions.title" = "활성 power assertions";
+"alert.assertions.text" = "목록에서 «Ephedrine»을 찾으세요: Mac을 깨어 있게 하는 assertion입니다.";
+
+"alert.about.text" = "코딩 에이전트(opencode, codex, claude, pi 등)가 실행되는 동안 Mac을 깨어 있게 하여, 유휴 시 LLM이 멈추지 않도록 합니다.\n\n통합을 활성화하면 에이전트가 턴 시작과 종료를 보고합니다: LLM이 실제로 작업하는 동안에만 Mac이 깨어 있습니다.\n\n참고: 덮개를 닫으면 «덮개 닫힘»을 활성화하거나 외부 디스플레이와 전원을 연결한 클램셸 모드를 사용하지 않는 한 Mac은 잠자기에 들어갑니다.";
+
+"error.pmset" = "pmset 실행 오류: %@";
+
+"mode.off" = "끄기";
+"mode.auto" = "자동";
+"mode.always" = "항상";
+
+"section.agents" = "에이전트";
+"section.options" = "옵션";
+"section.watch" = "모니터링할 에이전트";
+"section.integrations" = "턴 상태 통합";
+"section.advanced" = "고급";
+
+"agents.working" = "실행 중";
+"agents.waiting" = "대기 중";
+
+"maxDuration.title" = "실행 시간 제한";
+"maxDuration.help" = "선택한 시간이 지나면 커피를 끄므로 Mac이 무한정 깨어 있지 않습니다.";
+"maxDuration.unlimited" = "무제한";
+"maxDuration.15min" = "15분";
+"maxDuration.30min" = "30분";
+"maxDuration.1h" = "1시간";
+"maxDuration.2h" = "2시간";
+"maxDuration.4h" = "4시간";
+"maxDuration.elapsed" = "타이머 만료: Mac 해제됨";
+
+"options.preventDisplay" = "디스플레이 켜 두기";
+"options.preventDisplay.help" = "에이전트가 작업하는 동안 디스플레이가 잠자기에 들어가지 않도록 합니다(caffeinate -d와 동일).";
+"options.respectSession" = "턴 상태 존중";
+"options.respectSession.help" = "통합의 busy/idle 신호를 사용합니다: LLM이 실제로 생성하는 동안에만 Mac이 깨어 있습니다.";
+"options.onlyOnAC" = "전원 연결 시에만";
+"options.onlyOnAC.help" = "배터리로 실행할 때는 Mac을 깨어 있게 하지 않습니다.";
+"options.closedDisplay" = "덮개 닫힘";
+"options.closedDisplay.help" = "에이전트가 작업하는 동안 덮개 닫힘 잠자기를 비활성화합니다(pmset disablesleep). 첫 사용 시 관리자 암호가 필요합니다.";
+
+"watch.others" = "다른 에이전트…";
+"watch.others.help" = "모니터링할 프로세스 패턴을 쉼표로 구분하여 추가하세요.";
+
+"integrations.install" = "설치";
+"integrations.remove" = "제거";
+"integrations.install.help" = "에이전트 구성을 수정하여(백업 포함) 턴 시작과 종료를 보고하게 합니다.";
+"integrations.remove.help" = "통합을 제거하고 원래 구성 파일을 복원합니다.";
+"integrations.lastState" = "마지막 상태: %@";
+"integrations.openFolder" = "상태 폴더 열기";
+
+"advanced.simulateActivity" = "사용자 활동 시뮬레이션";
+"advanced.simulateActivity.help" = "정기적으로 사용자 활동을 선언하여 화면 보호기와 자동 잠금을 방지합니다.";
+"advanced.preventSystemSleep" = "시스템 잠자기 방지(전원)";
+"advanced.preventSystemSleep.help" = "PreventSystemSleep assertion을 추가합니다(caffeinate -s와 유사). 전원 연결 시에만 활성화됩니다.";
+"advanced.cpuOnly" = "CPU 활동 시에만";
+"advanced.cpuOnly.help" = "턴 상태를 무시하고 CPU 사용량(≥3%)만으로 에이전트를 분류합니다.";
+"advanced.launchAtLogin" = "로그인 시 실행";
+"advanced.launchAtLogin.help" = "로그인 시 Ephedrine을 자동으로 실행합니다. 앱이 /Applications에 있어야 합니다.";
+"advanced.grace" = "유예";
+"advanced.grace.help" = "마지막 활동 후 Mac이 깨어 있는 시간으로, 짧은 공백(LLM 사고, 도구 재시작)을 커버합니다.";
+"advanced.poll" = "감지";
+"advanced.poll.help" = "앱이 프로세스, CPU, 턴 상태를 확인하는 주기입니다.";
+"advanced.activity" = "사용자 활동";
+"advanced.activity.help" = "두 사용자 활동 선언 사이의 간격(«사용자 활동 시뮬레이션»과 함께 사용).";
+"advanced.showAssertions" = "power assertions 표시…";
+"advanced.removeClosedSupport" = "덮개 닫힘 지원 제거…";
+"advanced.removeClosedSupport.help" = "관리자 도우미를 삭제하고 덮개 닫힘 잠자기를 다시 활성화합니다.";
+
+"footer.about" = "정보";
+"footer.quit" = "종료";
+
+"duration.off" = "꺼짐";
+"duration.seconds" = "%d초";
+"duration.minutes" = "%d분";
+
+"cli.unknownIntegration" = "알 수 없는 통합: %@ (유효: codex, claude, opencode, pi)";
+"cli.integrationInstalled" = "%@ 통합 설치됨: %@";
+"cli.integrationRemoved" = "%@ 통합 제거됨: %@";
+"cli.error" = "오류: %@";
+"cli.stateReceived" = "수신한 상태: %@";
+"session.none" = "상태를 받지 못함";
+
+"integration.unrecognizedNotify" = "기존 notify 줄을 인식할 수 없습니다: passthrough를 수동으로 구성하세요.";
+"integration.invalidClaudeSettings" = "기존 settings.json이 유효한 JSON이 아닙니다";
+
+"helper.badUsername" = "사용자 이름이 sudoers 구성과 호환되지 않습니다";
+"helper.installFailed" = "설치가 취소되었거나 실패했습니다";
+"helper.uninstallFailed" = "제거가 취소되었거나 실패했습니다";

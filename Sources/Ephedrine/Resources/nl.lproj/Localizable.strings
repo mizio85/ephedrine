@@ -1,0 +1,155 @@
+/*
+   Ephedrine — Nederlands.
+   Laat de plaatsaanduidingen (%d, %@) ongewijzigd.
+*/
+
+"status.off" = "Ephedrine — Uit";
+"status.pausedBattery" = "Ephedrine — gepauzeerd (batterij)";
+"status.working" = "Ephedrine — Mac wakker (%d actief)";
+"status.workingWaiting" = "Ephedrine — Mac wakker (%d actief, %d wachtend)";
+"status.graceWaiting" = "Ephedrine — Mac wakker (grace, %d wachtend)";
+"status.alwaysOn" = "Ephedrine — Mac wakker (altijd aan)";
+"status.grace" = "Ephedrine — Mac wakker (grace)";
+"status.waitingAgents" = "Ephedrine — wacht op agents";
+"status.closedDisplaySuffix" = " · deksel dicht";
+
+"tooltip.battery" = "Alleen op netstroom: sluit de oplader aan om te hervatten.";
+"tooltip.closedDisplay" = "Slaapstand bij gesloten deksel uitgeschakeld (pmset disablesleep).";
+"tooltip.click" = "Klik voor opties";
+
+"header.timerElapsed" = "Timer verlopen";
+"header.timerElapsedSubtitle" = "Koffie op: Mac weer in stand-by";
+"header.disabled" = "Uitgeschakeld";
+"header.disabledSubtitle" = "Geen bewaking";
+"header.paused" = "Gepauzeerd";
+"header.pausedSubtitle" = "Alleen op netstroom: sluit de oplader aan";
+"header.awake" = "Mac wakker";
+"header.working" = "%@ actief";
+"header.workingMany" = "%d agents actief";
+"header.grace" = "Grace: %d s";
+"header.alwaysOnRemaining" = "Altijd aan · nog %@";
+"header.alwaysOn" = "Altijd aan";
+"header.standby" = "Stand-by";
+"header.waitingAgents" = "Wacht op agents";
+"header.agentsWaitingInput" = "Agents wachten op invoer";
+"header.closedDisplaySuffix" = " · deksel dicht";
+
+"closedDisplay.disabled" = "Slaapstand bij gesloten deksel uitgeschakeld";
+"closedDisplay.normal" = "Slaapstand bij gesloten deksel normaal";
+"closedDisplay.notInstalled" = "Ondersteuning niet geïnstalleerd (beheerderswachtwoord bij eerste gebruik)";
+"closedDisplay.errorNotInstalled" = "Ondersteuning niet geïnstalleerd";
+"closedDisplay.errorEnable" = "Activering mislukt (beheerdersondersteuning vereist)";
+"closedDisplay.errorRemoved" = "Ondersteuning verwijderd: slaapstand bij gesloten deksel kan uitgeschakeld blijven";
+
+"alert.ok" = "OK";
+"alert.cancel" = "Annuleer";
+"alert.save" = "Bewaar";
+"alert.install" = "Installeer";
+"alert.remove" = "Verwijder";
+"alert.installFailed" = "Installatie mislukt";
+"alert.removeFailed" = "Verwijderen mislukt";
+
+"alert.launchAtLogin.title" = "Starten bij inloggen niet beschikbaar";
+"alert.launchAtLogin.text" = "%@\n\nVerplaats Ephedrine.app naar /Applications en probeer het opnieuw.";
+
+"alert.removeClosed.title" = "Ondersteuning voor gesloten deksel verwijderen?";
+"alert.removeClosed.text" = "De beheerdershelper wordt verwijderd en de normale slaapstand bij gesloten deksel wordt hersteld.";
+"alert.installClosed.title" = "Ondersteuning voor gesloten deksel installeren";
+"alert.installClosed.text" = "Het beheerderswachtwoord is één keer nodig: er wordt een beperkte helper gemaakt die de slaapstand bij gesloten deksel uitschakelt (pmset disablesleep). Deze wordt alleen gebruikt zolang deze modus actief is en automatisch hersteld wanneer je hem uitschakelt of de app afsluit.";
+
+"alert.removeIntegration.title" = "Integratie %@ verwijderen?";
+"alert.removeIntegration.text" = "Het bestand wordt hersteld:\n%@";
+"alert.installIntegration.title" = "Integratie %@ installeren?";
+"alert.installIntegration.text" = "Het bestand wordt gewijzigd (met een .ephedrine-backup-back-up):\n%@\n\nDe agent meldt begin en einde van de turn aan Ephedrine, zodat de Mac alleen wakker blijft terwijl de LLM daadwerkelijk werkt. Herstart de agent om toe te passen.";
+
+"alert.customAgents.title" = "Andere agents om te bewaken";
+"alert.customAgents.text" = "Patronen gescheiden door komma's. Een proces komt overeen als de naam, het pad of de opdrachtregel een patroon bevat (niet hoofdlettergevoelig). Patronen van 4 tekens of minder moeten overeenkomen met een heel woord.";
+"alert.customAgents.placeholder" = "my-agent, llm-runner";
+
+"alert.assertions.title" = "Actieve power assertions";
+"alert.assertions.text" = "Zoek «Ephedrine» in de lijst: dat is de assertion die de Mac wakker houdt.";
+
+"alert.about.text" = "Houdt de Mac wakker terwijl coding-agents (opencode, codex, claude, pi, …) draaien, zodat LLM's nooit stoppen tijdens inactiviteit.\n\nMet ingeschakelde integraties meldt de agent begin en einde van de turn: de Mac blijft alleen wakker terwijl de LLM daadwerkelijk werkt.\n\nLet op: met het deksel dicht gaat de Mac sowieso slapen, tenzij «Deksel dicht» is ingeschakeld of de clamshell-modus met extern beeldscherm en netstroom wordt gebruikt.";
+
+"error.pmset" = "Fout bij het uitvoeren van pmset: %@";
+
+"mode.off" = "Uit";
+"mode.auto" = "Auto";
+"mode.always" = "Altijd";
+
+"section.agents" = "Agents";
+"section.options" = "Opties";
+"section.watch" = "Bewaakte agents";
+"section.integrations" = "Turn-statusintegraties";
+"section.advanced" = "Geavanceerd";
+
+"agents.working" = "actief";
+"agents.waiting" = "wachtend";
+
+"maxDuration.title" = "Looptijdslimiet";
+"maxDuration.help" = "Zet de koffie uit na de gekozen tijd, zodat de Mac niet oneindig wakker blijft.";
+"maxDuration.unlimited" = "Onbeperkt";
+"maxDuration.15min" = "15 min";
+"maxDuration.30min" = "30 min";
+"maxDuration.1h" = "1 uur";
+"maxDuration.2h" = "2 uur";
+"maxDuration.4h" = "4 uur";
+"maxDuration.elapsed" = "Timer verlopen: Mac vrijgegeven";
+
+"options.preventDisplay" = "Beeldscherm wakker houden";
+"options.preventDisplay.help" = "Voorkomt dat het beeldscherm slaapt terwijl een agent werkt (gelijk aan caffeinate -d).";
+"options.respectSession" = "Turn-status respecteren";
+"options.respectSession.help" = "Gebruikt de busy/idle-signalen van de integraties: de Mac blijft alleen wakker terwijl de LLM daadwerkelijk genereert.";
+"options.onlyOnAC" = "Alleen netstroom";
+"options.onlyOnAC.help" = "Houdt de Mac niet wakker op batterijvoeding.";
+"options.closedDisplay" = "Deksel dicht";
+"options.closedDisplay.help" = "Schakelt de slaapstand bij gesloten deksel uit (pmset disablesleep) terwijl een agent werkt. Vereist het beheerderswachtwoord bij eerste gebruik.";
+
+"watch.others" = "Andere agents…";
+"watch.others.help" = "Voeg te bewaken procespatronen toe, gescheiden door komma's.";
+
+"integrations.install" = "Installeer";
+"integrations.remove" = "Verwijder";
+"integrations.install.help" = "Wijzigt de agentconfiguratie (met back-up) zodat begin en einde van de turn worden gemeld.";
+"integrations.remove.help" = "Verwijdert de integratie en herstelt het oorspronkelijke configuratiebestand.";
+"integrations.lastState" = "Laatste status: %@";
+"integrations.openFolder" = "Statusmap openen";
+
+"advanced.simulateActivity" = "Gebruikersactiviteit simuleren";
+"advanced.simulateActivity.help" = "Meldt regelmatig gebruikersactiviteit om de schermbeveiliging en automatische vergrendeling te voorkomen.";
+"advanced.preventSystemSleep" = "Systeemslaap voorkomen (netstroom)";
+"advanced.preventSystemSleep.help" = "Voegt de PreventSystemSleep-assertion toe (zoals caffeinate -s). Alleen actief op netstroom.";
+"advanced.cpuOnly" = "Alleen bij CPU-activiteit";
+"advanced.cpuOnly.help" = "Negeert turn-statussen en classificeert agents alleen op basis van CPU-gebruik (≥3%).";
+"advanced.launchAtLogin" = "Starten bij inloggen";
+"advanced.launchAtLogin.help" = "Start Ephedrine automatisch bij het inloggen. Vereist de app in /Applications.";
+"advanced.grace" = "Grace";
+"advanced.grace.help" = "Hoe lang de Mac wakker blijft na de laatste activiteit, om korte pauzes op te vangen (LLM denkt na, tool herstart).";
+"advanced.poll" = "Detectie";
+"advanced.poll.help" = "Hoe vaak de app processen, CPU en turn-statussen controleert.";
+"advanced.activity" = "Gebruikersactiviteit";
+"advanced.activity.help" = "Interval tussen twee gebruikersactiviteitsmeldingen (gebruikt met «Gebruikersactiviteit simuleren»).";
+"advanced.showAssertions" = "Power assertions tonen…";
+"advanced.removeClosedSupport" = "Ondersteuning voor gesloten deksel verwijderen…";
+"advanced.removeClosedSupport.help" = "Verwijdert de beheerdershelper en schakelt de slaapstand bij gesloten deksel weer in.";
+
+"footer.about" = "Over";
+"footer.quit" = "Stop";
+
+"duration.off" = "Uit";
+"duration.seconds" = "%d s";
+"duration.minutes" = "%d min";
+
+"cli.unknownIntegration" = "Onbekende integratie: %@ (geldig: codex, claude, opencode, pi)";
+"cli.integrationInstalled" = "Integratie %@ geïnstalleerd: %@";
+"cli.integrationRemoved" = "Integratie %@ verwijderd: %@";
+"cli.error" = "Fout: %@";
+"cli.stateReceived" = "ontvangen statussen: %@";
+"session.none" = "geen status ontvangen";
+
+"integration.unrecognizedNotify" = "Bestaande notify-regel niet herkend: configureer de passthrough handmatig.";
+"integration.invalidClaudeSettings" = "Bestaande settings.json is geen geldige JSON";
+
+"helper.badUsername" = "Gebruikersnaam niet compatibel met de sudoers-configuratie";
+"helper.installFailed" = "Installatie geannuleerd of mislukt";
+"helper.uninstallFailed" = "Verwijderen geannuleerd of mislukt";

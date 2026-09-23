@@ -1,0 +1,155 @@
+/*
+   Ephedrine — Türkçe.
+   Yer tutucuları (%d, %@) değiştirmeyin.
+*/
+
+"status.off" = "Ephedrine — Kapalı";
+"status.pausedBattery" = "Ephedrine — duraklatıldı (pil)";
+"status.working" = "Ephedrine — Mac uyanık (%d çalışıyor)";
+"status.workingWaiting" = "Ephedrine — Mac uyanık (%d çalışıyor, %d bekliyor)";
+"status.graceWaiting" = "Ephedrine — Mac uyanık (ek süre, %d bekliyor)";
+"status.alwaysOn" = "Ephedrine — Mac uyanık (her zaman açık)";
+"status.grace" = "Ephedrine — Mac uyanık (ek süre)";
+"status.waitingAgents" = "Ephedrine — ajanlar bekleniyor";
+"status.closedDisplaySuffix" = " · kapak kapalı";
+
+"tooltip.battery" = "Yalnızca prize bağlıyken: devam etmek için şarj cihazını bağlayın.";
+"tooltip.closedDisplay" = "Kapak kapalıyken uyku devre dışı (pmset disablesleep).";
+"tooltip.click" = "Seçenekler için tıklayın";
+
+"header.timerElapsed" = "Zamanlayıcı doldu";
+"header.timerElapsedSubtitle" = "Kahve bitti: Mac yeniden bekleme modunda";
+"header.disabled" = "Devre dışı";
+"header.disabledSubtitle" = "İzleme yok";
+"header.paused" = "Duraklatıldı";
+"header.pausedSubtitle" = "Yalnızca prize bağlıyken: şarj cihazını bağlayın";
+"header.awake" = "Mac uyanık";
+"header.working" = "%@ çalışıyor";
+"header.workingMany" = "%d ajan çalışıyor";
+"header.grace" = "Ek süre: %d sn";
+"header.alwaysOnRemaining" = "Her zaman açık · %@ kaldı";
+"header.alwaysOn" = "Her zaman açık";
+"header.standby" = "Bekleme";
+"header.waitingAgents" = "Ajanlar bekleniyor";
+"header.agentsWaitingInput" = "Ajanlar girdi bekliyor";
+"header.closedDisplaySuffix" = " · kapak kapalı";
+
+"closedDisplay.disabled" = "Kapak kapalıyken uyku devre dışı";
+"closedDisplay.normal" = "Kapak kapalıyken uyku normal";
+"closedDisplay.notInstalled" = "Destek yüklü değil (ilk kullanımda yönetici parolası)";
+"closedDisplay.errorNotInstalled" = "Destek yüklü değil";
+"closedDisplay.errorEnable" = "Etkinleştirme başarısız (yönetici desteği gerekli)";
+"closedDisplay.errorRemoved" = "Destek kaldırıldı: kapak kapalıyken uyku devre dışı kalabilir";
+
+"alert.ok" = "Tamam";
+"alert.cancel" = "İptal";
+"alert.save" = "Kaydet";
+"alert.install" = "Yükle";
+"alert.remove" = "Kaldır";
+"alert.installFailed" = "Yükleme başarısız";
+"alert.removeFailed" = "Kaldırma başarısız";
+
+"alert.launchAtLogin.title" = "Oturum açılışında başlatma kullanılamıyor";
+"alert.launchAtLogin.text" = "%@\n\nEphedrine.app'i /Applications konumuna taşıyıp tekrar deneyin.";
+
+"alert.removeClosed.title" = "Kapak kapalı desteği kaldırılsın mı?";
+"alert.removeClosed.text" = "Yönetici yardımcı programı silinecek ve normal kapak kapalıyken uyku geri yüklenecek.";
+"alert.installClosed.title" = "Kapak kapalı desteğini yükle";
+"alert.installClosed.text" = "Yönetici parolası bir kez gerekir: kapak kapalıyken uykuyu devre dışı bırakan sınırlı bir yardımcı program oluşturulur (pmset disablesleep). Yalnızca bu mod etkinken kullanılır ve onu kapattığınızda veya uygulamadan çıktığınızda otomatik olarak geri alınır.";
+
+"alert.removeIntegration.title" = "%@ entegrasyonu kaldırılsın mı?";
+"alert.removeIntegration.text" = "Dosya geri yüklenecek:\n%@";
+"alert.installIntegration.title" = "%@ entegrasyonu yüklensin mi?";
+"alert.installIntegration.text" = "Dosya değiştirilecek (.ephedrine-backup yedeğiyle):\n%@\n\nAjan, tur başlangıcını ve bitişini Ephedrine'e bildirecek; böylece Mac yalnızca LLM gerçekten çalışırken uyanık kalır. Uygulamak için ajanı yeniden başlatın.";
+
+"alert.customAgents.title" = "İzlenecek diğer ajanlar";
+"alert.customAgents.text" = "Virgülle ayrılmış desenler. Bir süreç, adı, yolu veya komut satırı bir desen içeriyorsa eşleşir (büyük/küçük harf duyarsız). 4 karakter veya daha kısa desenler tam bir sözcükle eşleşmelidir.";
+"alert.customAgents.placeholder" = "my-agent, llm-runner";
+
+"alert.assertions.title" = "Etkin power assertions";
+"alert.assertions.text" = "Listede «Ephedrine» öğesini arayın: Mac'i uyanık tutan assertion budur.";
+
+"alert.about.text" = "Kodlama ajanları (opencode, codex, claude, pi, …) çalışırken Mac'i uyanık tutar, böylece LLM'ler hareketsizlik sırasında asla durmaz.\n\nEntegrasyonlar etkinken ajan tur başlangıcını ve bitişini bildirir: Mac yalnızca LLM gerçekten çalışırken uyanık kalır.\n\nNot: kapak kapalıyken Mac yine de uyur; «Kapak kapalı» etkin değilse veya harici ekran ve prize bağlı clamshell modu kullanılmıyorsa.";
+
+"error.pmset" = "pmset çalıştırılırken hata: %@";
+
+"mode.off" = "Kapalı";
+"mode.auto" = "Oto";
+"mode.always" = "Her zaman";
+
+"section.agents" = "Ajanlar";
+"section.options" = "Seçenekler";
+"section.watch" = "İzlenen ajanlar";
+"section.integrations" = "Tur durumu entegrasyonları";
+"section.advanced" = "Gelişmiş";
+
+"agents.working" = "çalışıyor";
+"agents.waiting" = "bekliyor";
+
+"maxDuration.title" = "Çalışma süresi sınırı";
+"maxDuration.help" = "Kahveyi seçilen süre sonunda kapatır, böylece Mac sonsuza dek uyanık kalmaz.";
+"maxDuration.unlimited" = "Sınırsız";
+"maxDuration.15min" = "15 dk";
+"maxDuration.30min" = "30 dk";
+"maxDuration.1h" = "1 saat";
+"maxDuration.2h" = "2 saat";
+"maxDuration.4h" = "4 saat";
+"maxDuration.elapsed" = "Zamanlayıcı doldu: Mac serbest bırakıldı";
+
+"options.preventDisplay" = "Ekranı açık tut";
+"options.preventDisplay.help" = "Bir ajan çalışırken ekranın uyumasını önler (caffeinate -d ile aynı).";
+"options.respectSession" = "Tur durumuna saygı göster";
+"options.respectSession.help" = "Entegrasyonların busy/idle sinyallerini kullanır: Mac yalnızca LLM gerçekten üretirken uyanık kalır.";
+"options.onlyOnAC" = "Yalnızca prize bağlıyken";
+"options.onlyOnAC.help" = "Pil ile çalışırken Mac'i uyanık tutmaz.";
+"options.closedDisplay" = "Kapak kapalı";
+"options.closedDisplay.help" = "Bir ajan çalışırken kapak kapalıyken uykuyu devre dışı bırakır (pmset disablesleep). İlk kullanımda yönetici parolası gerekir.";
+
+"watch.others" = "Diğer ajanlar…";
+"watch.others.help" = "İzlenecek süreç desenlerini virgülle ayırarak ekleyin.";
+
+"integrations.install" = "Yükle";
+"integrations.remove" = "Kaldır";
+"integrations.install.help" = "Ajan yapılandırmasını (yedekle) değiştirir, böylece tur başlangıcını ve bitişini bildirir.";
+"integrations.remove.help" = "Entegrasyonu kaldırır ve özgün yapılandırma dosyasını geri yükler.";
+"integrations.lastState" = "Son durum: %@";
+"integrations.openFolder" = "Durum klasörünü aç";
+
+"advanced.simulateActivity" = "Kullanıcı etkinliğini simüle et";
+"advanced.simulateActivity.help" = "Ekran koruyucuyu ve otomatik kilidi önlemek için düzenli aralıklarla kullanıcı etkinliği bildirir.";
+"advanced.preventSystemSleep" = "Sistem uykusunu önle (priz)";
+"advanced.preventSystemSleep.help" = "PreventSystemSleep assertion'ını ekler (caffeinate -s gibi). Yalnızca prize bağlıyken etkindir.";
+"advanced.cpuOnly" = "Yalnızca CPU etkinken";
+"advanced.cpuOnly.help" = "Tur durumlarını yok sayar ve ajanları yalnızca CPU kullanımına göre sınıflandırır (≥%3).";
+"advanced.launchAtLogin" = "Oturum açılışında başlat";
+"advanced.launchAtLogin.help" = "Ephedrine'i oturum açılışında otomatik başlatır. Uygulamanın /Applications içinde olması gerekir.";
+"advanced.grace" = "Ek süre";
+"advanced.grace.help" = "Mac'in son etkinlikten sonra ne kadar uyanık kalacağı; kısa araları kapatır (LLM düşünüyor, araç yeniden başlıyor).";
+"advanced.poll" = "Algılama";
+"advanced.poll.help" = "Uygulamanın süreçleri, CPU'yu ve tur durumlarını ne sıklıkla kontrol ettiği.";
+"advanced.activity" = "Kullanıcı etkinliği";
+"advanced.activity.help" = "İki kullanıcı etkinliği bildirimi arasındaki aralık («Kullanıcı etkinliğini simüle et» ile kullanılır).";
+"advanced.showAssertions" = "Power assertions'ı göster…";
+"advanced.removeClosedSupport" = "Kapak kapalı desteğini kaldır…";
+"advanced.removeClosedSupport.help" = "Yönetici yardımcı programını siler ve kapak kapalıyken uykuyu yeniden etkinleştirir.";
+
+"footer.about" = "Hakkında";
+"footer.quit" = "Çık";
+
+"duration.off" = "Kapalı";
+"duration.seconds" = "%d sn";
+"duration.minutes" = "%d dk";
+
+"cli.unknownIntegration" = "Bilinmeyen entegrasyon: %@ (geçerli: codex, claude, opencode, pi)";
+"cli.integrationInstalled" = "%@ entegrasyonu yüklendi: %@";
+"cli.integrationRemoved" = "%@ entegrasyonu kaldırıldı: %@";
+"cli.error" = "Hata: %@";
+"cli.stateReceived" = "alınan durumlar: %@";
+"session.none" = "durum alınmadı";
+
+"integration.unrecognizedNotify" = "Mevcut notify satırı tanınmadı: passthrough'u elle yapılandırın.";
+"integration.invalidClaudeSettings" = "Mevcut settings.json geçerli JSON değil";
+
+"helper.badUsername" = "Kullanıcı adı sudoers yapılandırmasıyla uyumlu değil";
+"helper.installFailed" = "Yükleme iptal edildi veya başarısız";
+"helper.uninstallFailed" = "Kaldırma iptal edildi veya başarısız";

@@ -1,0 +1,155 @@
+/*
+   Ephedrine — Polski.
+   Nie zmieniaj symboli zastępczych (%d, %@).
+*/
+
+"status.off" = "Ephedrine — Wyłączone";
+"status.pausedBattery" = "Ephedrine — wstrzymane (bateria)";
+"status.working" = "Ephedrine — Mac aktywny (%d pracuje)";
+"status.workingWaiting" = "Ephedrine — Mac aktywny (%d pracuje, %d oczekuje)";
+"status.graceWaiting" = "Ephedrine — Mac aktywny (karencja, %d oczekuje)";
+"status.alwaysOn" = "Ephedrine — Mac aktywny (zawsze włączone)";
+"status.grace" = "Ephedrine — Mac aktywny (karencja)";
+"status.waitingAgents" = "Ephedrine — oczekiwanie na agentów";
+"status.closedDisplaySuffix" = " · pokrywa zamknięta";
+
+"tooltip.battery" = "Tylko zasilanie sieciowe: podłącz ładowarkę, aby wznowić.";
+"tooltip.closedDisplay" = "Uśpienie przy zamkniętej pokrywie wyłączone (pmset disablesleep).";
+"tooltip.click" = "Kliknij, aby zobaczyć opcje";
+
+"header.timerElapsed" = "Minutnik upłynął";
+"header.timerElapsedSubtitle" = "Kawa się skończyła: Mac wrócił w stan gotowości";
+"header.disabled" = "Wyłączone";
+"header.disabledSubtitle" = "Brak monitorowania";
+"header.paused" = "Wstrzymane";
+"header.pausedSubtitle" = "Tylko zasilanie sieciowe: podłącz ładowarkę";
+"header.awake" = "Mac aktywny";
+"header.working" = "%@ pracuje";
+"header.workingMany" = "%d agentów pracuje";
+"header.grace" = "Karencja: %d s";
+"header.alwaysOnRemaining" = "Zawsze włączone · zostało %@";
+"header.alwaysOn" = "Zawsze włączone";
+"header.standby" = "Stan gotowości";
+"header.waitingAgents" = "Oczekiwanie na agentów";
+"header.agentsWaitingInput" = "Agenci czekają na dane";
+"header.closedDisplaySuffix" = " · pokrywa zamknięta";
+
+"closedDisplay.disabled" = "Uśpienie przy zamkniętej pokrywie wyłączone";
+"closedDisplay.normal" = "Uśpienie przy zamkniętej pokrywie normalne";
+"closedDisplay.notInstalled" = "Wsparcie nie jest zainstalowane (hasło administratora przy pierwszym użyciu)";
+"closedDisplay.errorNotInstalled" = "Wsparcie nie jest zainstalowane";
+"closedDisplay.errorEnable" = "Aktywacja nie powiodła się (wymagane wsparcie administratora)";
+"closedDisplay.errorRemoved" = "Wsparcie usunięte: uśpienie przy zamkniętej pokrywie może pozostać wyłączone";
+
+"alert.ok" = "OK";
+"alert.cancel" = "Anuluj";
+"alert.save" = "Zapisz";
+"alert.install" = "Zainstaluj";
+"alert.remove" = "Usuń";
+"alert.installFailed" = "Instalacja nie powiodła się";
+"alert.removeFailed" = "Usunięcie nie powiodło się";
+
+"alert.launchAtLogin.title" = "Uruchamianie przy logowaniu niedostępne";
+"alert.launchAtLogin.text" = "%@\n\nPrzenieś Ephedrine.app do /Applications i spróbuj ponownie.";
+
+"alert.removeClosed.title" = "Usunąć wsparcie zamkniętej pokrywy?";
+"alert.removeClosed.text" = "Helper administratora zostanie usunięty, a normalne uśpienie przy zamkniętej pokrywie przywrócone.";
+"alert.installClosed.title" = "Zainstaluj wsparcie zamkniętej pokrywy";
+"alert.installClosed.text" = "Hasło administratora jest wymagane jednorazowo: tworzony jest ograniczony helper, który wyłącza uśpienie przy zamkniętej pokrywie (pmset disablesleep). Jest używany tylko, gdy ten tryb jest aktywny, i przywracany automatycznie po jego wyłączeniu lub zamknięciu aplikacji.";
+
+"alert.removeIntegration.title" = "Usunąć integrację %@?";
+"alert.removeIntegration.text" = "Plik zostanie przywrócony:\n%@";
+"alert.installIntegration.title" = "Zainstalować integrację %@?";
+"alert.installIntegration.text" = "Plik zostanie zmodyfikowany (z kopią .ephedrine-backup):\n%@\n\nAgent będzie zgłaszał początek i koniec tury do Ephedrine, dzięki czemu Mac pozostanie aktywny tylko wtedy, gdy LLM naprawdę pracuje. Uruchom ponownie agenta, aby zastosować.";
+
+"alert.customAgents.title" = "Inni agenci do monitorowania";
+"alert.customAgents.text" = "Wzorce oddzielone przecinkami. Proces pasuje, jeśli jego nazwa, ścieżka lub wiersz poleceń zawiera wzorzec (bez rozróżniania wielkości liter). Wzorce o długości 4 znaków lub mniejszej muszą odpowiadać całemu słowu.";
+"alert.customAgents.placeholder" = "my-agent, llm-runner";
+
+"alert.assertions.title" = "Aktywne power assertions";
+"alert.assertions.text" = "Poszukaj „Ephedrine” na liście: to assertion utrzymująca Maca w stanie aktywności.";
+
+"alert.about.text" = "Utrzymuje Maca w stanie aktywności, gdy działają agenci kodujący (opencode, codex, claude, pi, …), aby LLM nie zatrzymywały się podczas bezczynności.\n\nPo włączeniu integracji agent zgłasza początek i koniec tury: Mac pozostaje aktywny tylko wtedy, gdy LLM naprawdę pracuje.\n\nUwaga: przy zamkniętej pokrywie Mac i tak się uśpi, chyba że włączono „Zamknięta pokrywa” lub użyto trybu clamshell z zewnętrznym monitorem i zasilaniem sieciowym.";
+
+"error.pmset" = "Błąd podczas uruchamiania pmset: %@";
+
+"mode.off" = "Wyłączone";
+"mode.auto" = "Auto";
+"mode.always" = "Zawsze";
+
+"section.agents" = "Agenci";
+"section.options" = "Opcje";
+"section.watch" = "Monitorowani agenci";
+"section.integrations" = "Integracje stanu tury";
+"section.advanced" = "Zaawansowane";
+
+"agents.working" = "pracuje";
+"agents.waiting" = "oczekuje";
+
+"maxDuration.title" = "Limit czasu działania";
+"maxDuration.help" = "Wyłącza kawę po wybranym czasie, aby Mac nie pozostał aktywny bez końca.";
+"maxDuration.unlimited" = "Bez limitu";
+"maxDuration.15min" = "15 min";
+"maxDuration.30min" = "30 min";
+"maxDuration.1h" = "1 godzina";
+"maxDuration.2h" = "2 godziny";
+"maxDuration.4h" = "4 godziny";
+"maxDuration.elapsed" = "Minutnik upłynął: Mac zwolniony";
+
+"options.preventDisplay" = "Utrzymuj ekran włączony";
+"options.preventDisplay.help" = "Zapobiega usypianiu ekranu, gdy agent pracuje (odpowiednik caffeinate -d).";
+"options.respectSession" = "Respektuj stan tury";
+"options.respectSession.help" = "Używa sygnałów busy/idle z integracji: Mac pozostaje aktywny tylko wtedy, gdy LLM naprawdę generuje.";
+"options.onlyOnAC" = "Tylko zasilanie sieciowe";
+"options.onlyOnAC.help" = "Nie utrzymuje Maca w stanie aktywności, gdy działa na baterii.";
+"options.closedDisplay" = "Zamknięta pokrywa";
+"options.closedDisplay.help" = "Wyłącza uśpienie przy zamkniętej pokrywie (pmset disablesleep), gdy agent pracuje. Wymaga hasła administratora przy pierwszym użyciu.";
+
+"watch.others" = "Inni agenci…";
+"watch.others.help" = "Dodaj wzorce procesów do monitorowania, oddzielone przecinkami.";
+
+"integrations.install" = "Zainstaluj";
+"integrations.remove" = "Usuń";
+"integrations.install.help" = "Zmienia konfigurację agenta (z kopią zapasową), aby zgłaszał początek i koniec tury.";
+"integrations.remove.help" = "Usuwa integrację i przywraca oryginalny plik konfiguracyjny.";
+"integrations.lastState" = "Ostatni stan: %@";
+"integrations.openFolder" = "Otwórz folder stanu";
+
+"advanced.simulateActivity" = "Symuluj aktywność użytkownika";
+"advanced.simulateActivity.help" = "Regularnie zgłasza aktywność użytkownika, aby uniknąć wygaszacza ekranu i automatycznej blokady.";
+"advanced.preventSystemSleep" = "Zapobiegaj uśpieniu systemu (sieć)";
+"advanced.preventSystemSleep.help" = "Dodaje assertion PreventSystemSleep (jak caffeinate -s). Aktywne tylko przy zasilaniu sieciowym.";
+"advanced.cpuOnly" = "Tylko przy aktywnym CPU";
+"advanced.cpuOnly.help" = "Ignoruje stany tury i klasyfikuje agentów wyłącznie na podstawie użycia CPU (≥3%).";
+"advanced.launchAtLogin" = "Uruchamiaj przy logowaniu";
+"advanced.launchAtLogin.help" = "Uruchamia Ephedrine automatycznie przy logowaniu. Wymaga aplikacji w /Applications.";
+"advanced.grace" = "Karencja";
+"advanced.grace.help" = "Jak długo Mac pozostaje aktywny po ostatniej aktywności, aby pokryć krótkie przerwy (LLM myśli, narzędzie się restartuje).";
+"advanced.poll" = "Wykrywanie";
+"advanced.poll.help" = "Jak często aplikacja sprawdza procesy, CPU i stany tury.";
+"advanced.activity" = "Aktywność użytkownika";
+"advanced.activity.help" = "Odstęp między dwoma zgłoszeniami aktywności użytkownika (używane z „Symuluj aktywność użytkownika”).";
+"advanced.showAssertions" = "Pokaż power assertions…";
+"advanced.removeClosedSupport" = "Usuń wsparcie zamkniętej pokrywy…";
+"advanced.removeClosedSupport.help" = "Usuwa helper administratora i ponownie włącza uśpienie przy zamkniętej pokrywie.";
+
+"footer.about" = "Informacje";
+"footer.quit" = "Zakończ";
+
+"duration.off" = "Wył.";
+"duration.seconds" = "%d s";
+"duration.minutes" = "%d min";
+
+"cli.unknownIntegration" = "Nieznana integracja: %@ (prawidłowe: codex, claude, opencode, pi)";
+"cli.integrationInstalled" = "Zainstalowano integrację %@: %@";
+"cli.integrationRemoved" = "Usunięto integrację %@: %@";
+"cli.error" = "Błąd: %@";
+"cli.stateReceived" = "otrzymane stany: %@";
+"session.none" = "nie otrzymano stanu";
+
+"integration.unrecognizedNotify" = "Nierozpoznana istniejąca linia notify: skonfiguruj passthrough ręcznie.";
+"integration.invalidClaudeSettings" = "Istniejący settings.json nie jest prawidłowym JSON-em";
+
+"helper.badUsername" = "Nazwa użytkownika niezgodna z konfiguracją sudoers";
+"helper.installFailed" = "Instalacja anulowana lub niepowodzenie";
+"helper.uninstallFailed" = "Usuwanie anulowane lub niepowodzenie";

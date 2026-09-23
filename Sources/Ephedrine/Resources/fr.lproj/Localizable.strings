@@ -1,0 +1,155 @@
+/*
+   Ephedrine — Français.
+   Ne modifiez pas les marqueurs (%d, %@).
+*/
+
+"status.off" = "Ephedrine — Désactivé";
+"status.pausedBattery" = "Ephedrine — en pause (batterie)";
+"status.working" = "Ephedrine — Mac éveillé (%d en cours)";
+"status.workingWaiting" = "Ephedrine — Mac éveillé (%d en cours, %d en attente)";
+"status.graceWaiting" = "Ephedrine — Mac éveillé (grâce, %d en attente)";
+"status.alwaysOn" = "Ephedrine — Mac éveillé (toujours actif)";
+"status.grace" = "Ephedrine — Mac éveillé (grâce)";
+"status.waitingAgents" = "Ephedrine — en attente d’agents";
+"status.closedDisplaySuffix" = " · capot fermé";
+
+"tooltip.battery" = "Secteur uniquement : branchez le chargeur pour reprendre.";
+"tooltip.closedDisplay" = "Veille capot fermé désactivée (pmset disablesleep).";
+"tooltip.click" = "Cliquez pour les options";
+
+"header.timerElapsed" = "Minuteur écoulé";
+"header.timerElapsedSubtitle" = "Café terminé : le Mac repasse en veille";
+"header.disabled" = "Désactivé";
+"header.disabledSubtitle" = "Aucune surveillance";
+"header.paused" = "En pause";
+"header.pausedSubtitle" = "Secteur uniquement : branchez le chargeur";
+"header.awake" = "Mac éveillé";
+"header.working" = "%@ en cours";
+"header.workingMany" = "%d agents en cours";
+"header.grace" = "Grâce : %d s";
+"header.alwaysOnRemaining" = "Toujours actif · %@ restant";
+"header.alwaysOn" = "Toujours actif";
+"header.standby" = "En veille";
+"header.waitingAgents" = "En attente d’agents";
+"header.agentsWaitingInput" = "Agents en attente de saisie";
+"header.closedDisplaySuffix" = " · capot fermé";
+
+"closedDisplay.disabled" = "Veille capot fermé désactivée";
+"closedDisplay.normal" = "Veille capot fermé normale";
+"closedDisplay.notInstalled" = "Prise en charge non installée (mot de passe admin à la première utilisation)";
+"closedDisplay.errorNotInstalled" = "Prise en charge non installée";
+"closedDisplay.errorEnable" = "Activation échouée (prise en charge admin requise)";
+"closedDisplay.errorRemoved" = "Prise en charge supprimée : la veille capot fermé peut rester désactivée";
+
+"alert.ok" = "OK";
+"alert.cancel" = "Annuler";
+"alert.save" = "Enregistrer";
+"alert.install" = "Installer";
+"alert.remove" = "Supprimer";
+"alert.installFailed" = "Échec de l’installation";
+"alert.removeFailed" = "Échec de la suppression";
+
+"alert.launchAtLogin.title" = "Lancement à l’ouverture de session indisponible";
+"alert.launchAtLogin.text" = "%@\n\nDéplacez Ephedrine.app dans /Applications et réessayez.";
+
+"alert.removeClosed.title" = "Supprimer la prise en charge du capot fermé ?";
+"alert.removeClosed.text" = "L’helper administrateur sera supprimé et la veille normale capot fermé rétablie.";
+"alert.installClosed.title" = "Installer la prise en charge du capot fermé";
+"alert.installClosed.text" = "Le mot de passe administrateur est requis une fois : un helper limité est créé pour désactiver la veille capot fermé (pmset disablesleep). Il n’est utilisé que pendant que ce mode est actif et est restauré automatiquement lorsque vous le désactivez ou quittez l’app.";
+
+"alert.removeIntegration.title" = "Supprimer l’intégration %@ ?";
+"alert.removeIntegration.text" = "Le fichier sera restauré :\n%@";
+"alert.installIntegration.title" = "Installer l’intégration %@ ?";
+"alert.installIntegration.text" = "Le fichier sera modifié (avec une sauvegarde .ephedrine-backup) :\n%@\n\nL’agent signalera le début et la fin de tour à Ephedrine, ainsi le Mac ne reste éveillé que pendant que le LLM travaille réellement. Redémarrez l’agent pour appliquer.";
+
+"alert.customAgents.title" = "Autres agents à surveiller";
+"alert.customAgents.text" = "Motifs séparés par des virgules. Un processus correspond si son nom, son chemin ou sa ligne de commande contient un motif (insensible à la casse). Les motifs de 4 caractères ou moins doivent correspondre à un mot entier.";
+"alert.customAgents.placeholder" = "my-agent, llm-runner";
+
+"alert.assertions.title" = "Power assertions actives";
+"alert.assertions.text" = "Cherchez « Ephedrine » dans la liste : c’est l’assertion qui maintient le Mac éveillé.";
+
+"alert.about.text" = "Maintient le Mac éveillé pendant l’exécution d’agents de codage (opencode, codex, claude, pi, …), pour que les LLM ne s’arrêtent jamais pendant l’inactivité.\n\nAvec les intégrations activées, l’agent signale le début et la fin de tour : le Mac ne reste éveillé que pendant que le LLM travaille réellement.\n\nRemarque : capot fermé, le Mac se met en veille de toute façon, sauf si « Capot fermé » est activé ou en mode clamshell avec écran externe et secteur.";
+
+"error.pmset" = "Erreur lors de l’exécution de pmset : %@";
+
+"mode.off" = "Désactivé";
+"mode.auto" = "Auto";
+"mode.always" = "Toujours";
+
+"section.agents" = "Agents";
+"section.options" = "Options";
+"section.watch" = "Agents surveillés";
+"section.integrations" = "Intégrations d’état de tour";
+"section.advanced" = "Avancé";
+
+"agents.working" = "en cours";
+"agents.waiting" = "en attente";
+
+"maxDuration.title" = "Limite de fonctionnement";
+"maxDuration.help" = "Éteint le café après la durée choisie, pour que le Mac ne reste pas éveillé indéfiniment.";
+"maxDuration.unlimited" = "Illimité";
+"maxDuration.15min" = "15 min";
+"maxDuration.30min" = "30 min";
+"maxDuration.1h" = "1 heure";
+"maxDuration.2h" = "2 heures";
+"maxDuration.4h" = "4 heures";
+"maxDuration.elapsed" = "Minuteur écoulé : Mac libéré";
+
+"options.preventDisplay" = "Garder l’écran allumé";
+"options.preventDisplay.help" = "Empêche l’écran de s’éteindre pendant qu’un agent travaille (équivaut à caffeinate -d).";
+"options.respectSession" = "Respecter l’état de tour";
+"options.respectSession.help" = "Utilise les signaux busy/idle des intégrations : le Mac ne reste éveillé que pendant que le LLM génère réellement.";
+"options.onlyOnAC" = "Secteur uniquement";
+"options.onlyOnAC.help" = "Ne maintient pas le Mac éveillé lorsqu’il fonctionne sur batterie.";
+"options.closedDisplay" = "Capot fermé";
+"options.closedDisplay.help" = "Désactive la veille capot fermé (pmset disablesleep) pendant qu’un agent travaille. Nécessite le mot de passe admin à la première utilisation.";
+
+"watch.others" = "Autres agents…";
+"watch.others.help" = "Ajoutez des motifs de processus à surveiller, séparés par des virgules.";
+
+"integrations.install" = "Installer";
+"integrations.remove" = "Supprimer";
+"integrations.install.help" = "Modifie la configuration de l’agent (avec sauvegarde) pour qu’il signale le début et la fin de tour.";
+"integrations.remove.help" = "Supprime l’intégration et restaure le fichier de configuration d’origine.";
+"integrations.lastState" = "Dernier état : %@";
+"integrations.openFolder" = "Ouvrir le dossier d’état";
+
+"advanced.simulateActivity" = "Simuler l’activité utilisateur";
+"advanced.simulateActivity.help" = "Déclare une activité utilisateur à intervalles réguliers pour éviter l’économiseur d’écran et le verrouillage automatique.";
+"advanced.preventSystemSleep" = "Empêcher la veille système (secteur)";
+"advanced.preventSystemSleep.help" = "Ajoute l’assertion PreventSystemSleep (comme caffeinate -s). Active uniquement sur secteur.";
+"advanced.cpuOnly" = "CPU active uniquement";
+"advanced.cpuOnly.help" = "Ignore les états de tour et classe les agents uniquement selon l’utilisation du CPU (≥3 %).";
+"advanced.launchAtLogin" = "Lancer à l’ouverture de session";
+"advanced.launchAtLogin.help" = "Lance Ephedrine automatiquement à l’ouverture de session. Nécessite l’app dans /Applications.";
+"advanced.grace" = "Grâce";
+"advanced.grace.help" = "Durée pendant laquelle le Mac reste éveillé après la dernière activité, pour couvrir les courtes pauses (LLM qui réfléchit, redémarrage d’outil).";
+"advanced.poll" = "Détection";
+"advanced.poll.help" = "Fréquence à laquelle l’app vérifie les processus, le CPU et les états de tour.";
+"advanced.activity" = "Activité utilisateur";
+"advanced.activity.help" = "Intervalle entre deux déclarations d’activité utilisateur (utilisé avec « Simuler l’activité utilisateur »).";
+"advanced.showAssertions" = "Afficher les power assertions…";
+"advanced.removeClosedSupport" = "Supprimer la prise en charge du capot fermé…";
+"advanced.removeClosedSupport.help" = "Supprime l’helper administrateur et rétablit la veille capot fermé.";
+
+"footer.about" = "À propos";
+"footer.quit" = "Quitter";
+
+"duration.off" = "Off";
+"duration.seconds" = "%d s";
+"duration.minutes" = "%d min";
+
+"cli.unknownIntegration" = "Intégration inconnue : %@ (valides : codex, claude, opencode, pi)";
+"cli.integrationInstalled" = "Intégration %@ installée : %@";
+"cli.integrationRemoved" = "Intégration %@ supprimée : %@";
+"cli.error" = "Erreur : %@";
+"cli.stateReceived" = "états reçus : %@";
+"session.none" = "aucun état reçu";
+
+"integration.unrecognizedNotify" = "Ligne notify existante non reconnue : configurez le passthrough manuellement.";
+"integration.invalidClaudeSettings" = "Le settings.json existant n’est pas un JSON valide";
+
+"helper.badUsername" = "Nom d’utilisateur incompatible avec la configuration sudoers";
+"helper.installFailed" = "Installation annulée ou échouée";
+"helper.uninstallFailed" = "Suppression annulée ou échouée";

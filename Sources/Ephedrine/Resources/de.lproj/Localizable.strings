@@ -1,0 +1,155 @@
+/*
+   Ephedrine — Deutsch.
+   Platzhalter (%d, %@) nicht verändern.
+*/
+
+"status.off" = "Ephedrine — Aus";
+"status.pausedBattery" = "Ephedrine — pausiert (Akku)";
+"status.working" = "Ephedrine — Mac wach (%d aktiv)";
+"status.workingWaiting" = "Ephedrine — Mac wach (%d aktiv, %d wartend)";
+"status.graceWaiting" = "Ephedrine — Mac wach (Karenz, %d wartend)";
+"status.alwaysOn" = "Ephedrine — Mac wach (immer aktiv)";
+"status.grace" = "Ephedrine — Mac wach (Karenz)";
+"status.waitingAgents" = "Ephedrine — warte auf Agenten";
+"status.closedDisplaySuffix" = " · Deckel zu";
+
+"tooltip.battery" = "Nur Netzbetrieb: Ladegerät anschließen, um fortzufahren.";
+"tooltip.closedDisplay" = "Ruhezustand bei geschlossenem Deckel deaktiviert (pmset disablesleep).";
+"tooltip.click" = "Für Optionen klicken";
+
+"header.timerElapsed" = "Timer abgelaufen";
+"header.timerElapsedSubtitle" = "Kaffee vorbei: Mac wieder im Standby";
+"header.disabled" = "Deaktiviert";
+"header.disabledSubtitle" = "Keine Überwachung";
+"header.paused" = "Pausiert";
+"header.pausedSubtitle" = "Nur Netzbetrieb: Ladegerät anschließen";
+"header.awake" = "Mac wach";
+"header.working" = "%@ aktiv";
+"header.workingMany" = "%d Agenten aktiv";
+"header.grace" = "Karenz: %d s";
+"header.alwaysOnRemaining" = "Immer aktiv · noch %@";
+"header.alwaysOn" = "Immer aktiv";
+"header.standby" = "Standby";
+"header.waitingAgents" = "Warte auf Agenten";
+"header.agentsWaitingInput" = "Agenten warten auf Eingabe";
+"header.closedDisplaySuffix" = " · Deckel zu";
+
+"closedDisplay.disabled" = "Ruhezustand bei geschlossenem Deckel deaktiviert";
+"closedDisplay.normal" = "Ruhezustand bei geschlossenem Deckel normal";
+"closedDisplay.notInstalled" = "Unterstützung nicht installiert (Admin-Passwort bei erster Verwendung)";
+"closedDisplay.errorNotInstalled" = "Unterstützung nicht installiert";
+"closedDisplay.errorEnable" = "Aktivierung fehlgeschlagen (Admin-Unterstützung erforderlich)";
+"closedDisplay.errorRemoved" = "Unterstützung entfernt: Ruhezustand bei geschlossenem Deckel bleibt möglicherweise deaktiviert";
+
+"alert.ok" = "OK";
+"alert.cancel" = "Abbrechen";
+"alert.save" = "Speichern";
+"alert.install" = "Installieren";
+"alert.remove" = "Entfernen";
+"alert.installFailed" = "Installation fehlgeschlagen";
+"alert.removeFailed" = "Entfernen fehlgeschlagen";
+
+"alert.launchAtLogin.title" = "Anmeldung beim Start nicht verfügbar";
+"alert.launchAtLogin.text" = "%@\n\nVerschiebe Ephedrine.app nach /Applications und versuche es erneut.";
+
+"alert.removeClosed.title" = "Unterstützung für geschlossenen Deckel entfernen?";
+"alert.removeClosed.text" = "Der Admin-Helfer wird gelöscht und der normale Ruhezustand bei geschlossenem Deckel wiederhergestellt.";
+"alert.installClosed.title" = "Unterstützung für geschlossenen Deckel installieren";
+"alert.installClosed.text" = "Das Administrator-Passwort ist einmal erforderlich: Es wird ein eingeschränkter Helfer erstellt, der den Ruhezustand bei geschlossenem Deckel deaktiviert (pmset disablesleep). Er wird nur verwendet, solange dieser Modus aktiv ist, und automatisch wiederhergestellt, wenn du ihn deaktivierst oder die App beendest.";
+
+"alert.removeIntegration.title" = "Integration %@ entfernen?";
+"alert.removeIntegration.text" = "Die Datei wird wiederhergestellt:\n%@";
+"alert.installIntegration.title" = "Integration %@ installieren?";
+"alert.installIntegration.text" = "Die Datei wird geändert (mit .ephedrine-backup-Sicherung):\n%@\n\nDer Agent meldet Turn-Beginn und -Ende an Ephedrine, sodass der Mac nur wach bleibt, während das LLM tatsächlich arbeitet. Starte den Agenten neu, um die Änderung anzuwenden.";
+
+"alert.customAgents.title" = "Weitere zu überwachende Agenten";
+"alert.customAgents.text" = "Kommagetrennte Muster. Ein Prozess passt, wenn Name, Pfad oder Befehlszeile ein Muster enthalten (Groß-/Kleinschreibung egal). Muster mit 4 oder weniger Zeichen müssen einem ganzen Wort entsprechen.";
+"alert.customAgents.placeholder" = "my-agent, llm-runner";
+
+"alert.assertions.title" = "Aktive Power Assertions";
+"alert.assertions.text" = "Suche nach „Ephedrine“ in der Liste: Das ist die Assertion, die den Mac wach hält.";
+
+"alert.about.text" = "Hält den Mac wach, während Coding-Agenten (opencode, codex, claude, pi, …) laufen, damit LLMs bei Inaktivität nie anhalten.\n\nMit aktivierten Integrationen meldet der Agent Turn-Beginn und -Ende: Der Mac bleibt nur wach, während das LLM tatsächlich arbeitet.\n\nHinweis: Bei geschlossenem Deckel schläft der Mac trotzdem, außer „Deckel geschlossen“ ist aktiviert oder der Clamshell-Modus mit externem Display und Netzstrom wird verwendet.";
+
+"error.pmset" = "Fehler beim Ausführen von pmset: %@";
+
+"mode.off" = "Aus";
+"mode.auto" = "Auto";
+"mode.always" = "Immer";
+
+"section.agents" = "Agenten";
+"section.options" = "Optionen";
+"section.watch" = "Überwachte Agenten";
+"section.integrations" = "Turn-Status-Integrationen";
+"section.advanced" = "Erweitert";
+
+"agents.working" = "aktiv";
+"agents.waiting" = "wartend";
+
+"maxDuration.title" = "Laufzeitlimit";
+"maxDuration.help" = "Schaltet den Kaffee nach der gewählten Zeit aus, damit der Mac nicht dauerhaft wach bleibt.";
+"maxDuration.unlimited" = "Unbegrenzt";
+"maxDuration.15min" = "15 Min.";
+"maxDuration.30min" = "30 Min.";
+"maxDuration.1h" = "1 Stunde";
+"maxDuration.2h" = "2 Stunden";
+"maxDuration.4h" = "4 Stunden";
+"maxDuration.elapsed" = "Timer abgelaufen: Mac freigegeben";
+
+"options.preventDisplay" = "Display wach halten";
+"options.preventDisplay.help" = "Verhindert, dass das Display schläft, während ein Agent arbeitet (entspricht caffeinate -d).";
+"options.respectSession" = "Turn-Status beachten";
+"options.respectSession.help" = "Verwendet die busy/idle-Signale der Integrationen: Der Mac bleibt nur wach, während das LLM tatsächlich generiert.";
+"options.onlyOnAC" = "Nur Netzbetrieb";
+"options.onlyOnAC.help" = "Hält den Mac nicht wach, wenn er mit Akku läuft.";
+"options.closedDisplay" = "Deckel geschlossen";
+"options.closedDisplay.help" = "Deaktiviert den Ruhezustand bei geschlossenem Deckel (pmset disablesleep), während ein Agent arbeitet. Erfordert das Admin-Passwort bei der ersten Verwendung.";
+
+"watch.others" = "Weitere Agenten…";
+"watch.others.help" = "Füge zu überwachende Prozessmuster hinzu, durch Kommas getrennt.";
+
+"integrations.install" = "Installieren";
+"integrations.remove" = "Entfernen";
+"integrations.install.help" = "Ändert die Agentenkonfiguration (mit Sicherung), damit sie Turn-Beginn und -Ende meldet.";
+"integrations.remove.help" = "Entfernt die Integration und stellt die ursprüngliche Konfigurationsdatei wieder her.";
+"integrations.lastState" = "Letzter Status: %@";
+"integrations.openFolder" = "Statusordner öffnen";
+
+"advanced.simulateActivity" = "Benutzeraktivität simulieren";
+"advanced.simulateActivity.help" = "Meldet in regelmäßigen Abständen Benutzeraktivität, um Bildschirmschoner und automatische Sperre zu vermeiden.";
+"advanced.preventSystemSleep" = "Systemruhezustand verhindern (Netz)";
+"advanced.preventSystemSleep.help" = "Fügt die PreventSystemSleep-Assertion hinzu (wie caffeinate -s). Nur im Netzbetrieb aktiv.";
+"advanced.cpuOnly" = "Nur bei CPU-Aktivität";
+"advanced.cpuOnly.help" = "Ignoriert Turn-Status und klassifiziert Agenten nur anhand der CPU-Auslastung (≥3 %).";
+"advanced.launchAtLogin" = "Beim Anmelden starten";
+"advanced.launchAtLogin.help" = "Startet Ephedrine automatisch beim Anmelden. Erfordert die App unter /Applications.";
+"advanced.grace" = "Karenz";
+"advanced.grace.help" = "Wie lange der Mac nach der letzten Aktivität wach bleibt, um kurze Pausen abzudecken (LLM denkt nach, Tool startet neu).";
+"advanced.poll" = "Erkennung";
+"advanced.poll.help" = "Wie oft die App Prozesse, CPU und Turn-Status prüft.";
+"advanced.activity" = "Benutzeraktivität";
+"advanced.activity.help" = "Intervall zwischen zwei Benutzeraktivitätsmeldungen (verwendet mit „Benutzeraktivität simulieren“).";
+"advanced.showAssertions" = "Power Assertions anzeigen…";
+"advanced.removeClosedSupport" = "Unterstützung für geschlossenen Deckel entfernen…";
+"advanced.removeClosedSupport.help" = "Löscht den Admin-Helfer und aktiviert den Ruhezustand bei geschlossenem Deckel wieder.";
+
+"footer.about" = "Über";
+"footer.quit" = "Beenden";
+
+"duration.off" = "Aus";
+"duration.seconds" = "%d s";
+"duration.minutes" = "%d Min.";
+
+"cli.unknownIntegration" = "Unbekannte Integration: %@ (gültig: codex, claude, opencode, pi)";
+"cli.integrationInstalled" = "Integration %@ installiert: %@";
+"cli.integrationRemoved" = "Integration %@ entfernt: %@";
+"cli.error" = "Fehler: %@";
+"cli.stateReceived" = "empfangene Status: %@";
+"session.none" = "kein Status empfangen";
+
+"integration.unrecognizedNotify" = "Vorhandene notify-Zeile nicht erkannt: Passthrough manuell konfigurieren.";
+"integration.invalidClaudeSettings" = "Vorhandene settings.json ist kein gültiges JSON";
+
+"helper.badUsername" = "Benutzername ist mit der sudoers-Konfiguration nicht kompatibel";
+"helper.installFailed" = "Installation abgebrochen oder fehlgeschlagen";
+"helper.uninstallFailed" = "Entfernen abgebrochen oder fehlgeschlagen";

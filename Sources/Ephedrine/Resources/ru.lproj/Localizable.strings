@@ -1,0 +1,155 @@
+/*
+   Ephedrine — Русский.
+   Не изменяйте подстановочные знаки (%d, %@).
+*/
+
+"status.off" = "Ephedrine — Выключено";
+"status.pausedBattery" = "Ephedrine — пауза (батарея)";
+"status.working" = "Ephedrine — Mac не спит (%d работает)";
+"status.workingWaiting" = "Ephedrine — Mac не спит (%d работает, %d ожидает)";
+"status.graceWaiting" = "Ephedrine — Mac не спит (отсрочка, %d ожидает)";
+"status.alwaysOn" = "Ephedrine — Mac не спит (всегда включено)";
+"status.grace" = "Ephedrine — Mac не спит (отсрочка)";
+"status.waitingAgents" = "Ephedrine — ожидание агентов";
+"status.closedDisplaySuffix" = " · крышка закрыта";
+
+"tooltip.battery" = "Только от сети: подключите зарядное устройство, чтобы продолжить.";
+"tooltip.closedDisplay" = "Сон при закрытой крышке отключён (pmset disablesleep).";
+"tooltip.click" = "Нажмите, чтобы открыть параметры";
+
+"header.timerElapsed" = "Таймер истёк";
+"header.timerElapsedSubtitle" = "Кофе закончился: Mac снова в режиме ожидания";
+"header.disabled" = "Отключено";
+"header.disabledSubtitle" = "Без мониторинга";
+"header.paused" = "Пауза";
+"header.pausedSubtitle" = "Только от сети: подключите зарядное устройство";
+"header.awake" = "Mac не спит";
+"header.working" = "%@ работает";
+"header.workingMany" = "Агентов работает: %d";
+"header.grace" = "Отсрочка: %d с";
+"header.alwaysOnRemaining" = "Всегда включено · осталось %@";
+"header.alwaysOn" = "Всегда включено";
+"header.standby" = "Ожидание";
+"header.waitingAgents" = "Ожидание агентов";
+"header.agentsWaitingInput" = "Агенты ждут ввода";
+"header.closedDisplaySuffix" = " · крышка закрыта";
+
+"closedDisplay.disabled" = "Сон при закрытой крышке отключён";
+"closedDisplay.normal" = "Сон при закрытой крышке обычный";
+"closedDisplay.notInstalled" = "Поддержка не установлена (пароль администратора при первом использовании)";
+"closedDisplay.errorNotInstalled" = "Поддержка не установлена";
+"closedDisplay.errorEnable" = "Не удалось включить (требуется поддержка администратора)";
+"closedDisplay.errorRemoved" = "Поддержка удалена: сон при закрытой крышке может остаться отключённым";
+
+"alert.ok" = "ОК";
+"alert.cancel" = "Отмена";
+"alert.save" = "Сохранить";
+"alert.install" = "Установить";
+"alert.remove" = "Удалить";
+"alert.installFailed" = "Не удалось установить";
+"alert.removeFailed" = "Не удалось удалить";
+
+"alert.launchAtLogin.title" = "Запуск при входе недоступен";
+"alert.launchAtLogin.text" = "%@\n\nПереместите Ephedrine.app в /Applications и повторите попытку.";
+
+"alert.removeClosed.title" = "Удалить поддержку закрытой крышки?";
+"alert.removeClosed.text" = "Вспомогательная программа администратора будет удалена, а обычный сон при закрытой крышке восстановлен.";
+"alert.installClosed.title" = "Установить поддержку закрытой крышки";
+"alert.installClosed.text" = "Пароль администратора требуется один раз: создаётся ограниченная вспомогательная программа, отключающая сон при закрытой крышке (pmset disablesleep). Она используется только пока этот режим активен и автоматически откатывается при его отключении или выходе из приложения.";
+
+"alert.removeIntegration.title" = "Удалить интеграцию %@?";
+"alert.removeIntegration.text" = "Файл будет восстановлен:\n%@";
+"alert.installIntegration.title" = "Установить интеграцию %@?";
+"alert.installIntegration.text" = "Файл будет изменён (с резервной копией .ephedrine-backup):\n%@\n\nАгент будет сообщать о начале и конце хода в Ephedrine, поэтому Mac будет бодрствовать только пока LLM действительно работает. Перезапустите агента, чтобы применить.";
+
+"alert.customAgents.title" = "Другие агенты для мониторинга";
+"alert.customAgents.text" = "Шаблоны, разделённые запятыми. Процесс подходит, если его имя, путь или командная строка содержат шаблон (без учёта регистра). Шаблоны из 4 символов и менее должны совпадать с целым словом.";
+"alert.customAgents.placeholder" = "my-agent, llm-runner";
+
+"alert.assertions.title" = "Активные power assertions";
+"alert.assertions.text" = "Найдите «Ephedrine» в списке: это assertion, которая не даёт Macу уснуть.";
+
+"alert.about.text" = "Не даёт Macу уснуть, пока работают агенты программирования (opencode, codex, claude, pi, …), чтобы LLM не останавливались во время простоя.\n\nПри включённых интеграциях агент сообщает о начале и конце хода: Mac бодрствует только пока LLM действительно работает.\n\nПримечание: при закрытой крышке Mac всё равно уснёт, если не включён режим «Крышка закрыта» или не используется режим clamshell с внешним дисплеем и питанием от сети.";
+
+"error.pmset" = "Ошибка при запуске pmset: %@";
+
+"mode.off" = "Выкл.";
+"mode.auto" = "Авто";
+"mode.always" = "Всегда";
+
+"section.agents" = "Агенты";
+"section.options" = "Параметры";
+"section.watch" = "Отслеживаемые агенты";
+"section.integrations" = "Интеграции состояния хода";
+"section.advanced" = "Дополнительно";
+
+"agents.working" = "работает";
+"agents.waiting" = "ожидает";
+
+"maxDuration.title" = "Ограничение времени работы";
+"maxDuration.help" = "Отключает кофе по истечении выбранного времени, чтобы Mac не бодрствовал бесконечно.";
+"maxDuration.unlimited" = "Без ограничений";
+"maxDuration.15min" = "15 мин";
+"maxDuration.30min" = "30 мин";
+"maxDuration.1h" = "1 час";
+"maxDuration.2h" = "2 часа";
+"maxDuration.4h" = "4 часа";
+"maxDuration.elapsed" = "Таймер истёк: Mac освобождён";
+
+"options.preventDisplay" = "Не выключать дисплей";
+"options.preventDisplay.help" = "Не даёт дисплею уснуть, пока агент работает (аналог caffeinate -d).";
+"options.respectSession" = "Учитывать состояние хода";
+"options.respectSession.help" = "Использует сигналы busy/idle от интеграций: Mac бодрствует только пока LLM действительно генерирует.";
+"options.onlyOnAC" = "Только от сети";
+"options.onlyOnAC.help" = "Не даёт Macу бодрствовать при питании от батареи.";
+"options.closedDisplay" = "Крышка закрыта";
+"options.closedDisplay.help" = "Отключает сон при закрытой крышке (pmset disablesleep), пока агент работает. Требует пароль администратора при первом использовании.";
+
+"watch.others" = "Другие агенты…";
+"watch.others.help" = "Добавьте шаблоны процессов для мониторинга через запятую.";
+
+"integrations.install" = "Установить";
+"integrations.remove" = "Удалить";
+"integrations.install.help" = "Изменяет конфигурацию агента (с резервной копией), чтобы он сообщал о начале и конце хода.";
+"integrations.remove.help" = "Удаляет интеграцию и восстанавливает исходный файл конфигурации.";
+"integrations.lastState" = "Последнее состояние: %@";
+"integrations.openFolder" = "Открыть папку состояния";
+
+"advanced.simulateActivity" = "Имитировать активность пользователя";
+"advanced.simulateActivity.help" = "Регулярно сообщает об активности пользователя, чтобы избежать хранителя экрана и автоблокировки.";
+"advanced.preventSystemSleep" = "Предотвращать сон системы (сеть)";
+"advanced.preventSystemSleep.help" = "Добавляет assertion PreventSystemSleep (как caffeinate -s). Активно только от сети.";
+"advanced.cpuOnly" = "Только при активности CPU";
+"advanced.cpuOnly.help" = "Игнорирует состояния хода и классифицирует агентов только по загрузке CPU (≥3%).";
+"advanced.launchAtLogin" = "Запускать при входе";
+"advanced.launchAtLogin.help" = "Автоматически запускает Ephedrine при входе в систему. Требует приложение в /Applications.";
+"advanced.grace" = "Отсрочка";
+"advanced.grace.help" = "Как долго Mac бодрствует после последней активности, покрывая короткие паузы (LLM думает, инструмент перезапускается).";
+"advanced.poll" = "Обнаружение";
+"advanced.poll.help" = "Как часто приложение проверяет процессы, CPU и состояния хода.";
+"advanced.activity" = "Активность пользователя";
+"advanced.activity.help" = "Интервал между двумя сообщениями об активности пользователя (используется с «Имитировать активность пользователя»).";
+"advanced.showAssertions" = "Показать power assertions…";
+"advanced.removeClosedSupport" = "Удалить поддержку закрытой крышки…";
+"advanced.removeClosedSupport.help" = "Удаляет вспомогательную программу администратора и снова включает сон при закрытой крышке.";
+
+"footer.about" = "О программе";
+"footer.quit" = "Выйти";
+
+"duration.off" = "Выкл.";
+"duration.seconds" = "%d с";
+"duration.minutes" = "%d мин";
+
+"cli.unknownIntegration" = "Неизвестная интеграция: %@ (допустимые: codex, claude, opencode, pi)";
+"cli.integrationInstalled" = "Интеграция %@ установлена: %@";
+"cli.integrationRemoved" = "Интеграция %@ удалена: %@";
+"cli.error" = "Ошибка: %@";
+"cli.stateReceived" = "полученные состояния: %@";
+"session.none" = "состояние не получено";
+
+"integration.unrecognizedNotify" = "Не распознана существующая строка notify: настройте passthrough вручную.";
+"integration.invalidClaudeSettings" = "Существующий settings.json не является корректным JSON";
+
+"helper.badUsername" = "Имя пользователя несовместимо с конфигурацией sudoers";
+"helper.installFailed" = "Установка отменена или не удалась";
+"helper.uninstallFailed" = "Удаление отменено или не удалось";

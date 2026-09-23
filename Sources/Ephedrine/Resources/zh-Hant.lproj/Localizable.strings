@@ -1,0 +1,155 @@
+/*
+   Ephedrine — 繁體中文.
+   請勿修改佔位符（%d、%@）。
+*/
+
+"status.off" = "Ephedrine — 已關閉";
+"status.pausedBattery" = "Ephedrine — 已暫停（電池）";
+"status.working" = "Ephedrine — Mac 保持喚醒（%d 個執行中）";
+"status.workingWaiting" = "Ephedrine — Mac 保持喚醒（%d 個執行中，%d 個等待中）";
+"status.graceWaiting" = "Ephedrine — Mac 保持喚醒（寬限期，%d 個等待中）";
+"status.alwaysOn" = "Ephedrine — Mac 保持喚醒（永遠開啟）";
+"status.grace" = "Ephedrine — Mac 保持喚醒（寬限期）";
+"status.waitingAgents" = "Ephedrine — 正在等待代理";
+"status.closedDisplaySuffix" = " · 已闔蓋";
+
+"tooltip.battery" = "僅使用交流電源：請連接充電器以繼續。";
+"tooltip.closedDisplay" = "已停用闔蓋休眠（pmset disablesleep）。";
+"tooltip.click" = "點擊查看選項";
+
+"header.timerElapsed" = "計時器已到期";
+"header.timerElapsedSubtitle" = "咖啡結束：Mac 重新進入待機";
+"header.disabled" = "已停用";
+"header.disabledSubtitle" = "未監控";
+"header.paused" = "已暫停";
+"header.pausedSubtitle" = "僅使用交流電源：請連接充電器";
+"header.awake" = "Mac 保持喚醒";
+"header.working" = "%@ 執行中";
+"header.workingMany" = "%d 個代理執行中";
+"header.grace" = "寬限期：%d 秒";
+"header.alwaysOnRemaining" = "永遠開啟 · 剩餘 %@";
+"header.alwaysOn" = "永遠開啟";
+"header.standby" = "待機";
+"header.waitingAgents" = "正在等待代理";
+"header.agentsWaitingInput" = "代理正在等待輸入";
+"header.closedDisplaySuffix" = " · 已闔蓋";
+
+"closedDisplay.disabled" = "已停用闔蓋休眠";
+"closedDisplay.normal" = "闔蓋休眠正常";
+"closedDisplay.notInstalled" = "支援未安裝（首次使用時需要管理員密碼）";
+"closedDisplay.errorNotInstalled" = "支援未安裝";
+"closedDisplay.errorEnable" = "啟用失敗（需要管理員支援）";
+"closedDisplay.errorRemoved" = "支援已移除：闔蓋休眠可能仍處於停用狀態";
+
+"alert.ok" = "好";
+"alert.cancel" = "取消";
+"alert.save" = "儲存";
+"alert.install" = "安裝";
+"alert.remove" = "移除";
+"alert.installFailed" = "安裝失敗";
+"alert.removeFailed" = "移除失敗";
+
+"alert.launchAtLogin.title" = "登入時啟動無法使用";
+"alert.launchAtLogin.text" = "%@\n\n請將 Ephedrine.app 移到 /Applications 後再試一次。";
+
+"alert.removeClosed.title" = "要移除闔蓋支援嗎？";
+"alert.removeClosed.text" = "將刪除管理員輔助工具並恢復正常闔蓋休眠。";
+"alert.installClosed.title" = "安裝闔蓋支援";
+"alert.installClosed.text" = "需要一次性輸入管理員密碼：將建立一個受限輔助工具來停用闔蓋休眠（pmset disablesleep）。僅在啟用此模式時使用，並在關閉或退出應用程式時自動還原。";
+
+"alert.removeIntegration.title" = "要移除 %@ 整合嗎？";
+"alert.removeIntegration.text" = "將還原檔案：\n%@";
+"alert.installIntegration.title" = "要安裝 %@ 整合嗎？";
+"alert.installIntegration.text" = "將修改檔案（並建立 .ephedrine-backup 備份）：\n%@\n\n代理將向 Ephedrine 回報回合的開始與結束，因此只有在 LLM 真正工作時 Mac 才會保持喚醒。請重新啟動代理以生效。";
+
+"alert.customAgents.title" = "其他要監控的代理";
+"alert.customAgents.text" = "以逗號分隔的模式。若行程的名稱、路徑或命令列包含某個模式（不分大小寫），即視為相符。4 個字元或更短的模式必須符合整個單字。";
+"alert.customAgents.placeholder" = "my-agent, llm-runner";
+
+"alert.assertions.title" = "作用中的 power assertions";
+"alert.assertions.text" = "在清單中尋找「Ephedrine」：這就是讓 Mac 保持喚醒的 assertion。";
+
+"alert.about.text" = "在編碼代理（opencode、codex、claude、pi 等）執行時讓 Mac 保持喚醒，這樣 LLM 在閒置時也不會停止。\n\n啟用整合後，代理會回報回合的開始與結束：只有在 LLM 真正工作時 Mac 才會保持喚醒。\n\n注意：闔蓋時 Mac 仍會休眠，除非啟用了「闔蓋」或使用搭配外接顯示器與交流電源的 clamshell 模式。";
+
+"error.pmset" = "執行 pmset 時發生錯誤：%@";
+
+"mode.off" = "關閉";
+"mode.auto" = "自動";
+"mode.always" = "永遠";
+
+"section.agents" = "代理";
+"section.options" = "選項";
+"section.watch" = "受監控的代理";
+"section.integrations" = "回合狀態整合";
+"section.advanced" = "進階";
+
+"agents.working" = "執行中";
+"agents.waiting" = "等待中";
+
+"maxDuration.title" = "執行時限";
+"maxDuration.help" = "在選定時間後關閉咖啡，這樣 Mac 不會一直保持喚醒。";
+"maxDuration.unlimited" = "無限制";
+"maxDuration.15min" = "15 分鐘";
+"maxDuration.30min" = "30 分鐘";
+"maxDuration.1h" = "1 小時";
+"maxDuration.2h" = "2 小時";
+"maxDuration.4h" = "4 小時";
+"maxDuration.elapsed" = "計時器已到期：Mac 已釋放";
+
+"options.preventDisplay" = "保持顯示器喚醒";
+"options.preventDisplay.help" = "代理工作時避免顯示器休眠（相當於 caffeinate -d）。";
+"options.respectSession" = "遵循回合狀態";
+"options.respectSession.help" = "使用整合的 busy/idle 訊號：只有在 LLM 真正生成時 Mac 才會保持喚醒。";
+"options.onlyOnAC" = "僅交流電源";
+"options.onlyOnAC.help" = "使用電池時不保持 Mac 喚醒。";
+"options.closedDisplay" = "闔蓋";
+"options.closedDisplay.help" = "代理工作時停用闔蓋休眠（pmset disablesleep）。首次使用時需要管理員密碼。";
+
+"watch.others" = "其他代理…";
+"watch.others.help" = "新增要監控的行程模式，以逗號分隔。";
+
+"integrations.install" = "安裝";
+"integrations.remove" = "移除";
+"integrations.install.help" = "修改代理設定（含備份），使其回報回合的開始與結束。";
+"integrations.remove.help" = "移除整合並還原原始設定檔。";
+"integrations.lastState" = "上次狀態：%@";
+"integrations.openFolder" = "開啟狀態資料夾";
+
+"advanced.simulateActivity" = "模擬使用者活動";
+"advanced.simulateActivity.help" = "定期宣告使用者活動，以避免螢幕保護程式與自動鎖定。";
+"advanced.preventSystemSleep" = "避免系統休眠（交流電源）";
+"advanced.preventSystemSleep.help" = "新增 PreventSystemSleep assertion（類似 caffeinate -s）。僅在交流電源下生效。";
+"advanced.cpuOnly" = "僅在有 CPU 活動時";
+"advanced.cpuOnly.help" = "忽略回合狀態，僅依 CPU 使用率（≥3%）分類代理。";
+"advanced.launchAtLogin" = "登入時啟動";
+"advanced.launchAtLogin.help" = "登入時自動啟動 Ephedrine。需要將應用程式放在 /Applications。";
+"advanced.grace" = "寬限期";
+"advanced.grace.help" = "最後一次活動後 Mac 保持喚醒的時間，用於涵蓋短暫間隔（LLM 思考、工具重新啟動）。";
+"advanced.poll" = "偵測";
+"advanced.poll.help" = "應用程式檢查行程、CPU 與回合狀態的頻率。";
+"advanced.activity" = "使用者活動";
+"advanced.activity.help" = "兩次使用者活動宣告之間的間隔（搭配「模擬使用者活動」使用）。";
+"advanced.showAssertions" = "顯示 power assertions…";
+"advanced.removeClosedSupport" = "移除闔蓋支援…";
+"advanced.removeClosedSupport.help" = "刪除管理員輔助工具並重新啟用闔蓋休眠。";
+
+"footer.about" = "關於";
+"footer.quit" = "結束";
+
+"duration.off" = "關閉";
+"duration.seconds" = "%d 秒";
+"duration.minutes" = "%d 分鐘";
+
+"cli.unknownIntegration" = "未知整合：%@（有效：codex、claude、opencode、pi）";
+"cli.integrationInstalled" = "已安裝 %@ 整合：%@";
+"cli.integrationRemoved" = "已移除 %@ 整合：%@";
+"cli.error" = "錯誤：%@";
+"cli.stateReceived" = "收到的狀態：%@";
+"session.none" = "未收到狀態";
+
+"integration.unrecognizedNotify" = "無法辨識現有的 notify 行：請手動設定 passthrough。";
+"integration.invalidClaudeSettings" = "現有的 settings.json 不是有效的 JSON";
+
+"helper.badUsername" = "使用者名稱與 sudoers 設定不相容";
+"helper.installFailed" = "安裝已取消或失敗";
+"helper.uninstallFailed" = "移除已取消或失敗";
