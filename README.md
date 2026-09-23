@@ -392,8 +392,23 @@ swift build -c release      # release build
 ./.build/debug/Ephedrine --dump-agents    # inspect detection without the GUI
 ```
 
-The UI strings are currently Italian; the code and comments are in English. Localization PRs are
-welcome.
+## Localization
+
+The UI is available in **English** (base) and **Italian**. Translations live in standard
+`.lproj/Localizable.strings` files:
+
+```
+Sources/Ephedrine/Resources/en.lproj/Localizable.strings   # base (English)
+Sources/Ephedrine/Resources/it.lproj/Localizable.strings   # Italian
+```
+
+`scripts/build-app.sh` copies the SwiftPM resource bundle into `Ephedrine.app/Contents/Resources`,
+so the app follows the system language and falls back to English. The code and comments are in
+English.
+
+To add a language, copy `en.lproj/Localizable.strings` to a new `<lang>.lproj/` folder, translate
+the values (keep the `%d` / `%@` placeholders) and add the code to `CFBundleLocalizations` in
+`scripts/build-app.sh`. New translation PRs are welcome.
 
 ---
 

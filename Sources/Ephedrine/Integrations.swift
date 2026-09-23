@@ -127,7 +127,7 @@ enum Integration: String, CaseIterable {
             let originalLine = lines[index]
             let originalArguments = Self.quotedStrings(in: originalLine)
             guard !originalArguments.isEmpty else {
-                return "Riga notify esistente non riconosciuta: configura manualmente il passthrough."
+                return L("integration.unrecognizedNotify")
             }
             lines[index] = Self.codexNotifyLine(executablePath: executablePath, passthrough: originalArguments)
             lines.insert(Self.codexOriginalNotifyMarker + " " + originalLine.trimmingCharacters(in: .whitespaces), at: index + 1)
@@ -193,7 +193,7 @@ enum Integration: String, CaseIterable {
         var root: [String: Any] = [:]
         if FileManager.default.fileExists(atPath: configPath.path) {
             guard let parsed = Self.readJSON(configPath) else {
-                return "settings.json esistente non è un JSON valido"
+                return L("integration.invalidClaudeSettings")
             }
             root = parsed
         }
@@ -534,28 +534,28 @@ enum IntegrationCommand {
 
     static func install(id: String) -> Int32 {
         guard let integration = Integration(rawValue: id) else {
-            print("Integrazione sconosciuta: \(id) (valide: codex, claude, opencode, pi)")
+            print(Lf("cli.unknownIntegration", id))
             return 64
         }
         let executable = Bundle.main.executablePath ?? CommandLine.arguments.first ?? "Ephedrine"
         if let error = integration.install(executablePath: executable) {
-            print("Errore: \(error)")
+            print(Lf("cli.error", error))
             return 1
         }
-        print("Integrazione \(integration.title) installata: \(integration.configPath.path)")
+        print(Lf("cli.integrationInstalled", integration.title, integration.configPath.path))
         return 0
     }
 
     static func uninstall(id: String) -> Int32 {
         guard let integration = Integration(rawValue: id) else {
-            print("Integrazione sconosciuta: \(id) (valide: codex, claude, opencode, pi)")
+            print(Lf("cli.unknownIntegration", id))
             return 64
         }
         if let error = integration.uninstall() {
-            print("Errore: \(error)")
+            print(Lf("cli.error", error))
             return 1
         }
-        print("Integrazione \(integration.title) rimossa: \(integration.configPath.path)")
+        print(Lf("cli.integrationRemoved", integration.title, integration.configPath.path))
         return 0
     }
 }

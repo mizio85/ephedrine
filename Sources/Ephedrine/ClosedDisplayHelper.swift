@@ -71,14 +71,14 @@ final class ClosedDisplayHelper {
     /// One-time installation of helper + sudoers rule. Returns an error message or `nil`.
     func install() -> String? {
         guard let user = sanitizedUserName() else {
-            return "Nome utente non compatibile con la configurazione sudoers"
+            return L("helper.badUsername")
         }
-        return runAdmin(installScript(user: user)) ? nil : "Installazione annullata o non riuscita"
+        return runAdmin(installScript(user: user)) ? nil : L("helper.installFailed")
     }
 
     /// Removes helper + sudoers rule and restores normal lid-close sleep.
     func uninstall() -> String? {
-        runAdmin(uninstallScript()) ? nil : "Rimozione annullata o non riuscita"
+        runAdmin(uninstallScript()) ? nil : L("helper.uninstallFailed")
     }
 
     // MARK: - Private

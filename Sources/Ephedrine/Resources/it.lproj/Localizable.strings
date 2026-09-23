@@ -1,0 +1,163 @@
+/*
+   Ephedrine — Italiano.
+   I segnaposto (%d, %@) devono restare invariati.
+*/
+
+/* ── Tooltip / stato in una riga ────────────────────────────────────── */
+"status.off" = "Ephedrine — Off";
+"status.pausedBattery" = "Ephedrine — in pausa (batteria)";
+"status.working" = "Ephedrine — Mac sveglio (%d al lavoro)";
+"status.workingWaiting" = "Ephedrine — Mac sveglio (%d al lavoro, %d in attesa)";
+"status.graceWaiting" = "Ephedrine — Mac sveglio (grazia, %d in attesa)";
+"status.alwaysOn" = "Ephedrine — Mac sveglio (sempre attivo)";
+"status.grace" = "Ephedrine — Mac sveglio (grazia)";
+"status.waitingAgents" = "Ephedrine — in attesa di agent";
+"status.closedDisplaySuffix" = " · coperchio chiuso";
+
+"tooltip.battery" = "Solo su alimentazione AC: collega il caricatore per riprendere.";
+"tooltip.closedDisplay" = "Sleep da coperchio disattivato (pmset disablesleep).";
+"tooltip.click" = "Click per le opzioni";
+
+/* ── Intestazione del popover ───────────────────────────────────────── */
+"header.timerElapsed" = "Timer scaduto";
+"header.timerElapsedSubtitle" = "Caffè terminato: Mac di nuovo in standby";
+"header.disabled" = "Disattivato";
+"header.disabledSubtitle" = "Nessun monitoraggio";
+"header.paused" = "In pausa";
+"header.pausedSubtitle" = "Solo su AC: collega il caricatore";
+"header.awake" = "Mac sveglio";
+"header.working" = "%@ al lavoro";
+"header.workingMany" = "%d agent al lavoro";
+"header.grace" = "Grazia: %d s";
+"header.alwaysOnRemaining" = "Sempre attivo · restano %@";
+"header.alwaysOn" = "Sempre attivo";
+"header.standby" = "Standby";
+"header.waitingAgents" = "In attesa di agent";
+"header.agentsWaitingInput" = "Agent in attesa di input";
+"header.closedDisplaySuffix" = " · coperchio chiuso";
+
+/* ── Supporto coperchio chiuso ──────────────────────────────────────── */
+"closedDisplay.disabled" = "Sleep da coperchio disattivato";
+"closedDisplay.normal" = "Sleep da coperchio normale";
+"closedDisplay.notInstalled" = "Supporto non installato (password admin al primo uso)";
+"closedDisplay.errorNotInstalled" = "Supporto non installato";
+"closedDisplay.errorEnable" = "Attivazione non riuscita (serve il supporto admin)";
+"closedDisplay.errorRemoved" = "Supporto rimosso: lo sleep da coperchio può restare disattivato";
+
+/* ── Avvisi (AppDelegate) ───────────────────────────────────────────── */
+"alert.ok" = "OK";
+"alert.cancel" = "Annulla";
+"alert.save" = "Salva";
+"alert.install" = "Installa";
+"alert.remove" = "Rimuovi";
+"alert.installFailed" = "Installazione non riuscita";
+"alert.removeFailed" = "Rimozione non riuscita";
+
+"alert.launchAtLogin.title" = "Avvio al login non disponibile";
+"alert.launchAtLogin.text" = "%@\n\nSposta Ephedrine.app in /Applications e riprova.";
+
+"alert.removeClosed.title" = "Rimuovere il supporto coperchio chiuso?";
+"alert.removeClosed.text" = "Verrà eliminato l'helper con permessi admin e riattivato lo sleep a coperchio chiuso.";
+"alert.installClosed.title" = "Installazione supporto coperchio chiuso";
+"alert.installClosed.text" = "Serve la password amministratore una sola volta: viene creato un helper con permessi limitati che disattiva lo sleep da coperchio (pmset disablesleep). L'helper viene usato solo mentre questa modalità è attiva e viene ripristinato automaticamente quando si disattiva o esci dall'app.";
+
+"alert.removeIntegration.title" = "Rimuovere l'integrazione %@?";
+"alert.removeIntegration.text" = "Verrà ripristinato il file:\n%@";
+"alert.installIntegration.title" = "Installare l'integrazione %@?";
+"alert.installIntegration.text" = "Verrà modificato (con backup .ephedrine-backup):\n%@\n\nL'agente segnalerà inizio e fine turno a Ephedrine, così il Mac resta sveglio solo mentre l'LLM lavora davvero. Riavvia l'agente per applicare.";
+
+"alert.customAgents.title" = "Altri agent da monitorare";
+"alert.customAgents.text" = "Pattern separati da virgola. Un processo viene riconosciuto se nome, percorso o command line contengono il pattern (case-insensitive). I pattern di 4 caratteri o meno devono corrispondere a una parola intera.";
+"alert.customAgents.placeholder" = "my-agent, llm-runner";
+
+"alert.assertions.title" = "Power assertions attive";
+"alert.assertions.text" = "Cerca «Ephedrine» nell'elenco: è l'assertion che tiene sveglio il Mac.";
+
+"alert.about.text" = "Tiene sveglio il Mac mentre girano agent di coding (opencode, codex, claude, pi, …), così gli LLM non si fermano mai durante l'inattività.\n\nCon le integrazioni attive l'agente segnala inizio e fine turno: il Mac resta sveglio solo mentre l'LLM lavora davvero.\n\nNota: con il coperchio chiuso il Mac dorme comunque, a meno di abilitare «Coperchio chiuso» o usare la modalità clamshell con display esterno e alimentazione AC.";
+
+"error.pmset" = "Errore nell'esecuzione di pmset: %@";
+
+/* ── Popover — sezioni e controlli ──────────────────────────────────── */
+"mode.off" = "Off";
+"mode.auto" = "Auto";
+"mode.always" = "Sempre";
+
+"section.agents" = "Agenti";
+"section.options" = "Opzioni";
+"section.watch" = "Agenti monitorati";
+"section.integrations" = "Integrazioni stato turni";
+"section.advanced" = "Avanzate";
+
+"agents.working" = "attivo";
+"agents.waiting" = "in attesa";
+
+"maxDuration.title" = "Limite di funzionamento";
+"maxDuration.help" = "Spegne il caffè dopo il tempo scelto, così il Mac non resta acceso all'infinito.";
+"maxDuration.unlimited" = "Illimitato";
+"maxDuration.15min" = "15 min";
+"maxDuration.30min" = "30 min";
+"maxDuration.1h" = "1 ora";
+"maxDuration.2h" = "2 ore";
+"maxDuration.4h" = "4 ore";
+"maxDuration.elapsed" = "Timer scaduto: Mac rilasciato";
+
+"options.preventDisplay" = "Mantieni display acceso";
+"options.preventDisplay.help" = "Impedisce lo spegnimento del display finché un agent sta lavorando (equivale a caffeinate -d).";
+"options.respectSession" = "Rispetta stato dei turni";
+"options.respectSession.help" = "Usa i segnali busy/idle delle integrazioni: il Mac resta sveglio solo mentre l'LLM genera davvero.";
+"options.onlyOnAC" = "Solo su alimentazione AC";
+"options.onlyOnAC.help" = "Non tiene sveglio il Mac quando è alimentato a batteria.";
+"options.closedDisplay" = "Coperchio chiuso";
+"options.closedDisplay.help" = "Disattiva lo sleep da coperchio chiuso (pmset disablesleep) mentre un agent lavora. Richiede la password admin al primo uso.";
+
+"watch.others" = "Altri agent…";
+"watch.others.help" = "Aggiungi pattern di processi da monitorare, separati da virgola.";
+
+"integrations.install" = "Installa";
+"integrations.remove" = "Rimuovi";
+"integrations.install.help" = "Modifica la configurazione dell'agente (con backup) perché segnali inizio e fine turno.";
+"integrations.remove.help" = "Rimuove l'integrazione e ripristina il file di configurazione originale.";
+"integrations.lastState" = "Ultimo stato: %@";
+"integrations.openFolder" = "Apri cartella stato";
+
+"advanced.simulateActivity" = "Simula attività utente";
+"advanced.simulateActivity.help" = "Dichiara attività utente a intervalli regolari per evitare screensaver e blocco automatico.";
+"advanced.preventSystemSleep" = "Impedisci sleep di sistema (AC)";
+"advanced.preventSystemSleep.help" = "Aggiunge l'assertion PreventSystemSleep (come caffeinate -s). Attiva solo con alimentatore collegato.";
+"advanced.cpuOnly" = "Solo con CPU attiva";
+"advanced.cpuOnly.help" = "Ignora gli stati di turno e classifica gli agent solo in base all'uso di CPU (≥3%).";
+"advanced.launchAtLogin" = "Avvia al login";
+"advanced.launchAtLogin.help" = "Avvia Ephedrine automaticamente all'accesso. Richiede l'app in /Applications.";
+"advanced.grace" = "Grazia";
+"advanced.grace.help" = "Per quanto il Mac resta sveglio dopo l'ultimo lavoro, per coprire pause brevi (LLM che ragiona, tool che riparte).";
+"advanced.poll" = "Rilevamento";
+"advanced.poll.help" = "Ogni quanto l'app controlla processi, CPU e stati di turno.";
+"advanced.activity" = "Attività utente";
+"advanced.activity.help" = "Intervallo tra due dichiarazioni di attività utente (usato con «Simula attività utente»).";
+"advanced.showAssertions" = "Mostra power assertions…";
+"advanced.removeClosedSupport" = "Rimuovi supporto coperchio chiuso…";
+"advanced.removeClosedSupport.help" = "Elimina l'helper con permessi admin e riattiva lo sleep da coperchio chiuso.";
+
+"footer.about" = "Informazioni";
+"footer.quit" = "Esci";
+
+"duration.off" = "Off";
+"duration.seconds" = "%d s";
+"duration.minutes" = "%d min";
+
+/* ── CLI / diagnostica ──────────────────────────────────────────────── */
+"cli.unknownIntegration" = "Integrazione sconosciuta: %@ (valide: codex, claude, opencode, pi)";
+"cli.integrationInstalled" = "Integrazione %@ installata: %@";
+"cli.integrationRemoved" = "Integrazione %@ rimossa: %@";
+"cli.error" = "Errore: %@";
+"cli.stateReceived" = "state ricevuti: %@";
+"session.none" = "nessuno stato ricevuto";
+
+/* ── Errori installazione integrazioni ──────────────────────────────── */
+"integration.unrecognizedNotify" = "Riga notify esistente non riconosciuta: configura manualmente il passthrough.";
+"integration.invalidClaudeSettings" = "settings.json esistente non è un JSON valido";
+
+/* ── Errori helper privilegiato ─────────────────────────────────────── */
+"helper.badUsername" = "Nome utente non compatibile con la configurazione sudoers";
+"helper.installFailed" = "Installazione annullata o non riuscita";
+"helper.uninstallFailed" = "Rimozione annullata o non riuscita";

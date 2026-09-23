@@ -81,7 +81,7 @@ struct SessionStateSnapshot {
 
     /// Short human-readable summary for the popover ("opencode=busy, codex=idle").
     var summary: String {
-        guard !states.isEmpty else { return "nessuno stato ricevuto" }
+        guard !states.isEmpty else { return L("session.none") }
         var seen = Set<String>()
         var parts: [String] = []
         for state in states.sorted(by: { $0.updated > $1.updated }) {
@@ -271,7 +271,7 @@ enum DiagnosticsCommand {
         let detector = AgentDetector()
 
         print("mode=\(settings.mode.rawValue) respectSessionState=\(settings.respectSessionState) cpuOnly=\(settings.requireCPUActivity) pattern=\(settings.enabledPatterns.count)")
-        print("state ricevuti: \(snapshot.summary)")
+        print(Lf("cli.stateReceived", snapshot.summary))
 
         // Two extra passes: CPU fractions need a previous sample to be meaningful.
         var agents = detector.detect(patterns: settings.enabledPatterns)

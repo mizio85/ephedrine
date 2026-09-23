@@ -109,9 +109,9 @@ struct MenuView: View {
             get: { model.mode },
             set: { model.delegate?.setMode($0) }
         )) {
-            Text("Off").tag(KeepAwakeMode.off)
-            Text("Auto").tag(KeepAwakeMode.auto)
-            Text("Sempre").tag(KeepAwakeMode.always)
+            Text(L("mode.off")).tag(KeepAwakeMode.off)
+            Text(L("mode.auto")).tag(KeepAwakeMode.auto)
+            Text(L("mode.always")).tag(KeepAwakeMode.always)
         }
         .pickerStyle(.segmented)
         .labelsHidden()
@@ -122,20 +122,20 @@ struct MenuView: View {
     private var maxDurationSection: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 6) {
-                Text("Limite di funzionamento")
+                Text(L("maxDuration.title"))
                     .font(.system(size: 12))
-                helpHint("Spegne il caffè dopo il tempo scelto, così il Mac non resta acceso all'infinito.")
+                helpHint(L("maxDuration.help"))
                 Spacer(minLength: 8)
                 Picker("", selection: Binding(
                     get: { model.maxDuration },
                     set: { model.delegate?.setMaxDuration($0) }
                 )) {
-                    Text("Illimitato").tag(0.0)
-                    Text("15 min").tag(900.0)
-                    Text("30 min").tag(1800.0)
-                    Text("1 ora").tag(3600.0)
-                    Text("2 ore").tag(7200.0)
-                    Text("4 ore").tag(14400.0)
+                    Text(L("maxDuration.unlimited")).tag(0.0)
+                    Text(L("maxDuration.15min")).tag(900.0)
+                    Text(L("maxDuration.30min")).tag(1800.0)
+                    Text(L("maxDuration.1h")).tag(3600.0)
+                    Text(L("maxDuration.2h")).tag(7200.0)
+                    Text(L("maxDuration.4h")).tag(14400.0)
                 }
                 .labelsHidden()
                 .pickerStyle(.menu)
@@ -143,7 +143,7 @@ struct MenuView: View {
                 .fixedSize()
             }
             if model.maxDurationElapsed {
-                Label("Timer scaduto: Mac rilasciato", systemImage: "timer")
+                Label(L("maxDuration.elapsed"), systemImage: "timer")
                     .font(.system(size: 10))
                     .foregroundStyle(.orange)
                     .padding(.leading, 0)
@@ -155,7 +155,7 @@ struct MenuView: View {
 
     private var agentsSection: some View {
         VStack(alignment: .leading, spacing: 6) {
-            sectionLabel("Agenti")
+            sectionLabel(L("section.agents"))
             ForEach(model.agentGroups) { group in
                 HStack(spacing: 8) {
                     Circle()
@@ -174,7 +174,7 @@ struct MenuView: View {
                             .font(.system(size: 10, design: .monospaced))
                             .foregroundStyle(.tertiary)
                     }
-                    Text(group.working ? "attivo" : "in attesa")
+                    Text(group.working ? L("agents.working") : L("agents.waiting"))
                         .font(.system(size: 10))
                         .foregroundStyle(.secondary)
                 }
@@ -186,21 +186,21 @@ struct MenuView: View {
 
     private var optionsSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            sectionLabel("Opzioni")
-            toggleRow("Mantieni display acceso", icon: "sun.max",
-                      help: "Impedisce lo spegnimento del display finché un agent sta lavorando (equivale a caffeinate -d).",
+            sectionLabel(L("section.options"))
+            toggleRow(L("options.preventDisplay"), icon: "sun.max",
+                      help: L("options.preventDisplay.help"),
                       get: { model.preventDisplaySleep },
                       set: { model.delegate?.setPreventDisplaySleep($0) })
-            toggleRow("Rispetta stato dei turni", icon: "arrow.triangle.2.circlepath",
-                      help: "Usa i segnali busy/idle delle integrazioni: il Mac resta sveglio solo mentre l'LLM genera davvero.",
+            toggleRow(L("options.respectSession"), icon: "arrow.triangle.2.circlepath",
+                      help: L("options.respectSession.help"),
                       get: { model.respectSessionState },
                       set: { model.delegate?.setRespectSessionState($0) })
-            toggleRow("Solo su alimentazione AC", icon: "powerplug",
-                      help: "Non tiene sveglio il Mac quando è alimentato a batteria.",
+            toggleRow(L("options.onlyOnAC"), icon: "powerplug",
+                      help: L("options.onlyOnAC.help"),
                       get: { model.onlyOnAC },
                       set: { model.delegate?.setOnlyOnAC($0) })
-            toggleRow("Coperchio chiuso", icon: "laptopcomputer",
-                      help: "Disattiva lo sleep da coperchio chiuso (pmset disablesleep) mentre un agent lavora. Richiede la password admin al primo uso.",
+            toggleRow(L("options.closedDisplay"), icon: "laptopcomputer",
+                      help: L("options.closedDisplay.help"),
                       get: { model.closedDisplayMode },
                       set: { model.delegate?.setClosedDisplayMode($0) })
             if !model.closedDisplayDetail.isEmpty {
@@ -264,14 +264,14 @@ struct MenuView: View {
                         .lineLimit(1)
                     }
                 }
-                Button("Altri agent…") { model.delegate?.editCustomAgents() }
+                Button(L("watch.others")) { model.delegate?.editCustomAgents() }
                     .buttonStyle(.link)
                     .font(.system(size: 11))
-                    .help("Aggiungi pattern di processi da monitorare, separati da virgola.")
+                    .help(L("watch.others.help"))
             }
             .padding(.top, 8)
         } label: {
-            sectionLabel("Agenti monitorati")
+            sectionLabel(L("section.watch"))
         }
     }
 
@@ -283,81 +283,81 @@ struct MenuView: View {
                         Text(row.title)
                             .font(.system(size: 12))
                         Spacer()
-                        Button(row.installed ? "Rimuovi" : "Installa") {
+                        Button(row.installed ? L("integrations.remove") : L("integrations.install")) {
                             model.delegate?.toggleIntegration(row.id)
                         }
                         .help(row.installed
-                              ? "Rimuove l'integrazione e ripristina il file di configurazione originale."
-                              : "Modifica la configurazione dell'agente (con backup) perché segnali inizio e fine turno.")
+                              ? L("integrations.remove.help")
+                              : L("integrations.install.help"))
                         .buttonStyle(.borderless)
                         .font(.system(size: 11, weight: .medium))
                         .foregroundStyle(row.installed ? Color.red : Color.accentColor)
                     }
                 }
                 if !model.sessionSummary.isEmpty {
-                    Text("Ultimo stato: \(model.sessionSummary)")
+                    Text(Lf("integrations.lastState", model.sessionSummary))
                         .font(.system(size: 10))
                         .foregroundStyle(.tertiary)
                 }
-                Button("Apri cartella stato") { model.delegate?.openStateFolder() }
+                Button(L("integrations.openFolder")) { model.delegate?.openStateFolder() }
                     .buttonStyle(.link)
                     .font(.system(size: 11))
             }
             .padding(.top, 8)
         } label: {
-            sectionLabel("Integrazioni stato turni")
+            sectionLabel(L("section.integrations"))
         }
     }
 
     private var advancedSection: some View {
         DisclosureGroup(isExpanded: $showAdvanced) {
             VStack(alignment: .leading, spacing: 8) {
-                toggleRow("Simula attività utente", icon: "hand.tap",
-                          help: "Dichiara attività utente a intervalli regolari per evitare screensaver e blocco automatico.",
+                toggleRow(L("advanced.simulateActivity"), icon: "hand.tap",
+                          help: L("advanced.simulateActivity.help"),
                           get: { model.simulateActivity },
                           set: { model.delegate?.setSimulateActivity($0) })
-                toggleRow("Impedisci sleep di sistema (AC)", icon: "moon.zzz",
-                          help: "Aggiunge l'assertion PreventSystemSleep (come caffeinate -s). Attiva solo con alimentatore collegato.",
+                toggleRow(L("advanced.preventSystemSleep"), icon: "moon.zzz",
+                          help: L("advanced.preventSystemSleep.help"),
                           get: { model.preventSystemSleepOnAC },
                           set: { model.delegate?.setPreventSystemSleepOnAC($0) })
-                toggleRow("Solo con CPU attiva", icon: "cpu",
-                          help: "Ignora gli stati di turno e classifica gli agent solo in base all'uso di CPU (≥3%).",
+                toggleRow(L("advanced.cpuOnly"), icon: "cpu",
+                          help: L("advanced.cpuOnly.help"),
                           get: { model.requireCPUActivity },
                           set: { model.delegate?.setRequireCPUActivity($0) })
-                toggleRow("Avvia al login", icon: "arrow.up.forward.app",
-                          help: "Avvia Ephedrine automaticamente all'accesso. Richiede l'app in /Applications.",
+                toggleRow(L("advanced.launchAtLogin"), icon: "arrow.up.forward.app",
+                          help: L("advanced.launchAtLogin.help"),
                           get: { model.launchAtLogin },
                           set: { model.delegate?.setLaunchAtLogin($0) })
 
                 Divider().padding(.vertical, 2)
 
-                durationRow("Grazia", help: "Per quanto il Mac resta sveglio dopo l'ultimo lavoro, per coprire pause brevi (LLM che ragiona, tool che riparte).", value: Binding(
+                durationRow(L("advanced.grace"), help: L("advanced.grace.help"), value: Binding(
                     get: { model.gracePeriod },
                     set: { model.delegate?.setGracePeriod($0) }
                 ), options: [0, 30, 60, 120, 300, 600])
-                durationRow("Rilevamento", help: "Ogni quanto l'app controlla processi, CPU e stati di turno.", value: Binding(
+                durationRow(L("advanced.poll"), help: L("advanced.poll.help"), value: Binding(
                     get: { model.pollInterval },
                     set: { model.delegate?.setPollInterval($0) }
                 ), options: [1, 2, 5, 10])
-                durationRow("Attività utente", help: "Intervallo tra due dichiarazioni di attività utente (usato con «Simula attività utente»).", value: Binding(
+                durationRow(L("advanced.activity"), help: L("advanced.activity.help"), value: Binding(
                     get: { model.activityInterval },
                     set: { model.delegate?.setActivityInterval($0) }
                 ), options: [30, 60, 120, 300])
 
-                Button("Mostra power assertions…") { model.delegate?.showAssertions() }
+                Button(L("advanced.showAssertions")) { model.delegate?.showAssertions() }
                     .buttonStyle(.link)
                     .font(.system(size: 11))
                 if model.closedDisplayInstalled {
-                    Button("Rimuovi supporto coperchio chiuso…") { model.delegate?.removeClosedDisplaySupport() }
+                    Button(L("advanced.removeClosedSupport")) { model.delegate?.removeClosedDisplaySupport() }
                         .buttonStyle(.link)
                         .font(.system(size: 11))
                         .foregroundStyle(.red)
-                        .help("Elimina l'helper con permessi admin e riattiva lo sleep da coperchio chiuso.")
+                        .help(L("advanced.removeClosedSupport.help"))
                 }
             }
             .padding(.top, 8)
         } label: {
-            sectionLabel("Avanzate")
+            sectionLabel(L("section.advanced"))
         }
     }
 
@@ -369,11 +369,11 @@ struct MenuView: View {
                 .font(.system(size: 10))
                 .foregroundStyle(.tertiary)
             Spacer()
-            Button("Informazioni") { model.delegate?.showAbout() }
+            Button(L("footer.about")) { model.delegate?.showAbout() }
                 .buttonStyle(.plain)
                 .font(.system(size: 11))
                 .foregroundStyle(.secondary)
-            Button("Esci") { model.delegate?.quit() }
+            Button(L("footer.quit")) { model.delegate?.quit() }
                 .buttonStyle(.plain)
                 .font(.system(size: 11))
                 .foregroundStyle(.secondary)
@@ -436,9 +436,9 @@ struct MenuView: View {
     }
 
     private func durationLabel(_ seconds: Double) -> String {
-        if seconds <= 0 { return "Off" }
-        if seconds < 60 { return "\(Int(seconds)) s" }
-        return "\(Int(seconds / 60)) min"
+        if seconds <= 0 { return L("duration.off") }
+        if seconds < 60 { return Lf("duration.seconds", Int(seconds)) }
+        return Lf("duration.minutes", Int(seconds / 60))
     }
 }
 

@@ -1,0 +1,163 @@
+/*
+   Ephedrine — English (base localization).
+   Keys are semantic; keep the placeholders (%d, %@) unchanged.
+*/
+
+/* ── Menu bar tooltip / one-line status ─────────────────────────────── */
+"status.off" = "Ephedrine — Off";
+"status.pausedBattery" = "Ephedrine — paused (battery)";
+"status.working" = "Ephedrine — Mac awake (%d working)";
+"status.workingWaiting" = "Ephedrine — Mac awake (%d working, %d waiting)";
+"status.graceWaiting" = "Ephedrine — Mac awake (grace, %d waiting)";
+"status.alwaysOn" = "Ephedrine — Mac awake (always on)";
+"status.grace" = "Ephedrine — Mac awake (grace)";
+"status.waitingAgents" = "Ephedrine — waiting for agents";
+"status.closedDisplaySuffix" = " · lid closed";
+
+"tooltip.battery" = "AC only: connect the charger to resume.";
+"tooltip.closedDisplay" = "Lid-close sleep disabled (pmset disablesleep).";
+"tooltip.click" = "Click for options";
+
+/* ── Popover header ─────────────────────────────────────────────────── */
+"header.timerElapsed" = "Timer expired";
+"header.timerElapsedSubtitle" = "Coffee over: Mac back in standby";
+"header.disabled" = "Disabled";
+"header.disabledSubtitle" = "No monitoring";
+"header.paused" = "Paused";
+"header.pausedSubtitle" = "AC only: connect the charger";
+"header.awake" = "Mac awake";
+"header.working" = "%@ working";
+"header.workingMany" = "%d agents working";
+"header.grace" = "Grace: %d s";
+"header.alwaysOnRemaining" = "Always on · %@ left";
+"header.alwaysOn" = "Always on";
+"header.standby" = "Standby";
+"header.waitingAgents" = "Waiting for agents";
+"header.agentsWaitingInput" = "Agents waiting for input";
+"header.closedDisplaySuffix" = " · lid closed";
+
+/* ── Lid-close (closed display) support ─────────────────────────────── */
+"closedDisplay.disabled" = "Lid-close sleep disabled";
+"closedDisplay.normal" = "Lid-close sleep normal";
+"closedDisplay.notInstalled" = "Support not installed (admin password on first use)";
+"closedDisplay.errorNotInstalled" = "Support not installed";
+"closedDisplay.errorEnable" = "Activation failed (admin support required)";
+"closedDisplay.errorRemoved" = "Support removed: lid-close sleep may stay disabled";
+
+/* ── Alerts (AppDelegate) ───────────────────────────────────────────── */
+"alert.ok" = "OK";
+"alert.cancel" = "Cancel";
+"alert.save" = "Save";
+"alert.install" = "Install";
+"alert.remove" = "Remove";
+"alert.installFailed" = "Installation failed";
+"alert.removeFailed" = "Removal failed";
+
+"alert.launchAtLogin.title" = "Launch at login unavailable";
+"alert.launchAtLogin.text" = "%@\n\nMove Ephedrine.app to /Applications and try again.";
+
+"alert.removeClosed.title" = "Remove lid-close support?";
+"alert.removeClosed.text" = "The admin helper will be deleted and normal lid-close sleep restored.";
+"alert.installClosed.title" = "Install lid-close support";
+"alert.installClosed.text" = "The administrator password is required once: a limited helper is created that disables lid-close sleep (pmset disablesleep). It is used only while this mode is active and is restored automatically when you turn it off or quit the app.";
+
+"alert.removeIntegration.title" = "Remove the %@ integration?";
+"alert.removeIntegration.text" = "The file will be restored:\n%@";
+"alert.installIntegration.title" = "Install the %@ integration?";
+"alert.installIntegration.text" = "The file will be modified (with a .ephedrine-backup backup):\n%@\n\nThe agent will report turn start and end to Ephedrine, so the Mac stays awake only while the LLM is actually working. Restart the agent to apply.";
+
+"alert.customAgents.title" = "Other agents to monitor";
+"alert.customAgents.text" = "Comma-separated patterns. A process matches if its name, path or command line contains a pattern (case-insensitive). Patterns of 4 characters or fewer must match a whole word.";
+"alert.customAgents.placeholder" = "my-agent, llm-runner";
+
+"alert.assertions.title" = "Active power assertions";
+"alert.assertions.text" = "Look for “Ephedrine” in the list: it is the assertion keeping the Mac awake.";
+
+"alert.about.text" = "Keeps the Mac awake while coding agents (opencode, codex, claude, pi, …) run, so LLMs never stop during inactivity.\n\nWith integrations enabled the agent reports turn start and end: the Mac stays awake only while the LLM is actually working.\n\nNote: with the lid closed the Mac sleeps anyway, unless “Lid closed” is enabled or clamshell mode with an external display and AC power is used.";
+
+"error.pmset" = "Error running pmset: %@";
+
+/* ── Popover — sections and controls ────────────────────────────────── */
+"mode.off" = "Off";
+"mode.auto" = "Auto";
+"mode.always" = "Always";
+
+"section.agents" = "Agents";
+"section.options" = "Options";
+"section.watch" = "Monitored agents";
+"section.integrations" = "Turn-state integrations";
+"section.advanced" = "Advanced";
+
+"agents.working" = "working";
+"agents.waiting" = "waiting";
+
+"maxDuration.title" = "Run limit";
+"maxDuration.help" = "Turns the coffee off after the chosen time, so the Mac does not stay awake forever.";
+"maxDuration.unlimited" = "Unlimited";
+"maxDuration.15min" = "15 min";
+"maxDuration.30min" = "30 min";
+"maxDuration.1h" = "1 hour";
+"maxDuration.2h" = "2 hours";
+"maxDuration.4h" = "4 hours";
+"maxDuration.elapsed" = "Timer expired: Mac released";
+
+"options.preventDisplay" = "Keep display awake";
+"options.preventDisplay.help" = "Prevents the display from sleeping while an agent is working (equivalent to caffeinate -d).";
+"options.respectSession" = "Respect turn state";
+"options.respectSession.help" = "Uses the busy/idle signals from integrations: the Mac stays awake only while the LLM is actually generating.";
+"options.onlyOnAC" = "AC power only";
+"options.onlyOnAC.help" = "Does not keep the Mac awake when running on battery.";
+"options.closedDisplay" = "Lid closed";
+"options.closedDisplay.help" = "Disables lid-close sleep (pmset disablesleep) while an agent is working. Requires the admin password on first use.";
+
+"watch.others" = "Other agents…";
+"watch.others.help" = "Add process patterns to monitor, comma separated.";
+
+"integrations.install" = "Install";
+"integrations.remove" = "Remove";
+"integrations.install.help" = "Modifies the agent configuration (with a backup) so it reports turn start and end.";
+"integrations.remove.help" = "Removes the integration and restores the original configuration file.";
+"integrations.lastState" = "Last state: %@";
+"integrations.openFolder" = "Open state folder";
+
+"advanced.simulateActivity" = "Simulate user activity";
+"advanced.simulateActivity.help" = "Declares user activity at regular intervals to avoid the screensaver and automatic lock.";
+"advanced.preventSystemSleep" = "Prevent system sleep (AC)";
+"advanced.preventSystemSleep.help" = "Adds the PreventSystemSleep assertion (like caffeinate -s). Only active on AC power.";
+"advanced.cpuOnly" = "CPU activity only";
+"advanced.cpuOnly.help" = "Ignores turn states and classifies agents only by CPU usage (≥3%).";
+"advanced.launchAtLogin" = "Launch at login";
+"advanced.launchAtLogin.help" = "Launches Ephedrine automatically at login. Requires the app in /Applications.";
+"advanced.grace" = "Grace";
+"advanced.grace.help" = "How long the Mac stays awake after the last activity, to cover short gaps (LLM thinking, tool restart).";
+"advanced.poll" = "Detection";
+"advanced.poll.help" = "How often the app checks processes, CPU and turn states.";
+"advanced.activity" = "User activity";
+"advanced.activity.help" = "Interval between two user-activity declarations (used with “Simulate user activity”).";
+"advanced.showAssertions" = "Show power assertions…";
+"advanced.removeClosedSupport" = "Remove lid-close support…";
+"advanced.removeClosedSupport.help" = "Deletes the admin helper and re-enables lid-close sleep.";
+
+"footer.about" = "About";
+"footer.quit" = "Quit";
+
+"duration.off" = "Off";
+"duration.seconds" = "%d s";
+"duration.minutes" = "%d min";
+
+/* ── CLI / diagnostics ──────────────────────────────────────────────── */
+"cli.unknownIntegration" = "Unknown integration: %@ (valid: codex, claude, opencode, pi)";
+"cli.integrationInstalled" = "%@ integration installed: %@";
+"cli.integrationRemoved" = "%@ integration removed: %@";
+"cli.error" = "Error: %@";
+"cli.stateReceived" = "states received: %@";
+"session.none" = "no state received";
+
+/* ── Integration install errors ─────────────────────────────────────── */
+"integration.unrecognizedNotify" = "Unrecognized existing notify line: configure the passthrough manually.";
+"integration.invalidClaudeSettings" = "The existing settings.json is not valid JSON";
+
+/* ── Privileged helper errors ───────────────────────────────────────── */
+"helper.badUsername" = "Username not compatible with the sudoers configuration";
+"helper.installFailed" = "Installation cancelled or failed";
+"helper.uninstallFailed" = "Removal cancelled or failed";

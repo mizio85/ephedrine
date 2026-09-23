@@ -3,12 +3,16 @@ import PackageDescription
 
 let package = Package(
     name: "Ephedrine",
+    defaultLocalization: "en",
     platforms: [
         .macOS(.v14)
     ],
     targets: [
         .executableTarget(
             name: "Ephedrine",
+            resources: [
+                .process("Resources")
+            ],
             swiftSettings: [
                 .swiftLanguageMode(.v5)
             ],

@@ -342,7 +342,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if shouldEngage {
             guard ClosedDisplayHelper.shared.isInstalled else {
                 settings.closedDisplayMode = false
-                closedDisplayError = "Supporto non installato"
+                closedDisplayError = L("closedDisplay.errorNotInstalled")
                 return
             }
             if ClosedDisplayHelper.shared.setEnabled(true) {
@@ -351,12 +351,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             } else {
                 settings.closedDisplayMode = false
                 settings.closedDisplayEngaged = false
-                closedDisplayError = "Attivazione non riuscita (serve il supporto admin)"
+                closedDisplayError = L("closedDisplay.errorEnable")
             }
         } else {
             guard ClosedDisplayHelper.shared.isInstalled else {
                 settings.closedDisplayEngaged = false
-                closedDisplayError = "Supporto rimosso: lo sleep da coperchio può restare disattivato"
+                closedDisplayError = L("closedDisplay.errorRemoved")
                 return
             }
             if ClosedDisplayHelper.shared.setEnabled(false) {
@@ -421,10 +421,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             for agent in working where !names.contains(agent.pattern) {
                 names.append(agent.pattern)
             }
-            return "Ephedrine - agent attivi: " + names.joined(separator: ", ")
+            return "Ephedrine - agents working: " + names.joined(separator: ", ")
         }
-        if settings.mode == .always { return "Ephedrine - sempre attivo" }
-        if graceRemaining(now: now) > 0 { return "Ephedrine - periodo di grazia" }
+        if settings.mode == .always { return "Ephedrine - always on" }
+        if graceRemaining(now: now) > 0 { return "Ephedrine - grace period" }
         return "Ephedrine"
     }
 
@@ -461,36 +461,37 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func tooltip() -> String {
         var lines = [statusSummary()]
         if pausedForBattery {
-            lines.append("Solo su alimentazione AC: collega il caricatore per riprendere.")
+            lines.append(L("tooltip.battery"))
         }
         if settings.closedDisplayEngaged {
-            lines.append("Sleep da coperchio disattivato (pmset disablesleep).")
+            lines.append(L("tooltip.closedDisplay"))
         }
-        lines.append("Click per le opzioni")
+        lines.append(L("tooltip.click"))
         return lines.joined(separator: "\n")
     }
 
     private var closedDisplaySuffix: String {
-        settings.closedDisplayEngaged ? " · coperchio chiuso" : ""
+        settings.closedDisplayEngaged ? L("status.closedDisplaySuffix") : ""
     }
 
     /// One-line status used both for the tooltip and (indirectly) the popover header.
     private func statusSummary() -> String {
-        if settings.mode == .off { return "Ephedrine — Off" }
-        if pausedForBattery { return "Ephedrine — in pausa (batteria)" }
+        if settings.mode == .off { return L("status.off") }
+        if pausedForBattery { return L("status.pausedBattery") }
         if isKeepingAwake {
             let working = currentAgents.filter { $0.activity == .working }.count
             let waiting = currentAgents.count - working
             if working > 0 {
-                var text = "Ephedrine — Mac sveglio (\(working) agent\(working == 1 ? "e" : "i") attiv\(working == 1 ? "o" : "i")"
-                if waiting > 0 { text += ", \(waiting) in attesa" }
-                return text + ")\(closedDisplaySuffix)"
+                let base = waiting > 0
+                    ? Lf("status.workingWaiting", working, waiting)
+                    : Lf("status.working", working)
+                return base + closedDisplaySuffix
             }
-            if waiting > 0 { return "Ephedrine — Mac sveglio (grazia, \(waiting) in attesa)\(closedDisplaySuffix)" }
-            if settings.mode == .always { return "Ephedrine — Mac sveglio (sempre attivo)\(closedDisplaySuffix)" }
-            return "Ephedrine — Mac sveglio (grazia)\(closedDisplaySuffix)"
+            if waiting > 0 { return Lf("status.graceWaiting", waiting) + closedDisplaySuffix }
+            if settings.mode == .always { return L("status.alwaysOn") + closedDisplaySuffix }
+            return L("status.grace") + closedDisplaySuffix
         }
-        return "Ephedrine — in attesa di agent"
+        return L("status.waitingAgents")
     }
 
     // MARK: - Popover model
@@ -544,22 +545,22 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             maxDurationElapsed = false
         }
         if maxDurationElapsed {
-            assign(\.statusTitle, "Timer scaduto")
-            assign(\.statusSubtitle, "Caffè terminato: Mac di nuovo in standby")
+            assign(\.statusTitle, L("header.timerElapsed"))
+            assign(\.statusSubtitle, L("header.timerElapsedSubtitle"))
             assign(\.statusSymbol, "timer")
             assign(\.statusTone, MenuModel.Tone.warning)
         } else if settings.mode == .off {
-            assign(\.statusTitle, "Disattivato")
-            assign(\.statusSubtitle, "Nessun monitoraggio")
+            assign(\.statusTitle, L("header.disabled"))
+            assign(\.statusSubtitle, L("header.disabledSubtitle"))
             assign(\.statusSymbol, "cup.and.saucer")
             assign(\.statusTone, MenuModel.Tone.off)
         } else if pausedForBattery {
-            assign(\.statusTitle, "In pausa")
-            assign(\.statusSubtitle, "Solo su AC: collega il caricatore")
+            assign(\.statusTitle, L("header.paused"))
+            assign(\.statusSubtitle, L("header.pausedSubtitle"))
             assign(\.statusSymbol, "powerplug")
             assign(\.statusTone, MenuModel.Tone.warning)
         } else if isKeepingAwake {
-            assign(\.statusTitle, "Mac sveglio")
+            assign(\.statusTitle, L("header.awake"))
             assign(\.statusSymbol, "cup.and.saucer.fill")
             assign(\.statusTone, MenuModel.Tone.active)
             let workingGroups = agentGroups.filter(\.working)
@@ -567,23 +568,23 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             if !workingGroups.isEmpty {
                 let names = workingGroups.map(\.name)
                 subtitle = names.count > 3
-                    ? "\(names.count) agent al lavoro"
-                    : names.joined(separator: ", ") + " al lavoro"
+                    ? Lf("header.workingMany", names.count)
+                    : Lf("header.working", names.joined(separator: ", "))
             } else if graceRemaining(now: now) > 0 {
                 assign(\.statusSymbol, "hourglass")
                 assign(\.statusTone, MenuModel.Tone.waiting)
-                subtitle = "Grazia: \(Int(graceRemaining(now: now).rounded())) s"
+                subtitle = Lf("header.grace", Int(graceRemaining(now: now).rounded()))
             } else if settings.maxDuration > 0 {
                 let remaining = maxDurationRemaining(now: now)
-                subtitle = "Sempre attivo · restano \(Self.shortDuration(remaining))"
+                subtitle = Lf("header.alwaysOnRemaining", Self.shortDuration(remaining))
             } else {
-                subtitle = "Sempre attivo"
+                subtitle = L("header.alwaysOn")
             }
-            if settings.closedDisplayEngaged { subtitle += " · coperchio chiuso" }
+            if settings.closedDisplayEngaged { subtitle += L("header.closedDisplaySuffix") }
             assign(\.statusSubtitle, subtitle)
         } else {
-            assign(\.statusTitle, "Standby")
-            assign(\.statusSubtitle, currentAgents.isEmpty ? "In attesa di agent" : "Agent in attesa di input")
+            assign(\.statusTitle, L("header.standby"))
+            assign(\.statusSubtitle, currentAgents.isEmpty ? L("header.waitingAgents") : L("header.agentsWaitingInput"))
             assign(\.statusSymbol, "cup.and.saucer")
             assign(\.statusTone, MenuModel.Tone.waiting)
         }
@@ -600,10 +601,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             assign(\.closedDisplayInstalled, installed)
             if installed {
                 assign(\.closedDisplayDetail, ClosedDisplayHelper.shared.systemSleepDisabled()
-                    ? "Sleep da coperchio disattivato"
-                    : "Sleep da coperchio normale")
+                    ? L("closedDisplay.disabled")
+                    : L("closedDisplay.normal"))
             } else {
-                assign(\.closedDisplayDetail, "Supporto non installato (password admin al primo uso)")
+                assign(\.closedDisplayDetail, L("closedDisplay.notInstalled"))
             }
         }
     }
@@ -698,8 +699,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         } catch {
             popover.performClose(nil)
             showSimpleAlert(
-                title: "Avvio al login non disponibile",
-                text: "\(error.localizedDescription)\n\nSposta Ephedrine.app in /Applications e riprova."
+                title: L("alert.launchAtLogin.title"),
+                text: Lf("alert.launchAtLogin.text", error.localizedDescription)
             )
         }
         tick()
@@ -732,14 +733,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         updateClosedDisplay(wantAwake: false)
 
         let alert = NSAlert()
-        alert.messageText = "Rimuovere il supporto coperchio chiuso?"
-        alert.informativeText = "Verrà eliminato l'helper con permessi admin e riattivato lo sleep a coperchio chiuso."
-        alert.addButton(withTitle: "Rimuovi")
-        alert.addButton(withTitle: "Annulla")
+        alert.messageText = L("alert.removeClosed.title")
+        alert.informativeText = L("alert.removeClosed.text")
+        alert.addButton(withTitle: L("alert.remove"))
+        alert.addButton(withTitle: L("alert.cancel"))
         NSApp.activate(ignoringOtherApps: true)
         guard alert.runModal() == .alertFirstButtonReturn else { return }
         if let error = ClosedDisplayHelper.shared.uninstall() {
-            showSimpleAlert(title: "Rimozione non riuscita", text: error)
+            showSimpleAlert(title: L("alert.removeFailed"), text: error)
         }
         tick()
     }
@@ -751,30 +752,25 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         if integration.isInstalled {
             let alert = NSAlert()
-            alert.messageText = "Rimuovere l'integrazione \(integration.title)?"
-            alert.informativeText = "Verrà ripristinato il file:\n\(integration.configPath.path)"
-            alert.addButton(withTitle: "Rimuovi")
-            alert.addButton(withTitle: "Annulla")
+            alert.messageText = Lf("alert.removeIntegration.title", integration.title)
+            alert.informativeText = Lf("alert.removeIntegration.text", integration.configPath.path)
+            alert.addButton(withTitle: L("alert.remove"))
+            alert.addButton(withTitle: L("alert.cancel"))
             NSApp.activate(ignoringOtherApps: true)
             guard alert.runModal() == .alertFirstButtonReturn else { return }
             if let error = integration.uninstall() {
-                showSimpleAlert(title: "Rimozione non riuscita", text: error)
+                showSimpleAlert(title: L("alert.removeFailed"), text: error)
             }
         } else {
             let alert = NSAlert()
-            alert.messageText = "Installare l'integrazione \(integration.title)?"
-            alert.informativeText = """
-            Verrà modificato (con backup .ephedrine-backup):
-            \(integration.configPath.path)
-
-            L'agente segnalerà inizio e fine turno ad Ephedrine, così il Mac resta sveglio solo mentre l'LLM lavora davvero. Riavvia l'agente per applicare.
-            """
-            alert.addButton(withTitle: "Installa")
-            alert.addButton(withTitle: "Annulla")
+            alert.messageText = Lf("alert.installIntegration.title", integration.title)
+            alert.informativeText = Lf("alert.installIntegration.text", integration.configPath.path)
+            alert.addButton(withTitle: L("alert.install"))
+            alert.addButton(withTitle: L("alert.cancel"))
             NSApp.activate(ignoringOtherApps: true)
             guard alert.runModal() == .alertFirstButtonReturn else { return }
             if let error = integration.install(executablePath: executablePath()) {
-                showSimpleAlert(title: "Installazione non riuscita", text: error)
+                showSimpleAlert(title: L("alert.installFailed"), text: error)
             }
         }
 
@@ -785,14 +781,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func editCustomAgents() {
         popover.performClose(nil)
         let alert = NSAlert()
-        alert.messageText = "Altri agent da monitorare"
-        alert.informativeText = "Pattern separati da virgola. Un processo viene riconosciuto se nome, percorso o command line contengono il pattern (case-insensitive). I pattern di 4 caratteri o meno devono corrispondere a una parola intera."
+        alert.messageText = L("alert.customAgents.title")
+        alert.informativeText = L("alert.customAgents.text")
         let field = NSTextField(frame: NSRect(x: 0, y: 0, width: 340, height: 24))
         field.stringValue = settings.customPatterns.joined(separator: ", ")
-        field.placeholderString = "my-agent, llm-runner"
+        field.placeholderString = L("alert.customAgents.placeholder")
         alert.accessoryView = field
-        alert.addButton(withTitle: "Salva")
-        alert.addButton(withTitle: "Annulla")
+        alert.addButton(withTitle: L("alert.save"))
+        alert.addButton(withTitle: L("alert.cancel"))
         NSApp.activate(ignoringOtherApps: true)
         guard alert.runModal() == .alertFirstButtonReturn else { return }
         settings.customPatterns = field.stringValue
@@ -811,10 +807,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func showAssertions() {
         popover.performClose(nil)
         let alert = NSAlert()
-        alert.messageText = "Power assertions attive"
-        alert.informativeText = "Cerca «Ephedrine» nell'elenco: è l'assertion che tiene sveglio il Mac."
+        alert.messageText = L("alert.assertions.title")
+        alert.informativeText = L("alert.assertions.text")
         alert.accessoryView = textViewAlertAccessory(runPMSet())
-        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: L("alert.ok"))
         NSApp.activate(ignoringOtherApps: true)
         alert.runModal()
     }
@@ -823,14 +819,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         popover.performClose(nil)
         let alert = NSAlert()
         alert.messageText = "Ephedrine"
-        alert.informativeText = """
-        Tiene sveglio il Mac mentre girano agent di coding (opencode, codex, claude, …), così gli LLM non si fermano mai durante l'inattività.
-
-        Con le integrazioni attive l'agente segnala inizio e fine turno: il Mac resta sveglio solo mentre l'LLM lavora davvero.
-
-        Nota: con il coperchio chiuso il Mac dorme comunque, a meno di abilitare «Coperchio chiuso» o usare la modalità clamshell con display esterno e alimentazione AC.
-        """
-        alert.addButton(withTitle: "OK")
+        alert.informativeText = L("alert.about.text")
+        alert.addButton(withTitle: L("alert.ok"))
         NSApp.activate(ignoringOtherApps: true)
         alert.runModal()
     }
@@ -848,14 +838,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     @discardableResult
     private func installClosedDisplaySupport() -> Bool {
         let alert = NSAlert()
-        alert.messageText = "Installazione supporto coperchio chiuso"
-        alert.informativeText = "Serve la password amministratore una sola volta: viene creato un helper con permessi limitati che disattiva lo sleep da coperchio (pmset disablesleep). L'helper viene usato solo mentre questa modalità è attiva e viene ripristinato automaticamente quando si disattiva o esci dall'app."
-        alert.addButton(withTitle: "Installa")
-        alert.addButton(withTitle: "Annulla")
+        alert.messageText = L("alert.installClosed.title")
+        alert.informativeText = L("alert.installClosed.text")
+        alert.addButton(withTitle: L("alert.install"))
+        alert.addButton(withTitle: L("alert.cancel"))
         NSApp.activate(ignoringOtherApps: true)
         guard alert.runModal() == .alertFirstButtonReturn else { return false }
         if let error = ClosedDisplayHelper.shared.install() {
-            showSimpleAlert(title: "Installazione non riuscita", text: error)
+            showSimpleAlert(title: L("alert.installFailed"), text: error)
             return false
         }
         return true
@@ -865,7 +855,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let alert = NSAlert()
         alert.messageText = title
         alert.informativeText = text
-        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: L("alert.ok"))
         NSApp.activate(ignoringOtherApps: true)
         alert.runModal()
     }
@@ -882,7 +872,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             try process.run()
             process.waitUntilExit()
         } catch {
-            return "Errore nell'esecuzione di pmset: \(error.localizedDescription)"
+            return Lf("error.pmset", error.localizedDescription)
         }
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         return String(data: data, encoding: .utf8) ?? "Output non decodificabile"
