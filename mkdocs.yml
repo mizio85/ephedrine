@@ -1,0 +1,68 @@
+site_name: Ephedrine
+site_description: Keep your Mac awake only while AI coding agents are actually working.
+site_url: https://mizio85.github.io/ephedrine/
+repo_url: https://github.com/mizio85/ephedrine
+repo_name: mizio85/ephedrine
+edit_uri: edit/main/docs/
+docs_dir: docs
+copyright: MIT licensed
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Interface: interface.md
+  - Modes: modes.md
+  - Agent detection: detection.md
+  - Agent integrations: integrations.md
+  - Lid-closed mode: closed-display.md
+  - Advanced options: settings.md
+  - CLI: cli.md
+  - Troubleshooting: troubleshooting.md
+  - FAQ: faq.md
+  - Development: development.md
+
+not_in_nav: |
+  /SUMMARY.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+
+plugins:
+  - search
