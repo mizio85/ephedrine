@@ -64,12 +64,19 @@ enum Integration: String, CaseIterable {
 
     /// Whether our marker is already present in the target file.
     var isInstalled: Bool {
+        guard let content = try? String(contentsOf: configPath, encoding: .utf8) else { return false }
+        return isInstalled(in: content)
+    }
+
+    /// Same test as `isInstalled`, decided from an already-read config file. Lets the health
+    /// check parse the content once instead of reading the file twice.
+    func isInstalled(in content: String) -> Bool {
         switch self {
         case .codex, .opencode, .pi:
-            guard let content = try? String(contentsOf: configPath, encoding: .utf8) else { return false }
             return content.contains(Self.marker)
         case .claude:
-            guard let root = Self.readJSON(configPath) else { return false }
+            guard let data = content.data(using: .utf8),
+                  let root = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { return false }
             return Self.claudeCommands(in: root).contains { $0.contains(Self.marker) }
         }
     }

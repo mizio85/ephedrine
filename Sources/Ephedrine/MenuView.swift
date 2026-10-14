@@ -52,6 +52,12 @@ struct MenuView: View {
                         .font(.system(size: 10))
                         .foregroundStyle(.orange)
                 }
+                if let warning = model.healthWarning {
+                    Label(Lf("integrations.health.warning", warning), systemImage: "wrench.and.screwdriver")
+                        .font(.system(size: 10))
+                        .foregroundStyle(.orange)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 12)
@@ -279,19 +285,29 @@ struct MenuView: View {
         DisclosureGroup(isExpanded: $showIntegrations) {
             VStack(alignment: .leading, spacing: 8) {
                 ForEach(model.integrations) { row in
-                    HStack {
-                        Text(row.title)
-                            .font(.system(size: 12))
-                        Spacer()
-                        Button(row.installed ? L("integrations.remove") : L("integrations.install")) {
-                            model.delegate?.toggleIntegration(row.id)
+                    VStack(alignment: .leading, spacing: 2) {
+                        HStack(spacing: 6) {
+                            Text(row.title)
+                                .font(.system(size: 12))
+                            healthBadge(row)
+                            Spacer()
+                            Button(row.installed ? L("integrations.remove") : L("integrations.install")) {
+                                model.delegate?.toggleIntegration(row.id)
+                            }
+                            .help(row.installed
+                                  ? L("integrations.remove.help")
+                                  : L("integrations.install.help"))
+                            .buttonStyle(.borderless)
+                            .font(.system(size: 11, weight: .medium))
+                            .foregroundStyle(row.installed ? Color.red : Color.accentColor)
                         }
-                        .help(row.installed
-                              ? L("integrations.remove.help")
-                              : L("integrations.install.help"))
-                        .buttonStyle(.borderless)
-                        .font(.system(size: 11, weight: .medium))
-                        .foregroundStyle(row.installed ? Color.red : Color.accentColor)
+                        if let problem = row.problem {
+                            Text(problem)
+                                .font(.system(size: 10))
+                                .foregroundStyle(.orange)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.leading, 18)
+                        }
                     }
                 }
                 if !model.sessionSummary.isEmpty {
@@ -306,6 +322,25 @@ struct MenuView: View {
             .padding(.top, 8)
         } label: {
             sectionLabel(L("section.integrations"))
+        }
+    }
+
+    /// Green check when an installed integration is healthy, orange warning when it needs
+    /// attention, nothing when it is simply not installed.
+    @ViewBuilder
+    private func healthBadge(_ row: MenuModel.IntegrationRow) -> some View {
+        if row.installed {
+            if let problem = row.problem {
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .font(.system(size: 10))
+                    .foregroundStyle(.orange)
+                    .help(problem)
+            } else {
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.system(size: 10))
+                    .foregroundStyle(.green)
+                    .help(L("integrations.health.ok"))
+            }
         }
     }
 

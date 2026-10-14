@@ -153,3 +153,10 @@
 "helper.badUsername" = "Kullanıcı adı sudoers yapılandırmasıyla uyumlu değil";
 "helper.installFailed" = "Yükleme iptal edildi veya başarısız";
 "helper.uninstallFailed" = "Kaldırma iptal edildi veya başarısız";
+
+/* ── Entegrasyon sağlığı (otomatik kontrol) ──────────────────────────── */
+"integrations.health.ok" = "Doğru şekilde bildiriyor";
+"integrations.health.binaryMissing" = "Çalıştırılabilir dosya yok: %@ — entegrasyonu yeniden kurun";
+"integrations.health.notExecutable" = "Çalıştırılabilir dosya çalıştırılamıyor: %@ — entegrasyonu yeniden kurun";
+"integrations.health.notReporting" = "Kurulu ama bildirmiyor — aracı yeniden başlatın veya yeniden kurun";
+"integrations.health.warning" = "Entegrasyon sorunu: %@";

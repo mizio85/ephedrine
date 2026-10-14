@@ -45,6 +45,9 @@ struct EphedrineMain {
         if arguments.contains("--dump-agents") {
             exit(DiagnosticsCommand.dumpAgents())
         }
+        if arguments.contains("--check-integrations") {
+            exit(IntegrationHealthCommand.run())
+        }
 
         // MARK: GUI mode
         // Menu bar only: `.accessory` hides the Dock icon and prevents a main window from

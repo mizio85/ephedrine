@@ -273,6 +273,13 @@ enum DiagnosticsCommand {
         print("mode=\(settings.mode.rawValue) respectSessionState=\(settings.respectSessionState) cpuOnly=\(settings.requireCPUActivity) pattern=\(settings.enabledPatterns.count)")
         print(Lf("cli.stateReceived", snapshot.summary))
 
+        // Integration health: file checks plus the current "busy but silent" flag.
+        let health = IntegrationHealthMonitor.shared
+        health.refreshStatic(force: true)
+        for integration in Integration.allCases {
+            print("  integration=\(integration.rawValue) health=\(health.health(of: integration))")
+        }
+
         // Two extra passes: CPU fractions need a previous sample to be meaningful.
         var agents = detector.detect(patterns: settings.enabledPatterns)
         for _ in 0..<2 {

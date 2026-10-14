@@ -153,3 +153,10 @@
 "helper.badUsername" = "Nombre de usuario no compatible con la configuración de sudoers";
 "helper.installFailed" = "Instalación cancelada o fallida";
 "helper.uninstallFailed" = "Eliminación cancelada o fallida";
+
+/* ── Estado de la integración (comprobación automática) ──────────────── */
+"integrations.health.ok" = "Informa correctamente";
+"integrations.health.binaryMissing" = "Falta el binario: %@ — reinstala la integración";
+"integrations.health.notExecutable" = "Binario no ejecutable: %@ — reinstala la integración";
+"integrations.health.notReporting" = "Instalada pero no informa — reinicia el agente o reinstala";
+"integrations.health.warning" = "Problema de integración: %@";

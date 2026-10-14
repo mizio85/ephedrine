@@ -153,3 +153,10 @@
 "helper.badUsername" = "Nazwa użytkownika niezgodna z konfiguracją sudoers";
 "helper.installFailed" = "Instalacja anulowana lub niepowodzenie";
 "helper.uninstallFailed" = "Usuwanie anulowane lub niepowodzenie";
+
+/* ── Stan integracji (automatyczne sprawdzanie) ──────────────────────── */
+"integrations.health.ok" = "Zgłasza poprawnie";
+"integrations.health.binaryMissing" = "Brak pliku binarnego: %@ — zainstaluj integrację ponownie";
+"integrations.health.notExecutable" = "Plik binarny nie jest wykonywalny: %@ — zainstaluj integrację ponownie";
+"integrations.health.notReporting" = "Zainstalowana, ale nie zgłasza — zrestartuj agenta lub zainstaluj ponownie";
+"integrations.health.warning" = "Problem z integracją: %@";

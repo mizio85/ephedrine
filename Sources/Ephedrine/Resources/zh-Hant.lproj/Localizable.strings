@@ -153,3 +153,10 @@
 "helper.badUsername" = "使用者名稱與 sudoers 設定不相容";
 "helper.installFailed" = "安裝已取消或失敗";
 "helper.uninstallFailed" = "移除已取消或失敗";
+
+/* ── 整合健康檢查（自動） ─────────────────────────────────────────── */
+"integrations.health.ok" = "正常回報";
+"integrations.health.binaryMissing" = "缺少可執行檔：%@ — 請重新安裝整合";
+"integrations.health.notExecutable" = "可執行檔無法執行：%@ — 請重新安裝整合";
+"integrations.health.notReporting" = "已安裝但未回報 — 請重新啟動代理或重新安裝";
+"integrations.health.warning" = "整合問題：%@";

@@ -58,6 +58,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private let settings = Settings.shared
     private let power = PowerManager()
     private let detector = AgentDetector()
+    private let integrationHealth = IntegrationHealthMonitor.shared
 
     // UI
     private var statusItem: NSStatusItem!
@@ -163,6 +164,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if popover.isShown {
             popover.performClose(nil)
         } else {
+            // Fresh health-check pass when the user opens the panel (user-driven, not background).
+            integrationHealth.refreshStatic(force: true)
             refreshModel(full: true) // heavy sections (integrations, pmset state) are read on open
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
             popover.contentViewController?.view.window?.makeKey()
@@ -214,6 +217,19 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
         currentAgents = agents
         if !working.isEmpty { lastAgentSeen = now }
+
+        // 3b. Integration health. The file checks are throttled and only run when there is a
+        // reason to look (an agent is running or the popover is open); the runtime check only
+        // reuses the data already collected above.
+        if !currentAgents.isEmpty || popover.isShown {
+            integrationHealth.refreshStatic(now: now)
+        }
+        integrationHealth.observe(
+            agents: currentAgents,
+            snapshot: sessionSnapshot,
+            active: settings.respectSessionState,
+            now: now
+        )
 
         // 4. Decision.
         let withinGrace = graceRemaining(now: now) > 0
@@ -466,6 +482,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if settings.closedDisplayEngaged {
             lines.append(L("tooltip.closedDisplay"))
         }
+        // Automatic integration health warning, so a silent hook is noticed without opening the panel.
+        if let problem = integrationHealth.problemSummaries().first {
+            lines.append(Lf("integrations.health.warning", problem))
+        }
         lines.append(L("tooltip.click"))
         return lines.joined(separator: "\n")
     }
@@ -591,11 +611,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Expensive sections, only while the popover is visible.
         if full {
-            let integrations = Integration.allCases.map {
-                MenuModel.IntegrationRow(id: $0.rawValue, title: $0.title, installed: $0.isInstalled)
+            let integrations = Integration.allCases.map { integration in
+                MenuModel.IntegrationRow(
+                    id: integration.rawValue,
+                    title: integration.title,
+                    installed: integration.isInstalled,
+                    problem: integrationHealth.health(of: integration).message
+                )
             }
             assign(\.integrations, integrations)
             assign(\.sessionSummary, sessionSnapshot.summary)
+            assign(\.healthWarning, integrationHealth.problemSummaries().first)
 
             let installed = ClosedDisplayHelper.shared.isInstalled
             assign(\.closedDisplayInstalled, installed)
@@ -774,6 +800,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
 
+        // The config file changed: re-evaluate immediately instead of waiting for the throttle.
+        integrationHealth.refreshStatic(force: true)
         tick()
     }
 

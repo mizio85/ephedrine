@@ -153,3 +153,10 @@
 "helper.badUsername" = "ユーザー名が sudoers 設定と互換性がありません";
 "helper.installFailed" = "インストールがキャンセルまたは失敗しました";
 "helper.uninstallFailed" = "削除がキャンセルまたは失敗しました";
+
+/* ── 統合のヘルスチェック（自動確認） ─────────────────────────────── */
+"integrations.health.ok" = "正しく報告しています";
+"integrations.health.binaryMissing" = "実行ファイルが見つかりません: %@ — 統合を再インストールしてください";
+"integrations.health.notExecutable" = "実行ファイルを実行できません: %@ — 統合を再インストールしてください";
+"integrations.health.notReporting" = "インストール済みですが報告がありません — エージェントを再起動するか再インストールしてください";
+"integrations.health.warning" = "統合の問題: %@";

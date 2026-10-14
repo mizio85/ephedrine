@@ -45,6 +45,8 @@ final class MenuModel {
         let id: String
         let title: String
         let installed: Bool
+        /// Non-nil when the installed integration needs attention (localized explanation).
+        let problem: String?
     }
 
     /// One checkable entry of the "Agenti monitorati" grid.
@@ -90,6 +92,8 @@ final class MenuModel {
     var watchItems: [WatchItem] = []
     var integrations: [IntegrationRow] = []
     var sessionSummary = ""
+    /// First health problem among the integrations (shown as a banner); `nil` when all is well.
+    var healthWarning: String?
 
     /// Version shown in the footer (`dev` when running from a raw binary).
     var version: String {

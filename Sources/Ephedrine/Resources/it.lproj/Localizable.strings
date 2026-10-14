@@ -161,3 +161,10 @@
 "helper.badUsername" = "Nome utente non compatibile con la configurazione sudoers";
 "helper.installFailed" = "Installazione annullata o non riuscita";
 "helper.uninstallFailed" = "Rimozione annullata o non riuscita";
+
+/* ── Salute integrazioni (controllo automatico) ──────────────────────── */
+"integrations.health.ok" = "Segnala correttamente";
+"integrations.health.binaryMissing" = "Eseguibile mancante: %@ — reinstalla l'integrazione";
+"integrations.health.notExecutable" = "Eseguibile non avviabile: %@ — reinstalla l'integrazione";
+"integrations.health.notReporting" = "Installata ma non segnala — riavvia l'agente o reinstalla";
+"integrations.health.warning" = "Problema integrazione: %@";

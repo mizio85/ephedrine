@@ -11,6 +11,7 @@ immediately.
 | `Ephedrine --install-integration <codex\|claude\|opencode\|pi>` | Installs the integration |
 | `Ephedrine --uninstall-integration <codex\|claude\|opencode\|pi>` | Removes the integration |
 | `Ephedrine --dump-agents` | Prints detected processes, CPU and session states (debugging) |
+| `Ephedrine --check-integrations` | Prints the integration health and exits non-zero if something needs attention |
 
 ## `--report`
 
@@ -47,6 +48,10 @@ Prints what the detector sees, for debugging:
 ```
 mode=auto respectSessionState=true cpuOnly=false pattern=19
 states received: opencode=busy
+  integration=codex health=notInstalled
+  integration=claude health=notInstalled
+  integration=opencode health=ok
+  integration=pi health=ok
   pattern=opencode pid=98373 name=node cpu=0.412 state=busy path=…/node
   pattern=pi       pid=14315 name=node cpu=0.000 state=idle path=…/node
 ```
@@ -55,3 +60,18 @@ states received: opencode=busy
 - `cpu` is a fraction of one core.
 
 It performs a couple of extra sampling passes (a few seconds) so the CPU column is meaningful.
+
+## `--check-integrations`
+
+Runs the same automatic [health check](integrations.md#automatic-health-check) on demand and prints
+one line per integration:
+
+```
+Codex: not installed
+Claude Code: not installed
+opencode: ok
+pi: Binary missing: /Applications/Ephedrine.app/Contents/MacOS/Ephedrine — reinstall the integration
+```
+
+The exit code is `0` when every installed integration is healthy and `1` when at least one needs
+attention, so it can be used from a script or a login check.

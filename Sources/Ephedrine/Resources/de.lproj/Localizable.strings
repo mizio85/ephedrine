@@ -153,3 +153,10 @@
 "helper.badUsername" = "Benutzername ist mit der sudoers-Konfiguration nicht kompatibel";
 "helper.installFailed" = "Installation abgebrochen oder fehlgeschlagen";
 "helper.uninstallFailed" = "Entfernen abgebrochen oder fehlgeschlagen";
+
+/* ── Integrationszustand (automatische Prüfung) ──────────────────────── */
+"integrations.health.ok" = "Meldet korrekt";
+"integrations.health.binaryMissing" = "Binary fehlt: %@ — Integration neu installieren";
+"integrations.health.notExecutable" = "Binary nicht ausführbar: %@ — Integration neu installieren";
+"integrations.health.notReporting" = "Installiert, meldet aber nicht — Agent neu starten oder neu installieren";
+"integrations.health.warning" = "Integrationsproblem: %@";

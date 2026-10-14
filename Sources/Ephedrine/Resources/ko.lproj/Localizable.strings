@@ -153,3 +153,10 @@
 "helper.badUsername" = "사용자 이름이 sudoers 구성과 호환되지 않습니다";
 "helper.installFailed" = "설치가 취소되었거나 실패했습니다";
 "helper.uninstallFailed" = "제거가 취소되었거나 실패했습니다";
+
+/* ── 통합 상태 검사(자동 확인) ────────────────────────────────────── */
+"integrations.health.ok" = "정상 보고 중";
+"integrations.health.binaryMissing" = "실행 파일 없음: %@ — 통합을 다시 설치하세요";
+"integrations.health.notExecutable" = "실행 파일을 실행할 수 없음: %@ — 통합을 다시 설치하세요";
+"integrations.health.notReporting" = "설치되었지만 보고하지 않음 — 에이전트를 다시 시작하거나 재설치하세요";
+"integrations.health.warning" = "통합 문제: %@";

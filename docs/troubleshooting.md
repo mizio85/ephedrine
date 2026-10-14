@@ -53,6 +53,10 @@ launch.
 Reinstall them: the hook/plugin contains the absolute path of the binary. Use the popover or the
 [CLI](cli.md).
 
+The app detects this automatically: it flags the integration in the popover (and the tooltip) and
+`Ephedrine --check-integrations` exits non-zero with the offending path. See
+[Automatic health check](integrations.md#automatic-health-check).
+
 ## "Ephedrine is damaged and can't be opened"
 
 That is Gatekeeper on a not-notarized app. See

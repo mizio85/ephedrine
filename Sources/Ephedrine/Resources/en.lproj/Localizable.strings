@@ -161,3 +161,10 @@
 "helper.badUsername" = "Username not compatible with the sudoers configuration";
 "helper.installFailed" = "Installation cancelled or failed";
 "helper.uninstallFailed" = "Removal cancelled or failed";
+
+/* ── Integration health (automatic check) ───────────────────────────── */
+"integrations.health.ok" = "Reporting correctly";
+"integrations.health.binaryMissing" = "Binary missing: %@ — reinstall the integration";
+"integrations.health.notExecutable" = "Binary not executable: %@ — reinstall the integration";
+"integrations.health.notReporting" = "Installed but not reporting — restart the agent or reinstall";
+"integrations.health.warning" = "Integration problem: %@";

@@ -153,3 +153,10 @@
 "helper.badUsername" = "Gebruikersnaam niet compatibel met de sudoers-configuratie";
 "helper.installFailed" = "Installatie geannuleerd of mislukt";
 "helper.uninstallFailed" = "Verwijderen geannuleerd of mislukt";
+
+/* ── Integratie-status (automatische controle) ───────────────────────── */
+"integrations.health.ok" = "Meldt correct";
+"integrations.health.binaryMissing" = "Binary ontbreekt: %@ — herinstalleer de integratie";
+"integrations.health.notExecutable" = "Binary niet uitvoerbaar: %@ — herinstalleer de integratie";
+"integrations.health.notReporting" = "Geïnstalleerd maar meldt niet — herstart de agent of herinstalleer";
+"integrations.health.warning" = "Integratieprobleem: %@";

@@ -96,6 +96,29 @@ You can also report state yourself from any script or daemon:
 "/Applications/Ephedrine.app/Contents/MacOS/Ephedrine" --report idle --agent my-agent
 ```
 
+## Automatic health check
+
+Ephedrine checks the installed integrations on its own, so a silent hook is noticed before it
+becomes a problem. It runs on the existing monitor loop and adds no timer, process or socket:
+
+- **Static check** — the executable path baked into each hook/plugin still exists and is
+executable. This catches the common "the app was moved after installing" failure. It runs at most
+once every **30 s**, and only while an agent is running or the popover is open; each config file is
+re-read only when it actually changed (mtime + size).
+- **Runtime check** — an integration that reports *both* transitions (Claude Code, opencode, pi) is
+flagged as *installed but not reporting* when its agent is busy for **20 s** without a single state
+file. Codex is excluded on purpose: its `notify` fires only at the end of a turn.
+
+When something needs attention the popover shows an orange warning next to the integration and in
+the panel, and the menu bar tooltip mentions it too. You can also ask from the CLI:
+
+```bash
+/Applications/Ephedrine.app/Contents/MacOS/Ephedrine --check-integrations
+```
+
+The usual fix is to reinstall the integration (or restart the agent). The path is embedded in the
+generated file, so moving the app always requires a reinstall.
+
 ## Debugging
 
 ```bash
