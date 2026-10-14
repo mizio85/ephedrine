@@ -175,6 +175,7 @@ struct MenuView: View {
                             .foregroundStyle(.tertiary)
                     }
                     Spacer(minLength: 0)
+                    sourceTag(group.source)
                     if group.cpuPercent > 0.005 {
                         Text(String(format: "%.0f%%", group.cpuPercent * 100))
                             .font(.system(size: 10, design: .monospaced))
@@ -185,6 +186,24 @@ struct MenuView: View {
                         .foregroundStyle(.secondary)
                 }
             }
+        }
+    }
+
+    /// Small tag telling whether the working/waiting verdict came from the integration's turn
+    /// state or from the CPU fallback, so the two are distinguishable at a glance.
+    @ViewBuilder
+    private func sourceTag(_ source: MenuModel.AgentSource) -> some View {
+        switch source {
+        case .integration:
+            Text(L("agents.source.integration"))
+                .font(.system(size: 9, weight: .medium))
+                .foregroundStyle(.tertiary)
+                .help(L("agents.source.integration.help"))
+        case .cpu:
+            Text(L("agents.source.cpu"))
+                .font(.system(size: 9, weight: .medium))
+                .foregroundStyle(.tertiary)
+                .help(L("agents.source.cpu.help"))
         }
     }
 

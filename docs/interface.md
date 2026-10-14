@@ -34,6 +34,14 @@ remaining run-limit time.
 One row per detected agent pattern, aggregated across processes (`name ×N`), with a colored dot
 (green = working, orange = waiting), the CPU percentage when non-trivial, and the state.
 
+A small tag next to each row tells you **which rule** decided the state:
+
+- **integration** — the agent's busy/idle turn state was used;
+- **CPU** — no turn state was available, so Ephedrine classified by CPU usage.
+
+Hover the tag for an explanation. The same information is in `Ephedrine --dump-agents`, where the
+`state=` column is `busy`/`idle` when an integration is reporting and `-` when it is not.
+
 ### Options
 
 The four primary toggles:
@@ -50,7 +58,9 @@ The four primary toggles:
 - **Monitored agents** — a checkbox grid of every built-in and custom pattern, plus
   **Other agents…** to add your own. Disabling a pattern stops Ephedrine from watching it.
 - **Turn-state integrations** — install/remove the integration for each supported agent, and open
-  the state folder for debugging. Shows the last reported state.
+  the state folder for debugging. Shows the last reported state and an automatic
+  [health check](integrations.md#automatic-health-check) (green check = reporting correctly,
+  orange warning = needs attention, with the reason inline).
 - **Advanced** — secondary options, intervals and maintenance actions:
 
     | Setting | Purpose |

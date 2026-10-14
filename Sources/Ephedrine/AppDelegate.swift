@@ -544,16 +544,25 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         assign(\.watchItems, watchItems)
 
         // Aggregate detected processes per pattern (keeps the list readable: one row per agent).
-        var groups: [String: (count: Int, working: Bool, cpu: Double)] = [:]
+        var groups: [String: (count: Int, working: Bool, cpu: Double, usesState: Bool)] = [:]
         for agent in currentAgents {
-            var entry = groups[agent.pattern] ?? (0, false, 0)
+            var entry = groups[agent.pattern] ?? (0, false, 0, false)
             entry.count += 1
             entry.working = entry.working || agent.activity == .working
             entry.cpu += agent.cpuPercent ?? 0
+            // The integration is "in use" for a group as soon as one of its processes has a state.
+            entry.usesState = entry.usesState || (sessionSnapshot.state(for: agent) != nil)
             groups[agent.pattern] = entry
         }
         let agentGroups = groups
-            .map { MenuModel.AgentGroup(id: $0.key, name: $0.key, count: $0.value.count, working: $0.value.working, cpuPercent: $0.value.cpu) }
+            .map { MenuModel.AgentGroup(
+                id: $0.key,
+                name: $0.key,
+                count: $0.value.count,
+                working: $0.value.working,
+                cpuPercent: $0.value.cpu,
+                source: $0.value.usesState ? .integration : .cpu
+            ) }
             .sorted { ($0.working ? 0 : 1, $0.name) < ($1.working ? 0 : 1, $1.name) }
         assign(\.agentGroups, agentGroups)
 

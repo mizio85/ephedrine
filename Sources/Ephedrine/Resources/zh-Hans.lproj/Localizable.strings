@@ -85,6 +85,10 @@
 
 "agents.working" = "运行中";
 "agents.waiting" = "等待中";
+"agents.source.integration" = "集成";
+"agents.source.cpu" = "CPU";
+"agents.source.integration.help" = "正在使用集成报告的回合状态。";
+"agents.source.cpu.help" = "没有回合状态：按 CPU 使用率分类。";
 
 "maxDuration.title" = "运行时限";
 "maxDuration.help" = "在所选时间后关闭咖啡，这样 Mac 不会一直保持唤醒。";

@@ -85,6 +85,10 @@
 
 "agents.working" = "çalışıyor";
 "agents.waiting" = "bekliyor";
+"agents.source.integration" = "entegrasyon";
+"agents.source.cpu" = "CPU";
+"agents.source.integration.help" = "Entegrasyonun tur durumu kullanılıyor.";
+"agents.source.cpu.help" = "Tur durumu yok: CPU kullanımına göre sınıflandırılıyor.";
 
 "maxDuration.title" = "Çalışma süresi sınırı";
 "maxDuration.help" = "Kahveyi seçilen süre sonunda kapatır, böylece Mac sonsuza dek uyanık kalmaz.";

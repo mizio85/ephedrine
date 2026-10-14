@@ -85,6 +85,10 @@
 
 "agents.working" = "執行中";
 "agents.waiting" = "等待中";
+"agents.source.integration" = "整合";
+"agents.source.cpu" = "CPU";
+"agents.source.integration.help" = "正在使用整合回報的回合狀態。";
+"agents.source.cpu.help" = "沒有回合狀態：依 CPU 使用率分類。";
 
 "maxDuration.title" = "執行時限";
 "maxDuration.help" = "在選定時間後關閉咖啡，這樣 Mac 不會一直保持喚醒。";

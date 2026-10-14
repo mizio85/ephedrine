@@ -85,6 +85,10 @@
 
 "agents.working" = "en cours";
 "agents.waiting" = "en attente";
+"agents.source.integration" = "intégration";
+"agents.source.cpu" = "CPU";
+"agents.source.integration.help" = "L’état de tour fourni par l’intégration est utilisé.";
+"agents.source.cpu.help" = "Aucun état de tour : classification selon l’utilisation du CPU.";
 
 "maxDuration.title" = "Limite de fonctionnement";
 "maxDuration.help" = "Éteint le café après la durée choisie, pour que le Mac ne reste pas éveillé indéfiniment.";

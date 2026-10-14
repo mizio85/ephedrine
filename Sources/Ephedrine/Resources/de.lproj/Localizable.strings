@@ -85,6 +85,10 @@
 
 "agents.working" = "aktiv";
 "agents.waiting" = "wartend";
+"agents.source.integration" = "Integration";
+"agents.source.cpu" = "CPU";
+"agents.source.integration.help" = "Der Turn-Status der Integration wird verwendet.";
+"agents.source.cpu.help" = "Kein Turn-Status verfügbar: Klassifizierung anhand der CPU-Auslastung.";
 
 "maxDuration.title" = "Laufzeitlimit";
 "maxDuration.help" = "Schaltet den Kaffee nach der gewählten Zeit aus, damit der Mac nicht dauerhaft wach bleibt.";

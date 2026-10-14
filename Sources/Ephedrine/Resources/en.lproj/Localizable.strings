@@ -90,6 +90,10 @@
 
 "agents.working" = "working";
 "agents.waiting" = "waiting";
+"agents.source.integration" = "integration";
+"agents.source.cpu" = "CPU";
+"agents.source.integration.help" = "Turn state from the agent integration is being used.";
+"agents.source.cpu.help" = "No turn state available: classifying by CPU usage.";
 
 "maxDuration.title" = "Run limit";
 "maxDuration.help" = "Turns the coffee off after the chosen time, so the Mac does not stay awake forever.";

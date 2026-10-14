@@ -31,6 +31,14 @@ final class MenuModel {
         case warning
     }
 
+    /// Where the working/waiting verdict for a group came from.
+    enum AgentSource {
+        /// The agent integration reported a turn state (busy/idle).
+        case integration
+        /// No turn state: the verdict is based on CPU usage.
+        case cpu
+    }
+
     /// One row of the "Agenti" section: all processes of the same pattern, aggregated.
     struct AgentGroup: Identifiable, Equatable {
         let id: String
@@ -38,6 +46,8 @@ final class MenuModel {
         let count: Int
         let working: Bool
         let cpuPercent: Double
+        /// Which rule decided `working` (integration turn state vs CPU fallback).
+        let source: AgentSource
     }
 
     /// One row of the "Integrazioni" section.

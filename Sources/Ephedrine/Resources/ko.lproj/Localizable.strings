@@ -85,6 +85,10 @@
 
 "agents.working" = "실행 중";
 "agents.waiting" = "대기 중";
+"agents.source.integration" = "통합";
+"agents.source.cpu" = "CPU";
+"agents.source.integration.help" = "통합이 보고한 턴 상태를 사용합니다.";
+"agents.source.cpu.help" = "턴 상태가 없어 CPU 사용량으로 판단합니다.";
 
 "maxDuration.title" = "실행 시간 제한";
 "maxDuration.help" = "선택한 시간이 지나면 커피를 끄므로 Mac이 무한정 깨어 있지 않습니다.";

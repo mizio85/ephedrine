@@ -85,6 +85,10 @@
 
 "agents.working" = "actief";
 "agents.waiting" = "wachtend";
+"agents.source.integration" = "integratie";
+"agents.source.cpu" = "CPU";
+"agents.source.integration.help" = "De turn-status van de integratie wordt gebruikt.";
+"agents.source.cpu.help" = "Geen turn-status: classificatie op basis van CPU-gebruik.";
 
 "maxDuration.title" = "Looptijdslimiet";
 "maxDuration.help" = "Zet de koffie uit na de gekozen tijd, zodat de Mac niet oneindig wakker blijft.";

@@ -85,6 +85,10 @@
 
 "agents.working" = "pracuje";
 "agents.waiting" = "oczekuje";
+"agents.source.integration" = "integracja";
+"agents.source.cpu" = "CPU";
+"agents.source.integration.help" = "Używany jest stan tury zgłaszany przez integrację.";
+"agents.source.cpu.help" = "Brak stanu tury: klasyfikacja na podstawie użycia CPU.";
 
 "maxDuration.title" = "Limit czasu działania";
 "maxDuration.help" = "Wyłącza kawę po wybranym czasie, aby Mac nie pozostał aktywny bez końca.";

@@ -85,6 +85,10 @@
 
 "agents.working" = "実行中";
 "agents.waiting" = "待機中";
+"agents.source.integration" = "統合";
+"agents.source.cpu" = "CPU";
+"agents.source.integration.help" = "統合が報告するターン状態を使用しています。";
+"agents.source.cpu.help" = "ターン状態がないため、CPU 使用率で判定しています。";
 
 "maxDuration.title" = "動作時間の上限";
 "maxDuration.help" = "選択した時間の後にコーヒーを切るので、Mac がずっと起きたままになりません。";

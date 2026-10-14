@@ -85,6 +85,10 @@
 
 "agents.working" = "работает";
 "agents.waiting" = "ожидает";
+"agents.source.integration" = "интеграция";
+"agents.source.cpu" = "CPU";
+"agents.source.integration.help" = "Используется состояние хода от интеграции.";
+"agents.source.cpu.help" = "Нет состояния хода: классификация по загрузке CPU.";
 
 "maxDuration.title" = "Ограничение времени работы";
 "maxDuration.help" = "Отключает кофе по истечении выбранного времени, чтобы Mac не бодрствовал бесконечно.";

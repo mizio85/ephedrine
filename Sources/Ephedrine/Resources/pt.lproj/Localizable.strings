@@ -85,6 +85,10 @@
 
 "agents.working" = "a trabalhar";
 "agents.waiting" = "em espera";
+"agents.source.integration" = "integração";
+"agents.source.cpu" = "CPU";
+"agents.source.integration.help" = "Está a ser usado o estado de turno da integração.";
+"agents.source.cpu.help" = "Sem estado de turno: classificação pelo uso de CPU.";
 
 "maxDuration.title" = "Limite de funcionamento";
 "maxDuration.help" = "Desliga o café após o tempo escolhido, para que o Mac não fique acordado indefinidamente.";
