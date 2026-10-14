@@ -13,6 +13,12 @@ Ephedrine sits in between: it detects agent processes, understands their **turn 
 (busy = generating, idle = waiting for input) through native integrations, and keeps the Mac awake
 only while work is in progress.
 
+> 📖 **Full documentation: <https://mizio85.github.io/ephedrine/>**
+
+The [guide](https://mizio85.github.io/ephedrine/) covers installation, the interface, every mode and
+option, agent integrations, lid-closed mode, the CLI and troubleshooting. Its sources live in
+[`docs/`](docs/index.md).
+
 ![Ephedrine popover](docs/popover.png)
 
 ---
