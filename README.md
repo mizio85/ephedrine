@@ -11,7 +11,9 @@ just waiting for your next prompt.
 
 Ephedrine sits in between: it detects agent processes, understands their **turn lifecycle**
 (busy = generating, idle = waiting for input) through native integrations, and keeps the Mac awake
-only while work is in progress.
+only while work is in progress. It also tells you **which signal decided** — the integration or the
+CPU fallback — and checks the installed integrations so a silently broken hook cannot let the Mac
+sleep mid-run.
 
 > 📖 **Full documentation: <https://mizio85.github.io/ephedrine/>**
 
@@ -59,7 +61,11 @@ artifact even without a tag.
 - **Turn-state aware** — opencode, Claude Code, Codex and pi report turn start/end to Ephedrine
   through their own official extension points (plugin / hooks / notify). No polling of log files.
 - **CPU + process fallback** — agents without an integration are classified by process presence
-  and CPU usage, so nothing is missed.
+  and CPU usage, so nothing is missed. Each agent row is tagged **integration** or **CPU**, so you
+  always know which signal produced the current state.
+- **Integration health check** — Ephedrine verifies on its own that the installed hooks/plugins
+  still work (embedded binary present and executable, agent not silently silent) and warns in the
+  popover and the tooltip before a broken integration can let the Mac sleep mid-run.
 - **Grace period** — after the last activity the Mac stays awake for a configurable grace window
   (default 2 minutes), so short gaps never interrupt a run.
 - **Closed-display mode** — optionally disable lid-close sleep (`pmset disablesleep`) while working,
@@ -70,7 +76,8 @@ artifact even without a tag.
 - **Safety rails** — AC-only mode, prevent-display-sleep, simulate user activity (no screensaver/lock),
   crash-safe restoration of the lid setting.
 - **Zero background services** — a single accessory app; no Dock icon, no windows, no daemons.
-- **Scriptable** — the same binary is a CLI (`--report`, `--install-integration`, `--dump-agents`).
+- **Scriptable** — the same binary is a CLI (`--report`, `--install-integration`, `--dump-agents`,
+  `--check-integrations`).
 
 ---
 
@@ -182,6 +189,10 @@ After the last "working" observation the assertions stay engaged for the **grace
 (default 120 s), which covers LLM thinking time and tool restarts. In `Auto` mode the Mac is
 released when every agent is waiting.
 
+The popover tags every agent row with **integration** or **CPU** to show which rule produced the
+current state (hover the tag for the explanation); `--dump-agents` prints the same information as
+a `state=` column (`busy`/`idle` when an integration is reporting, `-` when it is not).
+
 ---
 
 ## Agent integrations
@@ -290,6 +301,7 @@ coperchio chiuso…**.
 | `Ephedrine --install-integration <codex\|claude\|opencode\|pi>` | Installs the integration |
 | `Ephedrine --uninstall-integration <codex\|claude\|opencode\|pi>` | Removes the integration |
 | `Ephedrine --dump-agents` | Prints detected processes, CPU and session states (debugging) |
+| `Ephedrine --check-integrations` | Prints the integration health; exits non-zero if something needs attention |
 
 `--report` attributes the state automatically by walking the parent process chain looking for a
 process whose name matches `--agent`, or accepts an explicit `--pid`.

@@ -10,7 +10,8 @@ hours while the agent is just waiting for your next prompt.
 
 Ephedrine sits in between: it detects the agent processes, understands their **turn lifecycle**
 (busy = generating, idle = waiting for input) through native integrations, and keeps the Mac awake
-only while work is in progress.
+only while work is in progress. It shows **which signal decided** (integration or CPU fallback) and
+verifies the installed integrations, so a silently broken hook cannot let the Mac sleep mid-run.
 
 ![Ephedrine popover](popover.png)
 
@@ -19,7 +20,11 @@ only while work is in progress.
 - **Turn-state aware** — opencode, Claude Code, Codex and pi report turn start/end to Ephedrine
   through their own official extension points (plugin / hooks / extension / notify). No log scraping.
 - **CPU + process fallback** — agents without an integration are classified by process presence and
-  CPU usage, so nothing is missed.
+  CPU usage, so nothing is missed. Each agent row is tagged **integration** or **CPU**, so you
+  always know which signal produced the current state.
+- **Integration health check** — Ephedrine verifies on its own that the installed hooks/plugins
+  still work (embedded binary present and executable, agent not silently silent) and warns in the
+  popover and the tooltip before a broken integration can let the Mac sleep mid-run.
 - **Grace period** — after the last activity the Mac stays awake for a configurable window
   (default 2 minutes), so short gaps never interrupt a run.
 - **Lid-closed mode** — optionally disable lid-close sleep (`pmset disablesleep`) while working,
@@ -27,7 +32,8 @@ only while work is in progress.
 - **Safety rails** — AC-only mode, prevent display sleep, simulate user activity (no screensaver /
   lock), crash-safe restoration.
 - **Zero background services** — a single accessory app; no Dock icon, no windows, no daemons.
-- **Scriptable** — the same binary is a CLI (`--report`, `--install-integration`, `--dump-agents`).
+- **Scriptable** — the same binary is a CLI (`--report`, `--install-integration`, `--dump-agents`,
+  `--check-integrations`).
 - **Localized** — English, Italian, Spanish, French, German, Portuguese, Dutch, Polish, Russian,
   Turkish, Chinese (Simplified & Traditional), Japanese, Korean.
 
